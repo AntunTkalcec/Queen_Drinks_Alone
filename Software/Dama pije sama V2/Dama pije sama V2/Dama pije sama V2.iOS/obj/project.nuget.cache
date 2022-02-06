@@ -1,0 +1,39 @@
+{
+  "version": 2,
+  "dgSpecHash": "0k1Io4rf+n5LCnGvgjqV5YeF1AKz91qtPWLxSEKCnX7KZ0x3rKa18vR5CmELElbfDN25ZBVuIpYu07A7EXckVw==",
+  "success": true,
+  "projectFilePath": "F:\\Dama pije sama V2\\Software\\Dama pije sama V2\\Dama pije sama V2\\Dama pije sama V2.iOS\\Dama pije sama V2.iOS.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Antun\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\xamarin.essentials\\1.6.1\\xamarin.essentials.1.6.1.nupkg.sha512",
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\xamarin.forms\\5.0.0.2012\\xamarin.forms.5.0.0.2012.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1605",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Detected package downgrade: Xamarin.Essentials from 1.7.1 to 1.6.1. Reference the package directly from the project to select a different version. \r\n Dama pije sama V2.iOS -> Dama pije sama V2 -> Xamarin.Essentials (>= 1.7.1) \r\n Dama pije sama V2.iOS -> Xamarin.Essentials (>= 1.6.1)",
+      "libraryId": "Xamarin.Essentials",
+      "targetGraphs": [
+        "Xamarin.iOS,Version=v1.0",
+        "Xamarin.iOS,Version=v1.0/win",
+        "Xamarin.iOS,Version=v1.0/win-x64",
+        "Xamarin.iOS,Version=v1.0/win-x86"
+      ]
+    },
+    {
+      "code": "NU1605",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Detected package downgrade: Xamarin.Forms from 5.0.0.2337 to 5.0.0.2012. Reference the package directly from the project to select a different version. \r\n Dama pije sama V2.iOS -> Dama pije sama V2 -> Xamarin.Forms (>= 5.0.0.2337) \r\n Dama pije sama V2.iOS -> Xamarin.Forms (>= 5.0.0.2012)",
+      "libraryId": "Xamarin.Forms",
+      "targetGraphs": [
+        "Xamarin.iOS,Version=v1.0",
+        "Xamarin.iOS,Version=v1.0/win",
+        "Xamarin.iOS,Version=v1.0/win-x64",
+        "Xamarin.iOS,Version=v1.0/win-x86"
+      ]
+    }
+  ]
+}

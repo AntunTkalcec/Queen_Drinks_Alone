@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Dama_pije_sama_V2.AboutPage">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#DBDBDB">
+            <Image Source="AutorILinkovi" Aspect="AspectFill" HeightRequest="75"/>
+            <Frame BackgroundColor="#DBDBDB" Margin="0" HeightRequest="65">
+                <StackLayout>
+                    <Label FontFamily="Spicy Rice" Text="Antun Tkalčec" FontAttributes="400" FontSize="20" LineHeight="33" CharacterSpacing="0.35"
+                           TextColor="#000" VerticalOptions="End"/>
+                    <Label FontFamily="Cagliostro" Text="Fakultet organizacije i informatike, univ.bacc.inf." FontAttributes="400" FontSize="14"
+                           CharacterSpacing="0.35" TextColor="#000"/>
+                </StackLayout>
+            </Frame>
+            <Frame BackgroundColor="#DBDBDB" Margin="0" HeightRequest="50">
+                <StackLayout>
+                    <Label FontFamily="Spicy Rice" Text="Kontakt" FontAttributes="400" FontSize="20" LineHeight="33" CharacterSpacing="0.35" 
+                           TextColor="#000"/>
+                    <Label FontFamily="Cagliostro" Text="antuntkalcec@pm.me" FontAttributes="400" FontSize="14" CharacterSpacing="0.35" 
+                           TextColor="#000"/>
+                </StackLayout>
+            </Frame>
+            <Frame BackgroundColor="#DBDBDB" Margin="0" HeightRequest="110">
+                <StackLayout>
+                    <Label FontFamily="Spicy Rice" Text="Društvene mreže" FontAttributes="400" FontSize="20" CharacterSpacing="0.35"
+                           TextColor="#000"/>
+                    <Label FontFamily="Cagliostro" Text="www.linkedin.com/in/antuntkalcec" FontAttributes="400" FontSize="14" LineHeight="33" 
+                           CharacterSpacing="0.35" TextColor="#000"/>
+                    <Label FontFamily="Cagliostro" Text="https://www.facebook.com/antun.tkalcec" FontAttributes="400" FontSize="14" LineHeight="33" 
+                           CharacterSpacing="0.35" TextColor="#000"/>
+                    <Label FontFamily="Cagliostro" Text="https://www.instagram.com/antuntkalcec/" FontAttributes="400" FontSize="14" LineHeight="33" 
+                           CharacterSpacing="0.35" TextColor="#000"/>
+                </StackLayout>
+            </Frame>
+            <StackLayout>
+                <Label Text="Našao si bug?" HorizontalOptions="Center" TextColor="#000" FontSize="14" FontAttributes="400"/>
+                <Label Text="Prijavi ga na gore navedeni e-mail sa što više informacija o njemu." HorizontalOptions="Center" FontSize="14" 
+                       TextColor="#000" FontAttributes="400"/>
+            </StackLayout>
+            <Image Source="GumbILabelZaPovratak">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="BackImageButton_Tapped"/>
+                </Image.GestureRecognizers>
+            </Image>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

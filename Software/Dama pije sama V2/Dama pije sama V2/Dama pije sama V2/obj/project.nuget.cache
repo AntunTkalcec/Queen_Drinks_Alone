@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "/rsZ3oMoGKqjxZdFvvUCRA78u+dlldYyn5GDSzyFRIlPkU1h9YE/D6xYzQFiZkQf7Aox4vnM8x8CDVMxjbVyhQ==",
+  "success": true,
+  "projectFilePath": "F:\\Dama pije sama V2\\Software\\Dama pije sama V2\\Dama pije sama V2\\Dama pije sama V2\\Dama pije sama V2.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Antun\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\Antun\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\Antun\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Users\\Antun\\.nuget\\packages\\xamarin.essentials\\1.7.1\\xamarin.essentials.1.7.1.nupkg.sha512",
+    "C:\\Users\\Antun\\.nuget\\packages\\xamarin.forms\\5.0.0.2337\\xamarin.forms.5.0.0.2337.nupkg.sha512"
+  ],
+  "logs": []
+}

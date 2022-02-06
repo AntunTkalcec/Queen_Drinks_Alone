@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Dama_pije_sama_V2.MainPage"
+             BackgroundColor="#EEEEEE">
+
+    <StackLayout>
+        <Image Source="NaslovIIkonePiva" Margin="18, 39, 18, 10"/>
+        <Frame BackgroundColor="#EDAD4C" WidthRequest="102" HeightRequest="75" Margin="106, 30, 106, 10" CornerRadius="34" HasShadow="True" 
+               OutlineColor="#C4C4C4">
+            <Label FontFamily="Spicy Rice" FontSize="24"  Text="Quickstart" VerticalOptions="Center" HorizontalOptions="Center" FontAttributes="Bold"
+                   TextColor="#000"/>
+        </Frame>
+        <Frame BackgroundColor="#EDAD4C" WidthRequest="102" HeightRequest="75" Margin="106, 10" CornerRadius="34" 
+               HasShadow="True" 
+               OutlineColor="#C4C4C4">
+            <Label FontFamily="Spicy Rice" FontSize="24" Text="Igrači" VerticalOptions="Center" HorizontalOptions="Center" FontAttributes="Bold" 
+                   TextColor="#000"/>
+        </Frame>
+        <Frame BackgroundColor="#EDAD4C" WidthRequest="102" HeightRequest="75" Margin="106, 10" CornerRadius="34"
+               HasShadow="True" 
+               OutlineColor="#C4C4C4">
+            <Label FontFamily="Spicy Rice" FontSize="24" Text="Povijest" VerticalOptions="Center" HorizontalOptions="Center" FontAttributes="Bold" 
+                   TextColor="#000"/>
+        </Frame>
+        <Image Source="HelpIcon" Margin="12, 0, 0, 12" HorizontalOptions="Start">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="HelpIcon_Tapped"/>
+            </Image.GestureRecognizers>
+        </Image>
+    </StackLayout>
+
+</ContentPage>
