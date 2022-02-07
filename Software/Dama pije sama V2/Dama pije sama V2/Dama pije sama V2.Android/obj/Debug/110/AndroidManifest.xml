@@ -12,8 +12,8 @@
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
   <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
   <uses-permission android:name="android.permission.INTERNET" />
-  <application android:label="Dama pije sama" android:theme="@style/MainTheme" android:icon="@mipmap/hehe" android:name="android.app.Application" android:allowBackup="true" android:debuggable="true" android:extractNativeLibs="true">
-    <activity android:configChanges="orientation|smallestScreenSize|screenLayout|screenSize|uiMode" android:icon="@mipmap/hehe" android:label="Dama pije sama" android:theme="@style/MainTheme" android:name="crc645e130a4806021a3c.MainActivity" android:exported="true">
+  <application android:label="Dama pije sama" android:theme="@style/MainTheme" android:icon="@drawable/appicon" android:name="android.app.Application" android:allowBackup="true" android:debuggable="true" android:extractNativeLibs="true">
+    <activity android:configChanges="orientation|smallestScreenSize|screenLayout|screenSize|uiMode" android:icon="@drawable/appicon" android:label="Dama pije sama" android:theme="@style/MainTheme" android:name="crc645e130a4806021a3c.MainActivity" android:exported="true">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />

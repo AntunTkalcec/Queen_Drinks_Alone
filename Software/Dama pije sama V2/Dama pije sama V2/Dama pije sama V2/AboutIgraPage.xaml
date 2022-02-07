@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Dama_pije_sama_V2.AboutIgraPage">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#EEEEEE">
+            <Frame BackgroundColor="#C4C4C4">
+                <StackLayout>
+                    <Label Text="Igra --redni broj-- --datum--" TextColor="#000" FontSize="24" FontFamily="Spicy Rice" CharacterSpacing="0.35"/>
+                    <BoxView Color="#000" HeightRequest="1"/>
+                </StackLayout>
+            </Frame>
+            <Label FontFamily="Spicy Rice" Text="Igrači u igri:" FontSize="20" TextColor="#000" VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+            <Label FontFamily="Cagliostro" Text="--lista imena igrača ili poruka da se igralo bez igrača--" TextColor="#000" FontSize="16" 
+                   HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                   VerticalOptions="StartAndExpand"/>
+            <Label FontFamily="Spicy Rice" Text="Odigrano karata:" FontSize="20" TextColor="#000" VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+            <Label FontFamily="Cagliostro" Text="--broj karata--" TextColor="#000" FontSize="16" 
+                   HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                   VerticalOptions="StartAndExpand"/>
+            <Label FontFamily="Spicy Rice" Text="Duljina igre:" FontSize="20" TextColor="#000" VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+            <Label FontFamily="Cagliostro" Text="--broj minuta igre--" TextColor="#000" FontSize="16" 
+                   HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                   VerticalOptions="StartAndExpand"/>
+            <Image Source="GumbILabelZaPovratak" HeightRequest="150" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Povratak_Tapped"/>
+                </Image.GestureRecognizers>
+            </Image>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -6,22 +6,29 @@
 
     <StackLayout>
         <Image Source="NaslovIIkonePiva" Margin="18, 39, 18, 10"/>
-        <Frame BackgroundColor="#EDAD4C" WidthRequest="102" HeightRequest="75" Margin="106, 30, 106, 10" CornerRadius="34" HasShadow="True" 
-               OutlineColor="#C4C4C4">
+        <Frame BackgroundColor="#EDAD4C" WidthRequest="120" HeightRequest="75" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" 
+               CornerRadius="34" HasShadow="True" OutlineColor="#C4C4C4" >
             <Label FontFamily="Spicy Rice" FontSize="24"  Text="Quickstart" VerticalOptions="Center" HorizontalOptions="Center" FontAttributes="Bold"
-                   TextColor="#000"/>
+                   TextColor="#000" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="Quickstart_Tapped"/>
+            </Frame.GestureRecognizers>
         </Frame>
-        <Frame BackgroundColor="#EDAD4C" WidthRequest="102" HeightRequest="75" Margin="106, 10" CornerRadius="34" 
-               HasShadow="True" 
-               OutlineColor="#C4C4C4">
+        <Frame BackgroundColor="#EDAD4C" WidthRequest="120" HeightRequest="75" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" 
+               CornerRadius="34" HasShadow="True" OutlineColor="#C4C4C4">
             <Label FontFamily="Spicy Rice" FontSize="24" Text="Igrači" VerticalOptions="Center" HorizontalOptions="Center" FontAttributes="Bold" 
                    TextColor="#000"/>
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="Igraci_Tapped"/>
+            </Frame.GestureRecognizers>
         </Frame>
-        <Frame BackgroundColor="#EDAD4C" WidthRequest="102" HeightRequest="75" Margin="106, 10" CornerRadius="34"
-               HasShadow="True" 
-               OutlineColor="#C4C4C4">
+        <Frame BackgroundColor="#EDAD4C" WidthRequest="120" HeightRequest="75" CornerRadius="34" HorizontalOptions="CenterAndExpand"
+               VerticalOptions="CenterAndExpand" HasShadow="True" OutlineColor="#C4C4C4">
             <Label FontFamily="Spicy Rice" FontSize="24" Text="Povijest" VerticalOptions="Center" HorizontalOptions="Center" FontAttributes="Bold" 
                    TextColor="#000"/>
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="Povijest_Tapped"/>
+            </Frame.GestureRecognizers>
         </Frame>
         <Image Source="HelpIcon" Margin="12, 0, 0, 12" HorizontalOptions="Start">
             <Image.GestureRecognizers>

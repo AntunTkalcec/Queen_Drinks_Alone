@@ -5,5 +5,5 @@
 	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-	<application android:label="Dama pije sama" android:theme="@style/MainTheme" android:icon="@mipmap/hehe"></application>
+	<application android:label="Dama pije sama" android:theme="@style/MainTheme" android:icon="@drawable/AppIcon"></application>
 </manifest>

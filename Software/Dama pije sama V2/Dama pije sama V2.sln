@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dama pije sama V2.Android",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dama pije sama V2.iOS", "Dama pije sama V2\Dama pije sama V2.iOS\Dama pije sama V2.iOS.csproj", "{0D035580-D3E8-4AEC-9674-97167CD4C681}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dama pije sama V2", "Dama pije sama V2\Dama pije sama V2\Dama pije sama V2.csproj", "{18CF6D43-F6A5-4875-A1F8-A558FA194F05}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dama pije sama V2", "Dama pije sama V2\Dama pije sama V2\Dama pije sama V2.csproj", "{18CF6D43-F6A5-4875-A1F8-A558FA194F05}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

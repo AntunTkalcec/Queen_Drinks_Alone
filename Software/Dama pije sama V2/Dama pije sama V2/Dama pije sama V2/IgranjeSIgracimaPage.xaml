@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Dama_pije_sama_V2.IgranjeSIgracimaPage">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#EEEEEE">
+            <Image Source="HomeIcon" VerticalOptions="Start" HorizontalOptions="Center" WidthRequest="33" HeightRequest="33" 
+                   Margin="0, 11, 0, 0">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="HomeButton_Tapped"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Image Source="IkonePiva" WidthRequest="322.69" HeightRequest="89.89" Margin="23, 0, 23, 0"/>
+            <Image x:Name="slikaKarte" HorizontalOptions="Center" WidthRequest="268" HeightRequest="370" VerticalOptions="Center" Source="PocetnaKarta">
+                <Image.GestureRecognizers>
+                    <SwipeGestureRecognizer Direction="Right" Swiped="slikaKarte_RightSwiped"/>
+                    <SwipeGestureRecognizer Direction="Up" Swiped="slikaKarte_UpSwiped"/>
+                    <SwipeGestureRecognizer Direction="Down" Swiped="slikaKarte_DownSwiped"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Label FontFamily="Spicy Rice" x:Name="OpisZadatkaLabel" FontSize="18" HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center" TextColor="#000"/>
+            <Label FontFamily="Spicy Rice" Text="Broj karte" x:Name="BrKarteLabel" FontSize="14" HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center" TextColor="#000" Margin="0, 15, 0, 0"/>
+            <Label FontFamily="Cagliostro" Text="Dalje: swipe right ; Restart: swipe up ; Igrači: swipe down" FontSize="14" FontAttributes="400" 
+                   TextColor="#000" HorizontalOptions="Center" VerticalOptions="End" VerticalTextAlignment="End"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
