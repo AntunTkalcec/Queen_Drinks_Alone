@@ -14,7 +14,14 @@ namespace Dama_pije_sama_V2
         public MainPage(List<Igrac> igraci)
         {
             InitializeComponent();
-            ListaIgraca = igraci;
+            if (igraci != null)
+            {
+                ListaIgraca = igraci;
+            }
+            else
+            {
+                ListaIgraca = new List<Igrac>();
+            }
         }
 
         private void HelpIcon_Tapped(object sender, EventArgs e)

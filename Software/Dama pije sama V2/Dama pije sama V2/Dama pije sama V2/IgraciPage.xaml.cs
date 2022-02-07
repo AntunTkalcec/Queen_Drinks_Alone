@@ -20,7 +20,7 @@ namespace Dama_pije_sama_V2
 
         private void HomeButton_Tapped(object sender, EventArgs e)
         {
-            Application.Current.MainPage = new MainPage();
+            Application.Current.MainPage = new MainPage(null);
             return;
         }
 
@@ -41,7 +41,7 @@ namespace Dama_pije_sama_V2
         }
         protected override bool OnBackButtonPressed()
         {
-            Application.Current.MainPage = new MainPage();
+            Application.Current.MainPage = new MainPage(null);
             return true;
         }
     }

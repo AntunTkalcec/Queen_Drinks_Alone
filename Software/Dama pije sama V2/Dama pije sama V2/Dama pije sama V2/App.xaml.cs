@@ -13,7 +13,7 @@ namespace Dama_pije_sama_V2
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new MainPage(null);
         }
 
         protected override void OnStart()
