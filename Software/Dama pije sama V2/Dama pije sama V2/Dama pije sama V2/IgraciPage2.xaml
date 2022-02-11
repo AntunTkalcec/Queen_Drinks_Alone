@@ -1,32 +1,54 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Dama_pije_sama_V2.IgraciPage2">
+             x:Class="Dama_pije_sama_V2.IgraciPage2"
+             xmlns:sh="http://sharpnado.com"
+             NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <StackLayout BackgroundColor="#EEEEEE">
-            <Image Source="HomeIcon" VerticalOptions="Start" HorizontalOptions="Center" WidthRequest="33" HeightRequest="33" 
-                   Margin="0, 11, 0, 0">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="HomeButton_Tapped"/>
-                </Image.GestureRecognizers>
-            </Image>
-            <Image Source="IgraciIIkonePiva" Margin="25, 0, 25, 0" HeightRequest="140"/>
-            <ScrollView VerticalOptions="FillAndExpand" HorizontalOptions="Center" BackgroundColor="#DBDBDB" WidthRequest="330" 
+        <StackLayout BackgroundColor="White">
+            <Label Text="Koliko vas danas cuga?" TextColor="Purple" FontFamily="Spicy Rice" FontSize="24" HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="Center" Margin="0, 15, 0, 0"/>
+            <BoxView HorizontalOptions="Center" HeightRequest="1" Color="#000" WidthRequest="300"/>
+            <Label Text="2" FontSize="30" FontFamily="Spicy Rice" TextColor="#e02cd7" HorizontalOptions="CenterAndExpand" x:Name="PlayerCountLabel"/>
+            <Label Text="PLUS" TextColor="Purple" FontFamily="FASolid" FontSize="45" HorizontalOptions="Center" VerticalOptions="Center" x:Name="PlusGumb">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="PlusLabel_Tapped"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <ScrollView VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand" BackgroundColor="White" WidthRequest="330" 
                         VerticalScrollBarVisibility="Always">
                 <StackLayout Padding="0, 0, 0, 13" x:Name="IgraciStackLayout">
-                    
+                    <Frame CornerRadius="15" BackgroundColor="White" WidthRequest="265" HeightRequest="60" VerticalOptions="Start" 
+                               HorizontalOptions="Center" Margin="0, 13, 0, 0" HasShadow="True" BorderColor="#C4C4C4" x:Name="Igrac1Frame">
+                        <StackLayout Orientation="Horizontal">
+                            <Frame WidthRequest="90" VerticalOptions="Center" HorizontalOptions="Start" CornerRadius="15" IsClippedToBounds="True"
+                                       Padding="0">
+                                <Image x:Name="Igrac1Image" HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFill" 
+                                           Source="DrunkGuy5" HeightRequest="90"/>
+                            </Frame>
+                            <Entry x:Name="Igrac1Entry" Text="Upiši ime" TextColor="#352ce0" FontSize="30" FontFamily="Spicy Rice" 
+                                       HorizontalOptions="CenterAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                    </Frame>
+                        <Frame CornerRadius="15" BackgroundColor="White" WidthRequest="265" HeightRequest="60" VerticalOptions="Start" 
+                               HorizontalOptions="Center" Margin="0, 13, 0, 0" HasShadow="True" BorderColor="#C4C4C4" x:Name="Igrac2Frame">
+                        <StackLayout Orientation="Horizontal">
+                            <Frame WidthRequest="90" VerticalOptions="Center" HorizontalOptions="Start" CornerRadius="15" IsClippedToBounds="True"
+                                       Padding="0">
+                                <Image x:Name="Igrac2Image" HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFill" 
+                                           Source="DrunkGuy4" HeightRequest="90"/>
+                            </Frame>
+                            <Entry x:Name="Igrac2Entry" Text="Upiši ime" TextColor="#8f2ce9" FontSize="30" FontFamily="Spicy Rice" 
+                                       HorizontalOptions="CenterAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                    </Frame>
                 </StackLayout>
-            </ScrollView>       
-            <Entry x:Name="ImeIgracaEntry" BackgroundColor="#FFFFFF" WidthRequest="330" Placeholder="Upiši ime..." FontFamily="Spicy Rice" 
-                   TextColor="#000" PlaceholderColor="Gray"
-                   Opacity="65" HorizontalOptions="Center"/>
+            </ScrollView>
+            <!--<Entry x:Name="ImeIgracaEntry" BackgroundColor="#FDB73E" WidthRequest="330" Placeholder="Upiši ime..." FontFamily="Spicy Rice" 
+                   TextColor="#000" PlaceholderColor="White"
+                   Opacity="0.75" HorizontalOptions="Center"/> -->
             <StackLayout Orientation="Horizontal">
-                <Image Source="GumbILabelZaDodavanjeIgraca" HeightRequest="75" VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="Dodaj_Tapped"/>
-                    </Image.GestureRecognizers>
-                </Image>
-                <Image Source="GumbILabelZaIgranje" HeightRequest="75" VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
+                <Image Source="GumbILabelZaIgranje" HeightRequest="75" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Margin="0, 0, 0, 5" x:Name="IgrajGumb">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="Igraj_Tapped"/>
                     </Image.GestureRecognizers>

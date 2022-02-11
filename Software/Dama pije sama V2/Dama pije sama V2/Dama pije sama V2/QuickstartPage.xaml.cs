@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamanimation;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -14,6 +16,9 @@ namespace Dama_pije_sama_V2
     {
         public List<Karta> karte = new List<Karta>();
         static Random rnd = new Random();
+        private int Broj_odigranih_karata = 0;
+        private string BrojacSekundi;
+        Stopwatch StopWatch;
         public QuickstartPage()
         {
             InitializeComponent();
@@ -21,42 +26,86 @@ namespace Dama_pije_sama_V2
             slikaKarte.Source = karte.Find(x => x.Naziv == "PocetnaKarta").Naziv;
             OpisZadatkaLabel.Text = karte.Find(x => x.Naziv == "PocetnaKarta").Naredba;
             BrKarteLabel.Text = $"{karte.Count - 1}";
+            PokreniStopericu();
         }
 
-        private void HomeButton_Tapped(object sender, EventArgs e)
+        private void PokreniStopericu()
         {
-            Application.Current.MainPage = new MainPage(null);
-            return;
+            StopWatch = Stopwatch.StartNew();
         }
 
-        private void slikaKarte_RightSwiped(object sender, SwipedEventArgs e)
+        private async Task UpisiNovuIgru()
+        {
+            StopWatch.Stop();
+            BrojacSekundi = StopWatch.Elapsed.TotalSeconds.ToString("0");
+            Igra novaIgra = new Igra()
+            {
+                Datum = DateTime.Now,
+                PopisIgraca = "Ova se igra igrala bez upisanih igrača",
+                BrOdigranihKarata = Broj_odigranih_karata,
+                DuljinaIgre = BrojacSekundi,
+                BrojIgraca = 0,
+            };
+            await App.IgraRepo.AddNewIgraAsync(novaIgra);
+        }
+
+        private async void slikaKarte_RightSwiped(object sender, SwipedEventArgs e)
         {
             if (karte.Count == 0)
             {
                 OpisZadatkaLabel.Text = "Špil je prazan!";
                 return;
             }
-
+            Broj_odigranih_karata++;
             karte.RemoveAll(x => x.Naziv == "PocetnaKarta");
             int r = rnd.Next(karte.Count);
-            slikaKarte.Source = karte.ElementAt(r).Naziv;
-            OpisZadatkaLabel.Text = karte.ElementAt(r).Naredba;
+            await PromijeniKartu(r);
+
+            if (OpisZadatkaLabel.Text == "SVI PIJU")
+            {
+                Vibration.Vibrate();
+            }
+
             karte.RemoveAt(r);
             BrKarteLabel.Text = $"{karte.Count}";
         }
 
-        private void slikaKarte_UpSwiped(object sender, SwipedEventArgs e)
+        private async Task<int> PromijeniKartu(int r)
+        {
+
+            slikaKarte.Source = karte.ElementAt(r).Naziv;
+            await slikaKarte.TranslateTo(-10, 0, 25);
+            await slikaKarte.TranslateTo(10, 0, 25);
+            await slikaKarte.TranslateTo(-5, 0, 25);
+            await slikaKarte.TranslateTo(5, 0, 25);
+            await slikaKarte.TranslateTo(-2.5, 0, 25);
+            await slikaKarte.TranslateTo(2.5, 0, 25);
+            slikaKarte.TranslationX = 0;
+            OpisZadatkaLabel.Text = karte.ElementAt(r).Naredba;
+            return await Task.FromResult(0);
+        }
+
+        private async void slikaKarte_UpSwiped(object sender, SwipedEventArgs e)
         {
             karte.Clear();
             StvoriListu();
             OpisZadatkaLabel.Text = "Špil resetiran i promiješan";
+            await PostaviPocetnuKartu();
+        }
+
+        private async Task<int> PostaviPocetnuKartu()
+        {
+            await slikaKarte.TranslateTo(0, -15, 125, Easing.Linear);
+            await slikaKarte.TranslateTo(0, 0, 125, Easing.Linear);
+            slikaKarte.TranslationY = 0;
             slikaKarte.Source = karte.Find(x => x.Naziv == "PocetnaKarta").Naziv;
             BrKarteLabel.Text = $"{karte.Count - 1}";
+            return await Task.FromResult(0);
         }
 
         private void slikaKarte_DownSwiped(object sender, SwipedEventArgs e)
         {
-            Application.Current.MainPage = new IgraciPage();
+            _ = Navigation.PushAsync(new IgraciPage2(), true);
         }
         private void StvoriListu()
         {
@@ -93,10 +142,13 @@ namespace Dama_pije_sama_V2
             karte.Add(new Karta("SedmicaZelje", "PIJE LIJEVO OD TEBE"));
             karte.Add(new Karta("SedmicaBundeva", "PIJE LIJEVO OD TEBE"));
             karte.Add(new Karta("SedmicaZir", "PIJE LIJEVO OD TEBE"));
+
+            return;
         }
         protected override bool OnBackButtonPressed()
         {
-            Application.Current.MainPage = new MainPage(null);
+            _ = UpisiNovuIgru();
+            _ = Navigation.PopAsync(true);
             return true;
         }
     }

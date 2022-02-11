@@ -18,6 +18,9 @@ using Xamarin.Forms;
 [assembly: ComVisible(false)]
 [assembly: ExportFont("SpicyRice-Regular.ttf", Alias = "Spicy Rice")]
 [assembly: ExportFont("Cagliostro-Regular.ttf", Alias = "Cagliostro")]
+[assembly: ExportFont("FontAwesome6Brands.otf", Alias = "FABrands")]
+[assembly: ExportFont("FontAwesome6Regular.otf", Alias = "FARegular")]
+[assembly: ExportFont("FontAwesome6Solid.otf", Alias = "FASolid")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -31,3 +34,4 @@ using Xamarin.Forms;
 // Add some common permissions, these can be removed if not needed
 [assembly: UsesPermission(Android.Manifest.Permission.Internet)]
 [assembly: UsesPermission(Android.Manifest.Permission.WriteExternalStorage)]
+[assembly: UsesPermission(Android.Manifest.Permission.Vibrate)]

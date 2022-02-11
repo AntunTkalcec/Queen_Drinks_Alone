@@ -12,93 +12,92 @@ namespace Dama_pije_sama_V2
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class IgraciPage2 : ContentPage
     {
-        int brojac = 0;
         List<Igrac> Igraci = new List<Igrac>();
-        List<Igrac> Igraci2 = new List<Igrac>();
         List<Pijanac> Pijanci = new List<Pijanac>();
         static Random rnd = new Random();
-        public IgraciPage2(List<Igrac> igraci)
+        List<Boja> Boje = new List<Boja>();
+        bool praznoImePostoji = false;
+        public IgraciPage2()
         {
             InitializeComponent();
+
             StvoriListuPijanaca();
-            Igraci2 = igraci;
-            if (Igraci2 != null)
-            {
-                Igraci = Igraci2;
-                PokaziIgrace();
-            }
+
+            StvoriListuBoja();
+
+            PripremiStranicu();
+
+            PlayerCountLabel.Text = Igraci.Count.ToString();
         }
 
-        private void PokaziIgrace()
+        private void PripremiStranicu()
         {
-            foreach (Igrac igrac in Igraci2)
+            Igraci.Add(new Igrac("Igrač", Igrac1Frame));
+            Igrac1Entry.TextChanged += (s, eve) =>
             {
-                int r = rnd.Next(Pijanci.Count);
-                Frame frame = new Frame
-                {
-                    BackgroundColor = Color.FromHex("#FFFFFF"),
-                    WidthRequest = 265,
-                    CornerRadius = 15,
-                    HeightRequest = 60,
-                    VerticalOptions = LayoutOptions.Start,
-                    HorizontalOptions = LayoutOptions.Center,
-                    Margin = new Thickness(0, 13, 0, 0),
-                    Content = new StackLayout
-                    {
-                        Orientation = StackOrientation.Horizontal,
-                        Children =
-                        {
-                            new Frame
-                            {
-                                WidthRequest = 90,
-                                VerticalOptions = LayoutOptions.Center,
-                                HorizontalOptions = LayoutOptions.Start,
-                                CornerRadius = 15,
-                                IsClippedToBounds = true,
-                                Padding = 0,
-                                Content = new Image
-                                {
-                                    Source = Pijanci.ElementAt(r).Naziv,
-                                    HorizontalOptions = LayoutOptions.Center,
-                                    VerticalOptions = LayoutOptions.Center,
-                                    Aspect = Aspect.AspectFill,
-                                },
-                            },
-                            new Label
-                            {
-                                Text = $"{igrac.Ime}",
-                                FontSize = 30,
-                                TextColor = Color.FromHex("#000"),
-                                FontFamily = "Spicy Rice",
-                                HorizontalOptions = LayoutOptions.Center,
-                                VerticalOptions = LayoutOptions.Center,
-                                HorizontalTextAlignment = TextAlignment.Center,
-                                Margin = new Thickness(25, 0, 0, 0),
-                            },
-                        }
-                    }
-                };
-                TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer();
-                tapGestureRecognizer.Tapped += async (s, eve) =>
-                {
-                    await ObrisiIgracaAsync(frame, igrac.Ime);
-                };
-                frame.GestureRecognizers.Add(tapGestureRecognizer);
-                IgraciStackLayout.Children.Add(frame);
-                ImeIgracaEntry.Text = "";
-            }
+                PromjeniImeIgracu(Igrac1Entry.Text, Igrac1Frame);
+            };
+            Igrac1Entry.Focused += (s, eve) =>
+            {
+                Igrac1Entry.Text = "";
+            };
+
+            TapGestureRecognizer tapGestReco1 = new TapGestureRecognizer();
+            tapGestReco1.Tapped += async (s, eve) =>
+            {
+                await ObrisiIgracaAsync(Igrac1Frame);
+            };
+            Igrac1Frame.GestureRecognizers.Add(tapGestReco1);
+
+            /////////////////////////////////////////////////////////////////////////
+
+            Igraci.Add(new Igrac("Igrač", Igrac2Frame));
+            Igrac2Entry.TextChanged += (s, eve) =>
+            {
+                PromjeniImeIgracu(Igrac2Entry.Text, Igrac2Frame);
+            };
+            Igrac2Entry.Focused += (s, eve) =>
+            {
+                Igrac2Entry.Text = "";
+            };
+
+            TapGestureRecognizer tapGestReco2 = new TapGestureRecognizer();
+            tapGestReco2.Tapped += async (s, eve) =>
+            {
+                await ObrisiIgracaAsync(Igrac2Frame);
+            };
+            Igrac2Frame.GestureRecognizers.Add(tapGestReco2);
         }
 
-        private async Task ObrisiIgracaAsync(Frame frame, string ime)
+        private void StvoriListuBoja()
         {
-            await AnimirajBrisanje(frame);
-            _ = IgraciStackLayout.Children.Remove(frame);
-            Igraci.RemoveAll(x => x.Ime == ime);
+            Boje.Add(new Boja("#8f2ce0"));
+            Boje.Add(new Boja("#e02cd7"));
+            Boje.Add(new Boja("#352ce0"));
+            Boje.Add(new Boja("#a01699"));
+        }
+
+        private async Task ObrisiIgracaAsync(Frame frame)
+        {
+            if (Igraci.Count < 3)
+            {
+                await DisplayAlert("Molim?", "Pa nećeš valjda sam pit'?", "Neću");
+                return;
+            }
+            else
+            {
+                Igraci.RemoveAll(x => x.Frame == frame);
+                await AnimirajBrisanje(frame);
+                _ = IgraciStackLayout.Children.Remove(frame);
+                PlayerCountLabel.Text = Igraci.Count.ToString();
+                return; 
+            }
         }
 
         private async Task AnimirajBrisanje(Frame frame)
         {
             _ = await frame.Animate(new FadeToAnimation());
+            return;
         }
 
         private void StvoriListuPijanaca()
@@ -112,97 +111,137 @@ namespace Dama_pije_sama_V2
             Pijanci.Add(new Pijanac("DrunkGuy5"));
         }
 
-        private void Dodaj_Tapped(object sender, EventArgs e)
+        private async void Igraj_Tapped(object sender, EventArgs e)
         {
-            if (ImeIgracaEntry.Text == "" || ImeIgracaEntry.Text == null)
+            if (praznoImePostoji)
             {
+                await DisplayAlert("Čekaj", "Bar dodaj svim igračima neki nadimak...", "OK");
                 return;
+            }
+            if (Igraci.Count > 0)
+            {
+                await IgrajGumb.ScaleTo(0.9, 125, Easing.Linear);
+                await IgrajGumb.ScaleTo(1, 125, Easing.Linear);
+                _ = Navigation.PushAsync(new IgranjeSIgracimaPage(Igraci), true);
             }
             else
             {
-                int r = rnd.Next(Pijanci.Count);
-                string ime = ImeIgracaEntry.Text;
-                Igrac noviIgrac = new Igrac(ime, 1);
-                Igraci.Add(noviIgrac);
-                Frame frame = new Frame
-                {
-                    BackgroundColor = Color.FromHex("#FFFFFF"),
-                    WidthRequest = 265,
-                    CornerRadius = 15,
-                    HeightRequest = 60,
-                    VerticalOptions = LayoutOptions.Start,
-                    HorizontalOptions = LayoutOptions.Center,
-                    Margin = new Thickness(0, 13, 0, 0),
-                    Content = new StackLayout
-                    {
-                        Orientation = StackOrientation.Horizontal,
-                        Children =
-                        {
-                            new Frame
-                            {
-                                WidthRequest = 90,
-                                VerticalOptions = LayoutOptions.Center,
-                                HorizontalOptions = LayoutOptions.Start,
-                                CornerRadius = 15,
-                                IsClippedToBounds = true,
-                                Padding = 0,
-                                Content = new Image
-                                {
-                                    Source = Pijanci.ElementAt(r).Naziv,
-                                    HorizontalOptions = LayoutOptions.Center,
-                                    VerticalOptions = LayoutOptions.Center,
-                                    Aspect = Aspect.AspectFill,
-                                },
-                            },
-                            new Label
-                            {
-                                Text = $"{ime}",
-                                FontSize = 30,
-                                TextColor = Color.FromHex("#000"),
-                                FontFamily = "Spicy Rice",
-                                HorizontalOptions = LayoutOptions.Center,
-                                VerticalOptions = LayoutOptions.Center,
-                                HorizontalTextAlignment = TextAlignment.Center,
-                                Margin = new Thickness(25, 0, 0, 0),
-                            },
-                        }
-                    }
-                };
-                TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer();
-                tapGestureRecognizer.Tapped += async (s, eve) =>
-                {
-                    await ObrisiIgracaAsync(frame, noviIgrac.Ime);
-                };
-                frame.GestureRecognizers.Add(tapGestureRecognizer);
-                IgraciStackLayout.Children.Add(frame);
-                ImeIgracaEntry.Text = "";
-                return;
+                _ = Navigation.PushAsync(new QuickstartPage(), true);
             }
         }
 
-        private void HomeButton_Tapped(object sender, EventArgs e)
+        protected override bool OnBackButtonPressed()
         {
-            Application.Current.MainPage = new MainPage(Igraci);
+            _ = Navigation.PopAsync(false);
+            _ = Navigation.PopAsync(true);
+            return true;
+        }
+
+        private async void PlusLabel_Tapped(object sender, EventArgs e)
+        {
+            PlayerCountLabel.CancelAnimations();
+            int r = rnd.Next(Pijanci.Count);
+            int r2 = rnd.Next(Boje.Count);
+            string odabranaBoja = Boje.ElementAt(r2).Kod;
+            Frame frame = new Frame
+            {
+                BackgroundColor = Color.FromHex("#FFFFFF"),
+                WidthRequest = 265,
+                CornerRadius = 15,
+                HeightRequest = 60,
+                VerticalOptions = LayoutOptions.Start,
+                HorizontalOptions = LayoutOptions.Center,
+                Margin = new Thickness(0, 13, 0, 0),
+                HasShadow = true,
+                BorderColor = Color.FromHex("#C4C4C4"),
+            };
+
+            StackLayout noviStackLayout = new StackLayout
+            {
+                Orientation = StackOrientation.Horizontal,
+                Children =
+                {
+                    new Frame
+                    {
+                        WidthRequest = 90,
+                        VerticalOptions = LayoutOptions.Center,
+                        HorizontalOptions = LayoutOptions.Start,
+                        CornerRadius = 15,
+                        IsClippedToBounds = true,
+                        Padding = 0,
+                        Content = new Image
+                        {
+                            Source = Pijanci.ElementAt(r).Naziv,
+                            HorizontalOptions = LayoutOptions.Center,
+                            VerticalOptions = LayoutOptions.Center,
+                            Aspect = Aspect.AspectFill,
+                        },
+                    }
+                }
+            };
+
+            Entry noviIgracEntry = new Entry
+            {
+                Text = "Upiši ime",
+                FontSize = 30,
+                TextColor = Color.FromHex($"{odabranaBoja}"),
+                FontFamily = "Spicy Rice",
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalTextAlignment = TextAlignment.Center,
+            };
+
+            noviStackLayout.Children.Add(noviIgracEntry);
+            frame.Content = noviStackLayout;
+
+            TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer();
+            tapGestureRecognizer.Tapped += async (s, eve) =>
+            {
+                await ObrisiIgracaAsync(frame);
+            };
+            frame.GestureRecognizers.Add(tapGestureRecognizer);
+
+            IgraciStackLayout.Children.Add(frame);
+
+            Igrac noviIgrac = new Igrac("Igrač", frame);
+            Igraci.Add(noviIgrac);
+
+            noviIgracEntry.TextChanged += (s, eve) =>
+            {
+                PromjeniImeIgracu(noviIgracEntry.Text, frame);
+            };
+            noviIgracEntry.Focused += (s, eve) =>
+            {
+                noviIgracEntry.Text = "";
+            };
+
+            PlayerCountLabel.Text = Igraci.Count.ToString();
+            await PlayerCountLabel.TranslateTo(-10, 0, 50);
+            await PlayerCountLabel.TranslateTo(10, 0, 50);
+            await PlayerCountLabel.TranslateTo(-5, 0, 50);
+            await PlayerCountLabel.TranslateTo(5, 0, 50);
+            await PlayerCountLabel.TranslateTo(-2.5, 0, 50);
+            await PlayerCountLabel.TranslateTo(-2.5, 0, 50);
+            PlayerCountLabel.TranslationX = 0;
             return;
         }
 
-        private void Igraj_Tapped(object sender, EventArgs e)
+        private void PromjeniImeIgracu(string text, Frame frame)
         {
-            if (Igraci.Count > 0)
+            if (text == "")
             {
-                Application.Current.MainPage = new IgranjeSIgracimaPage(Igraci);
-                return;
+                praznoImePostoji = true;
             }
             else
             {
-                Application.Current.MainPage = new QuickstartPage();
-                return;
+                praznoImePostoji = false;
             }
-        }
-        protected override bool OnBackButtonPressed()
-        {
-            Application.Current.MainPage = new MainPage(Igraci);
-            return true;
+            foreach (Igrac player in Igraci.Where(x => x.Frame == frame))
+            {
+                player.Ime = text;
+            }
+
+            return;
         }
     }
 }

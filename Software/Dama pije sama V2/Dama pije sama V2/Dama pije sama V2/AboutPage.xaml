@@ -1,16 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Dama_pije_sama_V2.AboutPage">
+             x:Class="Dama_pije_sama_V2.AboutPage"
+             BackgroundColor="White"
+             NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <StackLayout BackgroundColor="#DBDBDB">
-            <Frame BackgroundColor="#C4C4C4">
+        <StackLayout BackgroundColor="White">
+            <Frame BorderColor="White" HasShadow="False">
                 <StackLayout>
                     <Label Text="Autor i linkovi" TextColor="#000" FontSize="24" FontFamily="Spicy Rice" CharacterSpacing="0.35"/>
-                    <BoxView Color="#000" HeightRequest="1"/>
+                    <BoxView Color="#000" HeightRequest="2"/>
                 </StackLayout>
             </Frame>
-            <Frame BackgroundColor="#DBDBDB" Margin="0" HeightRequest="65">
+            <Frame Margin="0" HeightRequest="65" HasShadow="True" BorderColor="#C4C4C4">
                 <StackLayout>
                     <Label FontFamily="Spicy Rice" Text="Antun Tkalčec" FontAttributes="400" FontSize="20" LineHeight="33" CharacterSpacing="0.35"
                            TextColor="#000" VerticalOptions="End"/>
@@ -18,7 +20,7 @@
                            CharacterSpacing="0.35" TextColor="#000"/>
                 </StackLayout>
             </Frame>
-            <Frame BackgroundColor="#DBDBDB" Margin="0" HeightRequest="50">
+            <Frame Margin="0" HeightRequest="50" HasShadow="True" BorderColor="#C4C4C4">
                 <StackLayout>
                     <Label FontFamily="Spicy Rice" Text="Kontakt" FontAttributes="400" FontSize="20" LineHeight="33" CharacterSpacing="0.35" 
                            TextColor="#000"/>
@@ -26,7 +28,7 @@
                            TextColor="#000"/>
                 </StackLayout>
             </Frame>
-            <Frame BackgroundColor="#DBDBDB" Margin="0" HeightRequest="110">
+            <Frame Margin="0" HeightRequest="110" HasShadow="True" BorderColor="#C4C4C4">
                 <StackLayout>
                     <Label FontFamily="Spicy Rice" Text="Društvene mreže" FontAttributes="400" FontSize="20" CharacterSpacing="0.35"
                            TextColor="#000"/>
@@ -71,11 +73,7 @@
                 <Label Text="Prijavi ga na gore navedeni e-mail sa što više informacija o njemu." HorizontalOptions="CenterAndExpand" FontSize="14" 
                        TextColor="#000" FontAttributes="400" FontFamily="Cagliostro" HorizontalTextAlignment="Center"/>
             </StackLayout>
-            <Image Source="GumbILabelZaPovratak" VerticalOptions="EndAndExpand">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="BackImageButton_Tapped"/>
-                </Image.GestureRecognizers>
-            </Image>
+            <Label Text="Version 1.0.0" TextColor="#000" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

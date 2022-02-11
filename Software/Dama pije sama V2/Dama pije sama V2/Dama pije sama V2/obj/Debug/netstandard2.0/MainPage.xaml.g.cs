@@ -17,8 +17,28 @@ namespace Dama_pije_sama_V2 {
     public partial class MainPage : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::Xamarin.Forms.Image NaslovAplikacije;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::Sharpnado.Shades.Shadows QuickstartShadows;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::Sharpnado.Shades.Shadows IgraciShadows;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::Sharpnado.Shades.Shadows PovijestShadows;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::Xamarin.Forms.Image AboutImage;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(MainPage));
+            NaslovAplikacije = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Image>(this, "NaslovAplikacije");
+            QuickstartShadows = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Sharpnado.Shades.Shadows>(this, "QuickstartShadows");
+            IgraciShadows = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Sharpnado.Shades.Shadows>(this, "IgraciShadows");
+            PovijestShadows = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Sharpnado.Shades.Shadows>(this, "PovijestShadows");
+            AboutImage = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Image>(this, "AboutImage");
         }
     }
 }

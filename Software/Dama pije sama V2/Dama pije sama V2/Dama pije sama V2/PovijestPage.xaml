@@ -1,91 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Dama_pije_sama_V2.PovijestPage">
+             x:Class="Dama_pije_sama_V2.PovijestPage"
+             NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <StackLayout BackgroundColor="#EEEEEE">
-            <Frame BackgroundColor="#C4C4C4">
+        <StackLayout BackgroundColor="White">
+            <Frame HasShadow="False" BorderColor="White">
                 <StackLayout>
-                    <Label Text="Povijest" TextColor="#000" FontSize="24" FontFamily="Spicy Rice" CharacterSpacing="0.35"/>
-                    <BoxView Color="#000" HeightRequest="1"/>
+                    <Label Text="Povijest" TextColor="Purple" FontSize="24" FontFamily="Spicy Rice" CharacterSpacing="0.35"/>
+                    <BoxView Color="#000" HeightRequest="2"/>
                 </StackLayout>
             </Frame>
-            <ScrollView VerticalOptions="FillAndExpand" BackgroundColor="#FFFFFF" HorizontalOptions="Center" WidthRequest="360" Margin="15">
-                <StackLayout Padding="0, 0, 0, 15">
-                    <Frame BackgroundColor="#EDAD4C" HorizontalOptions="Center" WidthRequest="280" HeightRequest="60"
-                           CornerRadius="15" Margin="0, 19, 0, 0" HasShadow="True" OutlineColor="#000">
-                        <StackLayout>
-                            <Label Text="--Redni broj igre--" TextColor="#000" FontFamily="Spicy Rice" HorizontalOptions="Center" FontSize="18"/>
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="--datum--" TextColor="#000" FontFamily="Cagliostro" HorizontalOptions="CenterAndExpand"
-                                       VerticalOptions="Center" FontSize="16"/>
-                                <Label Text="--broj igrača--" TextColor="#000" FontFamily="Cagliostro" HorizontalOptions="CenterAndExpand"
-                                       VerticalOptions="Center" FontSize="16"/>
-                            </StackLayout>
-                        </StackLayout>
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="Igra_Tapped"/>
-                        </Frame.GestureRecognizers>
-                    </Frame>
+            <ScrollView VerticalOptions="FillAndExpand" BackgroundColor="White" HorizontalOptions="CenterAndExpand" 
+                        WidthRequest="360" x:Name="IgreScrollView" IsClippedToBounds="True" VerticalScrollBarVisibility="Always">
+                <StackLayout Padding="0, 0, 0, 15" x:Name="IgreStackLayout">
 
-                    <Frame BackgroundColor="#EDAD4C" HorizontalOptions="Center" WidthRequest="280" HeightRequest="60"
-                           CornerRadius="15" Margin="0, 19, 0, 0" HasShadow="True" OutlineColor="#000">
-                        <StackLayout>
-                            <Label Text="--Redni broj igre--" TextColor="#000" FontFamily="Spicy Rice" HorizontalOptions="Center" FontSize="18"/>
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="--datum--" TextColor="#000" FontFamily="Cagliostro" HorizontalOptions="CenterAndExpand"
-                                       VerticalOptions="Center" FontSize="16"/>
-                                <Label Text="--broj igrača--" TextColor="#000" FontFamily="Cagliostro" HorizontalOptions="CenterAndExpand"
-                                       VerticalOptions="Center" FontSize="16"/>
-                            </StackLayout>
-                        </StackLayout>
-                    </Frame>
-
-                    <Frame BackgroundColor="#EDAD4C" HorizontalOptions="Center" WidthRequest="280" HeightRequest="60"
-                           CornerRadius="15" Margin="0, 19, 0, 0" HasShadow="True" OutlineColor="#000">
-                        <StackLayout>
-                            <Label Text="--Redni broj igre--" TextColor="#000" FontFamily="Spicy Rice" HorizontalOptions="Center" FontSize="18"/>
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="--datum--" TextColor="#000" FontFamily="Cagliostro" HorizontalOptions="CenterAndExpand"
-                                       VerticalOptions="Center" FontSize="16"/>
-                                <Label Text="--broj igrača--" TextColor="#000" FontFamily="Cagliostro" HorizontalOptions="CenterAndExpand"
-                                       VerticalOptions="Center" FontSize="16"/>
-                            </StackLayout>
-                        </StackLayout>
-                    </Frame>
-
-                    <Frame BackgroundColor="#EDAD4C" HorizontalOptions="Center" WidthRequest="280" HeightRequest="60"
-                           CornerRadius="15" Margin="0, 19, 0, 0" HasShadow="True" OutlineColor="#000">
-                        <StackLayout>
-                            <Label Text="--Redni broj igre--" TextColor="#000" FontFamily="Spicy Rice" HorizontalOptions="Center" FontSize="18"/>
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="--datum--" TextColor="#000" FontFamily="Cagliostro" HorizontalOptions="CenterAndExpand"
-                                       VerticalOptions="Center" FontSize="16"/>
-                                <Label Text="--broj igrača--" TextColor="#000" FontFamily="Cagliostro" HorizontalOptions="CenterAndExpand"
-                                       VerticalOptions="Center" FontSize="16"/>
-                            </StackLayout>
-                        </StackLayout>
-                    </Frame>
-
-                    <Frame BackgroundColor="#EDAD4C" HorizontalOptions="Center" WidthRequest="280" HeightRequest="60"
-                           CornerRadius="15" Margin="0, 19, 0, 0" HasShadow="True" OutlineColor="#000">
-                        <StackLayout>
-                            <Label Text="--Redni broj igre--" TextColor="#000" FontFamily="Spicy Rice" HorizontalOptions="Center" FontSize="18"/>
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="--datum--" TextColor="#000" FontFamily="Cagliostro" HorizontalOptions="CenterAndExpand"
-                                       VerticalOptions="Center" FontSize="16"/>
-                                <Label Text="--broj igrača--" TextColor="#000" FontFamily="Cagliostro" HorizontalOptions="CenterAndExpand"
-                                       VerticalOptions="Center" FontSize="16"/>
-                            </StackLayout>
-                        </StackLayout>
-                    </Frame>
                 </StackLayout>
             </ScrollView>
-            <Image Source="GumbILabelZaPovratak" HeightRequest="100">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="PovratakGumb_Tapped"/>
-                </Image.GestureRecognizers>
-            </Image>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

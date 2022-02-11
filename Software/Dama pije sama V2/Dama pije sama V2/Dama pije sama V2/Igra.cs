@@ -5,13 +5,12 @@ using System.Text;
 
 namespace Dama_pije_sama_V2
 {
-    [Table("Igra")]
+    [Table("Igra2")]
     public class Igra
     {
         [PrimaryKey, AutoIncrement, NotNull]
+        [Preserve]
         public int Id { get; set; }
-        [NotNull]
-        public int RedniBroj { get; set; }
         [NotNull]
         public DateTime Datum { get; set; }
   
@@ -19,7 +18,8 @@ namespace Dama_pije_sama_V2
         [NotNull]
         public int BrOdigranihKarata { get; set; }
         [NotNull]
-        public int DuljinaIgre { get; set; }
+        public string DuljinaIgre { get; set; }
+        public int BrojIgraca { get; set; }
 
         public Igra()
         {

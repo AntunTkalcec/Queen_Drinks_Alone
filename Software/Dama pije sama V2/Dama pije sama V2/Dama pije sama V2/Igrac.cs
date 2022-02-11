@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms;
 
 namespace Dama_pije_sama_V2
 {
     public class Igrac
     {
         public string Ime { get; set; }
-        public int RedniBroj { get; set; }
-        public Igrac (string ime, int redniBroj)
+        public Frame Frame { get; set; }
+        public Igrac (string ime, Frame frame)
         {
             Ime = ime;
-            RedniBroj = redniBroj;
+            Frame = frame;
         }
 
         public override string ToString()

@@ -13,22 +13,26 @@ namespace Dama_pije_sama_V2
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AboutPage : ContentPage
     {
-        public AboutPage()
+        public List<Igrac> ListaIgraca;
+        public AboutPage(List<Igrac> igraci)
         {
             InitializeComponent();
             BindingContext = this;
+            if (igraci != null)
+            {
+                ListaIgraca = igraci;
+            }
+            else
+            {
+                ListaIgraca = new List<Igrac>();
+            }
         }
         protected override bool OnBackButtonPressed()
         {
-            Application.Current.MainPage = new MainPage(null);
+            _ = Navigation.PopAsync(true);
             return true;
         }
 
-        private void BackImageButton_Tapped(object sender, EventArgs e)
-        {
-            Application.Current.MainPage = new MainPage(null);
-            return;
-        }
         public ICommand TapCommand => new Command<string>(async (url) => await Launcher.OpenAsync(url));
     }
 }

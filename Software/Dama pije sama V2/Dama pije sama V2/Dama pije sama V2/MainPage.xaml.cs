@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration;
 
 namespace Dama_pije_sama_V2
 {
@@ -24,36 +26,74 @@ namespace Dama_pije_sama_V2
             }
         }
 
-        private void HelpIcon_Tapped(object sender, EventArgs e)
+        private async void HelpIcon_Tapped(object sender, EventArgs e)
         {
-            Application.Current.MainPage = new AboutPage();
-            return;
+            await AboutImage.ScaleTo(0.9, 125, Easing.Linear);
+            await AboutImage.ScaleTo(1, 125, Easing.Linear);
+            await Navigation.PushAsync(new AboutPage(ListaIgraca), true);
         }
 
-        private void Quickstart_Tapped(object sender, EventArgs e)
+        private async void Quickstart_Tapped(object sender, EventArgs e)
         {
-            Application.Current.MainPage = new QuickstartPage();
-            return;
+            await AnimirajStisak(QuickstartShadows);
+            await AnimirajOtpust(QuickstartShadows);
+            await Navigation.PushAsync(new QuickstartPage(), true);
         }
 
-        private void Igraci_Tapped(object sender, EventArgs e)
+        private async void Igraci_Tapped(object sender, EventArgs e)
         {
-            if (ListaIgraca.Count > 0)
-            {
-                Application.Current.MainPage = new IgraciPage2(ListaIgraca);
-                return;
-            }
-            else
-            {
-                Application.Current.MainPage = new IgraciPage();
-                return;
-            }
+            await AnimirajStisak(IgraciShadows);
+            await AnimirajOtpust(IgraciShadows);
+            await Navigation.PushAsync(new IgraciPage2(), true);
+            return;
+            
         }
 
-        private void Povijest_Tapped(object sender, EventArgs e)
+        private async void Povijest_Tapped(object sender, EventArgs e)
         {
-            Application.Current.MainPage = new PovijestPage();
-            return;
+            await AnimirajStisak(PovijestShadows);
+            await AnimirajOtpust(PovijestShadows);
+            await Navigation.PushAsync(new PovijestPage(ListaIgraca), true);
+        }
+
+        private async void Quickstart_Pressed(object sender, EventArgs e)
+        {
+            await AnimirajStisak(QuickstartShadows);
+        }
+
+        private async Task AnimirajStisak(Sharpnado.Shades.Shadows shadow)
+        {
+            await shadow.ScaleTo(0.9, 250, Easing.Linear);
+        }
+
+        private async void Quickstart_Released(object sender, EventArgs e)
+        {
+            await AnimirajOtpust(QuickstartShadows);
+        }
+
+        private async Task AnimirajOtpust(Sharpnado.Shades.Shadows shadow)
+        {
+            await shadow.ScaleTo(1, 250, Easing.Linear);
+        }
+
+        private async void Igraci_Pressed(object sender, EventArgs e)
+        {
+            await IgraciShadows.ScaleTo(0.9, 250, Easing.Linear);
+        }
+
+        private async void Igraci_Released(object sender, EventArgs e)
+        {
+            await IgraciShadows.ScaleTo(1, 250, Easing.Linear);
+        }
+
+        private async void Povijest_Pressed(object sender, EventArgs e)
+        {
+            await PovijestShadows.ScaleTo(0.9, 250, Easing.Linear);
+        }
+
+        private async void Povijest_Released(object sender, EventArgs e)
+        {
+            await PovijestShadows.ScaleTo(1, 250, Easing.Linear);
         }
     }
 }

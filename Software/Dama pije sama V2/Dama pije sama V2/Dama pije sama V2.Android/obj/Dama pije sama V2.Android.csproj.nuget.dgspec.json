@@ -32,8 +32,8 @@
         "frameworks": {
           "monoandroid11.0": {
             "projectReferences": {
-              "F:\\Dama pije sama V2\\Software\\Dama pije sama V2\\Dama pije sama V2\\Dama pije sama V2\\Dama pije sama V2.csproj": {
-                "projectPath": "F:\\Dama pije sama V2\\Software\\Dama pije sama V2\\Dama pije sama V2\\Dama pije sama V2\\Dama pije sama V2.csproj"
+              "F:\\Dama pije sama V2\\Software\\Dama pije sama V2\\Dama pije sama V2\\Dama pije sama V2\\DamaPijeSama.csproj": {
+                "projectPath": "F:\\Dama pije sama V2\\Software\\Dama pije sama V2\\Dama pije sama V2\\Dama pije sama V2\\DamaPijeSama.csproj"
               }
             }
           }
@@ -54,12 +54,12 @@
         }
       }
     },
-    "F:\\Dama pije sama V2\\Software\\Dama pije sama V2\\Dama pije sama V2\\Dama pije sama V2\\Dama pije sama V2.csproj": {
+    "F:\\Dama pije sama V2\\Software\\Dama pije sama V2\\Dama pije sama V2\\Dama pije sama V2\\DamaPijeSama.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Dama pije sama V2\\Software\\Dama pije sama V2\\Dama pije sama V2\\Dama pije sama V2\\Dama pije sama V2.csproj",
-        "projectName": "Dama pije sama V2",
-        "projectPath": "F:\\Dama pije sama V2\\Software\\Dama pije sama V2\\Dama pije sama V2\\Dama pije sama V2\\Dama pije sama V2.csproj",
+        "projectUniqueName": "F:\\Dama pije sama V2\\Software\\Dama pije sama V2\\Dama pije sama V2\\Dama pije sama V2\\DamaPijeSama.csproj",
+        "projectName": "DamaPijeSama",
+        "projectPath": "F:\\Dama pije sama V2\\Software\\Dama pije sama V2\\Dama pije sama V2\\Dama pije sama V2\\DamaPijeSama.csproj",
         "packagesPath": "C:\\Users\\Antun\\.nuget\\packages\\",
         "outputPath": "F:\\Dama pije sama V2\\Software\\Dama pije sama V2\\Dama pije sama V2\\Dama pije sama V2\\obj\\",
         "projectStyle": "PackageReference",
@@ -100,17 +100,21 @@
               "version": "[2.0.3, )",
               "autoReferenced": true
             },
+            "Sharpnado.Shadows": {
+              "target": "Package",
+              "version": "[1.2.0, )"
+            },
             "Xamanimation": {
               "target": "Package",
               "version": "[1.3.0, )"
             },
+            "Xamarin.CommunityToolkit": {
+              "target": "Package",
+              "version": "[2.0.0, )"
+            },
             "Xamarin.Essentials": {
               "target": "Package",
               "version": "[1.7.1, )"
-            },
-            "Xamarin.Forms": {
-              "target": "Package",
-              "version": "[5.0.0.2337, )"
             },
             "sqlite-net": {
               "target": "Package",
@@ -131,7 +135,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.405\\RuntimeIdentifierGraph.json"
         }
       }
     }
