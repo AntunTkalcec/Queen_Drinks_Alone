@@ -73,7 +73,7 @@
                 <Label Text="Prijavi ga na gore navedeni e-mail sa što više informacija o njemu." HorizontalOptions="CenterAndExpand" FontSize="14" 
                        TextColor="#000" FontAttributes="400" FontFamily="Cagliostro" HorizontalTextAlignment="Center"/>
             </StackLayout>
-            <Label Text="Version 1.0.0" TextColor="#000" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand"/>
+            <Label Text="Version 1.1.0" TextColor="#000" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
