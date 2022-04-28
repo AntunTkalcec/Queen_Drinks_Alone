@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Dama_pije_sama_V2.AboutPage"
              BackgroundColor="White"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="False" x:Name="AboutPageXaml">
     <ContentPage.Content>
         <StackLayout BackgroundColor="White">
             <Frame BorderColor="White" HasShadow="False">
@@ -32,38 +32,23 @@
                 <StackLayout>
                     <Label FontFamily="Spicy Rice" Text="Društvene mreže" FontAttributes="400" FontSize="20" CharacterSpacing="0.35"
                            TextColor="#000"/>
-                    <Label>
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text="www.linkedin.com/in/antuntkalcec" FontFamily="Cagliostro" FontAttributes="400" FontSize="14" TextColor="Blue" TextDecorations="Underline">
-                                    <Span.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="https://www.linkedin.com/in/antuntkalcec"/>
-                                    </Span.GestureRecognizers>
-                                </Span>
-                            </FormattedString>
-                        </Label.FormattedText>
+                    <Label Text="www.linkedin.com/in/antuntkalcec" FontFamily="Cagliostro" FontAttributes="400" 
+                           FontSize="14" TextColor="Blue" TextDecorations="Underline">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="LinkedInLabel"/>
+                        </Label.GestureRecognizers>
                     </Label>
-                    <Label>
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text="www.facebook.com/antun.tkalcec" FontFamily="Cagliostro" FontAttributes="400" FontSize="14" TextColor="Blue" TextDecorations="Underline">
-                                    <Span.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="https://www.facebook.com/antun.tkalcec"/>
-                                    </Span.GestureRecognizers>
-                                </Span>
-                            </FormattedString>
-                        </Label.FormattedText>
+                    <Label Text="www.facebook.com/antun.tkalcec" FontFamily="Cagliostro" FontAttributes="400" 
+                           FontSize="14" TextColor="Blue" TextDecorations="Underline">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="FacebookLabel"/>
+                        </Label.GestureRecognizers>
                     </Label>
-                    <Label>
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text="www.instagram.com/antuntkalcec" FontFamily="Cagliostro" FontAttributes="400" FontSize="14" TextColor="Blue" TextDecorations="Underline">
-                                    <Span.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="https://www.instagram.com/antuntkalcec"/>
-                                    </Span.GestureRecognizers>
-                                </Span>
-                            </FormattedString>
-                        </Label.FormattedText>
+                    <Label Text="www.instagram.com/antuntkalcec" FontFamily="Cagliostro" FontAttributes="400" 
+                           FontSize="14" TextColor="Blue" TextDecorations="Underline">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="InstaLabel"/>
+                        </Label.GestureRecognizers>
                     </Label>
                 </StackLayout>
             </Frame>
@@ -73,7 +58,7 @@
                 <Label Text="Prijavi ga na gore navedeni e-mail sa što više informacija o njemu." HorizontalOptions="CenterAndExpand" FontSize="14" 
                        TextColor="#000" FontAttributes="400" FontFamily="Cagliostro" HorizontalTextAlignment="Center"/>
             </StackLayout>
-            <Label Text="Version 1.1.0" TextColor="#000" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand"/>
+            <Label Text="Version 1.1.2" TextColor="#000" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Xamanimation;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -21,9 +19,9 @@ namespace Dama_pije_sama_V2
         {
             InitializeComponent();
 
-            StvoriListuPijanaca();
+            Task.Run(async () => await StvoriListuPijanaca());
 
-            StvoriListuBoja();
+            Task.Run(async () => await StvoriListuBoja());
 
             PripremiStranicu();
 
@@ -49,8 +47,6 @@ namespace Dama_pije_sama_V2
             };
             Igrac1Frame.GestureRecognizers.Add(tapGestReco1);
 
-            /////////////////////////////////////////////////////////////////////////
-
             Igraci.Add(new Igrac("Igrač", Igrac2Frame));
             Igrac2Entry.TextChanged += (s, eve) =>
             {
@@ -69,12 +65,13 @@ namespace Dama_pije_sama_V2
             Igrac2Frame.GestureRecognizers.Add(tapGestReco2);
         }
 
-        private void StvoriListuBoja()
+        private Task StvoriListuBoja()
         {
             Boje.Add(new Boja("#8f2ce0"));
             Boje.Add(new Boja("#e02cd7"));
             Boje.Add(new Boja("#352ce0"));
             Boje.Add(new Boja("#a01699"));
+            return Task.CompletedTask;
         }
 
         private async Task ObrisiIgracaAsync(Frame frame)
@@ -96,11 +93,11 @@ namespace Dama_pije_sama_V2
 
         private async Task AnimirajBrisanje(Frame frame)
         {
-            _ = await frame.Animate(new FadeToAnimation());
+            _ = await frame.FadeTo(0, 250, Easing.Linear);
             return;
         }
 
-        private void StvoriListuPijanaca()
+        private Task StvoriListuPijanaca()
         {
             Pijanci.Add(new Pijanac("DrunkGirl1"));
             Pijanci.Add(new Pijanac("DrunkGirl2"));
@@ -109,6 +106,7 @@ namespace Dama_pije_sama_V2
             Pijanci.Add(new Pijanac("DrunkGuy3"));
             Pijanci.Add(new Pijanac("DrunkGuy4"));
             Pijanci.Add(new Pijanac("DrunkGuy5"));
+            return Task.CompletedTask;
         }
 
         private async void Igraj_Tapped(object sender, EventArgs e)
@@ -132,8 +130,7 @@ namespace Dama_pije_sama_V2
 
         protected override bool OnBackButtonPressed()
         {
-            _ = Navigation.PopAsync(false);
-            _ = Navigation.PopAsync(true);
+            _ = Navigation.PopToRootAsync();
             return true;
         }
 

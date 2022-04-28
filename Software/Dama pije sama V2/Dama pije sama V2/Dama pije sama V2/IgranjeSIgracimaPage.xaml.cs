@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using Xamarin.CommunityToolkit.Extensions;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -78,25 +78,45 @@ namespace Dama_pije_sama_V2
 
         private async void slikaKarte_UpSwiped(object sender, SwipedEventArgs e)
         {
-            karte.Clear();
-            StvoriListu();
-            OpisZadatkaLabel.Text = "Špil resetiran i promiješan";
-            await PostaviPocetnuKartu();
+            try
+            {
+                karte.Clear();
+                StvoriListu();
+                OpisZadatkaLabel.Text = "Špil resetiran i promiješan";
+                await PostaviPocetnuKartu();
+            }
+            catch (Exception ex)
+            {
+                await Device.InvokeOnMainThreadAsync(async () => await Application.Current.MainPage.DisplayToastAsync("Prebrzo to radiš. Uspori s mijenjanjem karata.", 3000));
+            }
         }
 
-        private async Task<int> PostaviPocetnuKartu()
+        private async Task PostaviPocetnuKartu()
         {
-            await slikaKarte.TranslateTo(0, -15, 125, Easing.Linear);
-            await slikaKarte.TranslateTo(0, 0, 125, Easing.Linear);
-            slikaKarte.TranslationY = 0;
-            slikaKarte.Source = karte.Find(x => x.Naziv == "PocetnaKarta").Naziv;
-            BrKarteLabel.Text = $"{karte.Count - 1}";
-            return await Task.FromResult(0);
+            try
+            {
+                await slikaKarte.TranslateTo(0, -15, 125, Easing.Linear);
+                await slikaKarte.TranslateTo(0, 0, 125, Easing.Linear);
+                slikaKarte.TranslationY = 0;
+                slikaKarte.Source = karte.Find(x => x.Naziv == "PocetnaKarta").Naziv;
+                BrKarteLabel.Text = $"{karte.Count - 1}";
+            }
+            catch (Exception ex)
+            {
+                await Device.InvokeOnMainThreadAsync(async () => await Application.Current.MainPage.DisplayToastAsync("Prebrzo to radiš. Uspori s mijenjanjem karata.", 3000));
+            }
         }
 
         private async void slikaKarte_RightSwiped(object sender, SwipedEventArgs e)
         {
-            await PromjeniKartuIIgraca();
+            try
+            {
+                await PromjeniKartuIIgraca();
+            }
+            catch (Exception ex)
+            {
+                await Device.InvokeOnMainThreadAsync(async () => await Application.Current.MainPage.DisplayToastAsync("Prebrzo to radiš. Uspori s mijenjanjem karata.", 3000));
+            }
         }
 
         private async Task<int> PromjeniKartuIIgraca()

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Dama_pije_sama_V2
+﻿namespace Dama_pije_sama_V2
 {
     public class Boja
     {

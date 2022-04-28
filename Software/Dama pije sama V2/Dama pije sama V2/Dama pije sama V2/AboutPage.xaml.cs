@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Input;
+using Xamarin.CommunityToolkit.Extensions;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -17,7 +15,6 @@ namespace Dama_pije_sama_V2
         public AboutPage(List<Igrac> igraci)
         {
             InitializeComponent();
-            BindingContext = this;
             if (igraci != null)
             {
                 ListaIgraca = igraci;
@@ -27,12 +24,45 @@ namespace Dama_pije_sama_V2
                 ListaIgraca = new List<Igrac>();
             }
         }
+
         protected override bool OnBackButtonPressed()
         {
             _ = Navigation.PopAsync(true);
             return true;
         }
 
-        public ICommand TapCommand => new Command<string>(async (url) => await Launcher.OpenAsync(url));
+        private async void InstaLabel(object sender, EventArgs e)
+        {
+            try
+            {
+                await Browser.OpenAsync("https://www.instagram.com/antuntkalcec", BrowserLaunchMode.SystemPreferred);
+            }
+            catch (Exception ex)
+            {
+                await Device.InvokeOnMainThreadAsync(async () => await Application.Current.MainPage.DisplayToastAsync("Nešto ti nije u redu sa browserom na mobitelu."));
+            }
+        }
+        private async void LinkedInLabel(object sender, EventArgs e)
+        {
+            try
+            {
+                await Browser.OpenAsync("https://www.linkedin.com/in/antuntkalcec", BrowserLaunchMode.SystemPreferred);
+            }
+            catch (Exception ex)
+            {
+                await Device.InvokeOnMainThreadAsync(async () => await Application.Current.MainPage.DisplayToastAsync("Nešto ti nije u redu sa browserom na mobitelu."));
+            }
+        }
+        private async void FacebookLabel(object sender, EventArgs e)
+        {
+            try
+            {
+                await Browser.OpenAsync("https://www.facebook.com/antun.tkalcec", BrowserLaunchMode.SystemPreferred);
+            }
+            catch (Exception ex)
+            {
+                await Device.InvokeOnMainThreadAsync(async () => await Application.Current.MainPage.DisplayToastAsync("Nešto ti nije u redu sa browserom na mobitelu."));
+            }
+        }
     }
 }

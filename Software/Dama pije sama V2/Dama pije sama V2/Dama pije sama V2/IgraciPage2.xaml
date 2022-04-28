@@ -30,7 +30,7 @@
                                        HorizontalOptions="CenterAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Center"/>
                         </StackLayout>
                     </Frame>
-                        <Frame CornerRadius="15" BackgroundColor="White" WidthRequest="265" HeightRequest="60" VerticalOptions="Start" 
+                    <Frame CornerRadius="15" BackgroundColor="White" WidthRequest="265" HeightRequest="60" VerticalOptions="Start" 
                                HorizontalOptions="Center" Margin="0, 13, 0, 0" HasShadow="True" BorderColor="#C4C4C4" x:Name="Igrac2Frame">
                         <StackLayout Orientation="Horizontal">
                             <Frame WidthRequest="90" VerticalOptions="Center" HorizontalOptions="Start" CornerRadius="15" IsClippedToBounds="True"
@@ -44,9 +44,6 @@
                     </Frame>
                 </StackLayout>
             </ScrollView>
-            <!--<Entry x:Name="ImeIgracaEntry" BackgroundColor="#FDB73E" WidthRequest="330" Placeholder="Upiši ime..." FontFamily="Spicy Rice" 
-                   TextColor="#000" PlaceholderColor="White"
-                   Opacity="0.75" HorizontalOptions="Center"/> -->
             <StackLayout Orientation="Horizontal">
                 <Image Source="GumbILabelZaIgranje" HeightRequest="75" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Margin="0, 0, 0, 5" x:Name="IgrajGumb">
                     <Image.GestureRecognizers>

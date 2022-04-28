@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Xamanimation;
+using Xamarin.CommunityToolkit.Extensions;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -51,28 +50,34 @@ namespace Dama_pije_sama_V2
 
         private async void slikaKarte_RightSwiped(object sender, SwipedEventArgs e)
         {
-            if (karte.Count == 0)
+            try
             {
-                OpisZadatkaLabel.Text = "Špil je prazan!";
-                return;
-            }
-            Broj_odigranih_karata++;
-            karte.RemoveAll(x => x.Naziv == "PocetnaKarta");
-            int r = rnd.Next(karte.Count);
-            await PromijeniKartu(r);
+                if (karte.Count == 0)
+                {
+                    OpisZadatkaLabel.Text = "Špil je prazan!";
+                    return;
+                }
+                Broj_odigranih_karata++;
+                karte.RemoveAll(x => x.Naziv == "PocetnaKarta");
+                int r = rnd.Next(karte.Count);
+                await PromijeniKartu(r);
 
-            if (OpisZadatkaLabel.Text == "SVI PIJU")
+                if (OpisZadatkaLabel.Text == "SVI PIJU")
+                {
+                    Vibration.Vibrate();
+                }
+
+                karte.RemoveAt(r);
+                BrKarteLabel.Text = $"{karte.Count}";
+            }
+            catch (Exception ex)
             {
-                Vibration.Vibrate();
+                await Device.InvokeOnMainThreadAsync(async () => await Application.Current.MainPage.DisplayToastAsync("Prebrzo to radiš. Uspori s mijenjanjem karata.", 3000));
             }
-
-            karte.RemoveAt(r);
-            BrKarteLabel.Text = $"{karte.Count}";
         }
 
         private async Task<int> PromijeniKartu(int r)
         {
-
             slikaKarte.Source = karte.ElementAt(r).Naziv;
             await slikaKarte.TranslateTo(-10, 0, 25);
             await slikaKarte.TranslateTo(10, 0, 25);
@@ -87,10 +92,17 @@ namespace Dama_pije_sama_V2
 
         private async void slikaKarte_UpSwiped(object sender, SwipedEventArgs e)
         {
-            karte.Clear();
-            StvoriListu();
-            OpisZadatkaLabel.Text = "Špil resetiran i promiješan";
-            await PostaviPocetnuKartu();
+            try
+            {
+                karte.Clear();
+                StvoriListu();
+                OpisZadatkaLabel.Text = "Špil resetiran i promiješan";
+                await PostaviPocetnuKartu();
+            }
+            catch (Exception ex)
+            {
+                await Device.InvokeOnMainThreadAsync(async () => await Application.Current.MainPage.DisplayToastAsync("Prebrzo to radiš. Uspori s mijenjanjem karata.", 3000));
+            }
         }
 
         private async Task<int> PostaviPocetnuKartu()
