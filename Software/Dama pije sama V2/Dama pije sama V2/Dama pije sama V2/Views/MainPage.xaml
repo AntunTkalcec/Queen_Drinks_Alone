@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"  
+             xmlns:sh="http://sharpnado.com"
+             xmlns:android="http://schemas.android.com/apk/res/android"
+             x:Class="Dama_pije_sama_V2.MainPage"
+             BackgroundColor="White"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:viewmodels="clr-namespace:DamaPijeSama.ViewModels">
+    <ContentPage.BindingContext>
+        <viewmodels:MainPageViewModel/>
+    </ContentPage.BindingContext>
+    <StackLayout>
+        <!--<Image Source="NaslovIIkonePiva" Margin="18, 39, 18, 10" x:Name="NaslovAplikacije"/>-->
+        <forms:AnimationView x:Name="animationView" Animation="Beer.json" 
+                                 AnimationSource="AssetOrBundle" VerticalOptions="CenterAndExpand"
+                                 HorizontalOptions="CenterAndExpand" HeightRequest="300" WidthRequest="300" RepeatMode="Infinite"/>
+        <sh:Shadows x:Name="QuickstartShadows" CornerRadius="34" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
+                    xct:TouchEffect.Command="{Binding QuickstartButtonTapped}"
+                    xct:TouchEffect.PressedScale="0.9" xct:TouchEffect.AnimationDuration="250" 
+                    xct:TouchEffect.AnimationEasing="{x:Static Easing.Linear}"
+                    xct:TouchEffect.PulseCount="-1" IsEnabled="{Binding Clickable}">
+            <sh:Shadows.Shades>
+                <sh:ImmutableShades>
+                    <sh:Shade BlurRadius="10" Opacity="0.5" Offset="10,10" Color="Black"/>
+                    <sh:Shade BlurRadius="0" Opacity="0.75" Offset="3, 3" Color="#FDB73E"/>
+                    <sh:Shade BlurRadius="2" Opacity="0.6" Offset="6,6" Color="#FDB73E"/>
+                </sh:ImmutableShades>
+            </sh:Shadows.Shades>
+            <Button BackgroundColor="#FDB73E" WidthRequest="175" HeightRequest="110" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" 
+                CornerRadius="34" BorderColor="#FDB73E" Text="Quickstart" TextColor="#000" FontFamily="Spicy Rice" FontSize="24"
+                BorderWidth="1"/>
+        </sh:Shadows>
+        <sh:Shadows x:Name="IgraciShadows" CornerRadius="34" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
+                    xct:TouchEffect.Command="{Binding PlayersButtonTapped}"
+                    xct:TouchEffect.PressedScale="0.9" xct:TouchEffect.AnimationDuration="250" 
+                    xct:TouchEffect.AnimationEasing="{x:Static Easing.Linear}"
+                    xct:TouchEffect.PulseCount="-1" IsEnabled="{Binding Clickable}">
+            <sh:Shadows.Shades>
+                <sh:ImmutableShades>
+                    <sh:Shade BlurRadius="10" Opacity="0.5" Offset="10, 10" Color="Black"/>
+                    <sh:Shade BlurRadius="0" Opacity="0.75" Offset="3, 3" Color="#FDB73E"/>
+                    <sh:Shade BlurRadius="2" Opacity="0.6" Offset="6,6" Color="#FDB73E"/>
+                </sh:ImmutableShades>
+            </sh:Shadows.Shades>
+            <Button BackgroundColor="#FDB73E" WidthRequest="175" HeightRequest="110" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" 
+                CornerRadius="34" BorderColor="#FDB73E" Text="Igrači" TextColor="#000" FontFamily="Spicy Rice" FontSize="24"
+                BorderWidth="1"/>
+        </sh:Shadows>
+        <sh:Shadows x:Name="PovijestShadows" CornerRadius="34" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
+                    xct:TouchEffect.Command="{Binding HistoryButtonTapped}"
+                    xct:TouchEffect.PressedScale="0.9" xct:TouchEffect.AnimationDuration="250" 
+                    xct:TouchEffect.AnimationEasing="{x:Static Easing.Linear}"
+                    xct:TouchEffect.PulseCount="-1" IsEnabled="{Binding Clickable}">
+            <sh:Shadows.Shades>
+                <sh:ImmutableShades>
+                    <sh:Shade BlurRadius="10" Opacity="0.5" Offset="10, 10" Color="Black"/>
+                    <sh:Shade BlurRadius="0" Opacity="0.75" Offset="3, 3" Color="#FDB73E"/>
+                    <sh:Shade BlurRadius="2" Opacity="0.6" Offset="6,6" Color="#FDB73E"/>
+                </sh:ImmutableShades>
+            </sh:Shadows.Shades>
+            <Button BackgroundColor="#FDB73E" WidthRequest="175" HeightRequest="110" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" 
+                CornerRadius="34" BorderColor="#FDB73E" Text="Povijest" TextColor="#000" FontFamily="Spicy Rice" FontSize="24"
+                BorderWidth="1"/>
+        </sh:Shadows>
+        <Image BackgroundColor="White" VerticalOptions="End" HorizontalOptions="Start" Margin="12, 0, 0, 12" x:Name="AboutImage"
+               xct:TouchEffect.PressedScale="0.9" xct:TouchEffect.AnimationDuration="125" 
+               xct:TouchEffect.AnimationEasing="{x:Static Easing.Linear}" xct:TouchEffect.Command="{Binding HelpIconTapped}"
+               xct:TouchEffect.PulseCount="-1" IsEnabled="{Binding Clickable}">
+            <Image.Source>
+                <FontImageSource Glyph="&#xf05a;" FontFamily="FASolid" Size="28" Color="#FDB73E"/>
+            </Image.Source>
+        </Image>
+    </StackLayout>
+</ContentPage>

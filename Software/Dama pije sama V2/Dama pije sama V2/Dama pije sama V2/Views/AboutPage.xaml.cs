@@ -11,18 +11,9 @@ namespace Dama_pije_sama_V2
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AboutPage : ContentPage
     {
-        public List<Igrac> ListaIgraca;
-        public AboutPage(List<Igrac> igraci)
+        public AboutPage()
         {
             InitializeComponent();
-            if (igraci != null)
-            {
-                ListaIgraca = igraci;
-            }
-            else
-            {
-                ListaIgraca = new List<Igrac>();
-            }
         }
 
         protected override bool OnBackButtonPressed()

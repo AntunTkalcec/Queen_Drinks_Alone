@@ -45,7 +45,7 @@ namespace Dama_pije_sama_V2
                 DuljinaIgre = BrojacSekundi,
                 BrojIgraca = 0,
             };
-            await App.IgraRepo.AddNewIgraAsync(novaIgra);
+            //await App.IgraRepo.AddNewIgraAsync(novaIgra);
         }
 
         private async void slikaKarte_RightSwiped(object sender, SwipedEventArgs e)

@@ -9,6 +9,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DamaPijeSama.iOS", "Dama pi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DamaPijeSama", "Dama pije sama V2\Dama pije sama V2\DamaPijeSama.csproj", "{18CF6D43-F6A5-4875-A1F8-A558FA194F05}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DamaPijeSamaUI", "DamaPijeSamaUI", "{2B6BF637-5736-436F-A86A-BD18000B9093}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DamaPijeSamaAPI", "DamaPijeSamaAPI", "{FCF3D5A8-9FAA-440B-A06E-D1105F357D41}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DamaPijeSamaCore", "DamaPijeSamaCore", "{389B4B11-74AD-4DE1-97FE-3527EE0D9276}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DamaPijeSamaInfrastructure", "DamaPijeSamaInfrastructure", "{60FB120D-313E-41B1-A1C0-D410E15ACD4C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -76,6 +84,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8B8F8DA0-55E0-46EA-8D46-000860794D78} = {2B6BF637-5736-436F-A86A-BD18000B9093}
+		{0D035580-D3E8-4AEC-9674-97167CD4C681} = {2B6BF637-5736-436F-A86A-BD18000B9093}
+		{18CF6D43-F6A5-4875-A1F8-A558FA194F05} = {2B6BF637-5736-436F-A86A-BD18000B9093}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D036DF5C-769C-458F-B9BF-AEE844B6A8D8}

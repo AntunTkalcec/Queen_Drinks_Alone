@@ -1,4 +1,5 @@
-﻿using SQLite;
+﻿using DamaPijeSama.Services;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,24 +8,26 @@ using Xamarin.Forms;
 
 namespace Dama_pije_sama_V2
 {
-    public class IgraRepository
+    public class IgraRepository : IIgraRepository
     {
         SQLiteAsyncConnection conn;
-        public string StatusMessage { get; set; }
-        public IgraRepository(string dbPath)
+        async Task Init()
         {
+            if (conn != null)
+            {
+                return;
+            }
+            var dbPath = FileAccessHelper.GetLocalFilePath("damapijesama.db3");
             conn = new SQLiteAsyncConnection(dbPath);
-            conn.CreateTableAsync<Igra>().Wait();
+            await conn.CreateTableAsync<Igra>();
         }
 
         public async Task AddNewIgraAsync(Igra novaIgra)
         {
-            int result = 0;
-
+            await Init();
             try
             {
-                result = await conn.InsertAsync(novaIgra);
-                StatusMessage = string.Format("{0} item(s) added [Name: {1})", result, novaIgra.Id);
+                await conn.InsertAsync(novaIgra);
             }
             catch (Exception ex)
             {
@@ -33,6 +36,7 @@ namespace Dama_pije_sama_V2
         }
         public async Task<List<Igra>> GetIgreAsync()
         {
+            await Init();
             try
             {
                 return await conn.Table<Igra>().ToListAsync();

@@ -12,15 +12,12 @@ namespace Dama_pije_sama_V2
 {
     public partial class App : Application
     {
-        public string dbPath => FileAccessHelper.GetLocalFilePath("damapijesama.db3");
-        public static IgraRepository IgraRepo { get; private set; }
         public App()
         {
             InitializeComponent();
-            IgraRepo = new IgraRepository(dbPath);
             Sharpnado.Shades.Initializer.Initialize(loggerEnable: false);
 
-            MainPage = new NavigationPage(new MainPage(null));
+            MainPage = new NavigationPage(new MainPage());
         }
 
         protected override void OnStart()

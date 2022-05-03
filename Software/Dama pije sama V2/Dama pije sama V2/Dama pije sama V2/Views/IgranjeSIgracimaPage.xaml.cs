@@ -176,7 +176,7 @@ namespace Dama_pije_sama_V2
                 DuljinaIgre = BrojacSekundi,
                 BrojIgraca = ListaIgraca.Count,
             };
-            await App.IgraRepo.AddNewIgraAsync(novaIgra);
+            //await App.IgraRepo.AddNewIgraAsync(novaIgra);
         }
 
         private string StvoriListuIgraca()
