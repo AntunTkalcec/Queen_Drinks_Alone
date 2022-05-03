@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"  
              xmlns:sh="http://sharpnado.com"
-             xmlns:android="http://schemas.android.com/apk/res/android"
              x:Class="Dama_pije_sama_V2.MainPage"
              BackgroundColor="White"
              NavigationPage.HasNavigationBar="False"
@@ -13,10 +12,10 @@
         <viewmodels:MainPageViewModel/>
     </ContentPage.BindingContext>
     <StackLayout>
-        <!--<Image Source="NaslovIIkonePiva" Margin="18, 39, 18, 10" x:Name="NaslovAplikacije"/>-->
+        <Label Text="Dama Pije Sama" TextColor="Black" FontSize="36" HorizontalOptions="Center" FontAttributes="Bold" FontFamily="Spicy Rice"/>
         <forms:AnimationView x:Name="animationView" Animation="Beer.json" 
                                  AnimationSource="AssetOrBundle" VerticalOptions="CenterAndExpand"
-                                 HorizontalOptions="CenterAndExpand" HeightRequest="300" WidthRequest="300" RepeatMode="Infinite"/>
+                                 HorizontalOptions="CenterAndExpand" HeightRequest="225" WidthRequest="300" RepeatMode="Infinite" />
         <sh:Shadows x:Name="QuickstartShadows" CornerRadius="34" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
                     xct:TouchEffect.Command="{Binding QuickstartButtonTapped}"
                     xct:TouchEffect.PressedScale="0.9" xct:TouchEffect.AnimationDuration="250" 

@@ -2,28 +2,33 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Dama_pije_sama_V2.QuickstartPage"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="False"
+             xmlns:viewmodels="clr-namespace:DamaPijeSama.ViewModels" BackgroundColor="White"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
+    <ContentPage.BindingContext>
+        <viewmodels:QuickstartPageViewModel/>
+    </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout BackgroundColor="White">
+        <StackLayout>
             <Image Source="IkonePiva" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
-            <Image x:Name="slikaKarte" HorizontalOptions="Center" WidthRequest="290" HeightRequest="400" VerticalOptions="Center" Source="PocetnaKarta">
+            <Image x:Name="slikaKarte" HorizontalOptions="Center" WidthRequest="290" HeightRequest="400" VerticalOptions="Center" Source="{Binding CurrentCard}">
                 <Image.GestureRecognizers>
                     <SwipeGestureRecognizer Direction="Right" Swiped="slikaKarte_RightSwiped"/>
                     <SwipeGestureRecognizer Direction="Up" Swiped="slikaKarte_UpSwiped"/>
-                    <SwipeGestureRecognizer Direction="Down" Swiped="slikaKarte_DownSwiped"/>
+                    <SwipeGestureRecognizer Direction="Down" Command="{Binding SwipeCard}" CommandParameter="Down"/>
                 </Image.GestureRecognizers>
             </Image>
-            <Label FontFamily="Spicy Rice" Text="Opis placeholder" x:Name="OpisZadatkaLabel" FontSize="18" HorizontalTextAlignment="Center"
+            <Label FontFamily="Spicy Rice" Text="{Binding CardDescription}" x:Name="OpisZadatkaLabel" FontSize="18" HorizontalTextAlignment="Center"
                    VerticalTextAlignment="Center" TextColor="#000"/>
             <StackLayout VerticalOptions="CenterAndExpand">
-                <Label FontFamily="Spicy Rice" Text="Broj karte" x:Name="BrKarteLabel" FontSize="14" HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center" TextColor="#000" Margin="0, 15, 0, 0"/>
+                <Label FontFamily="Spicy Rice" Text="{Binding CardCount}" x:Name="BrKarteLabel" FontSize="14" HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center" TextColor="{Binding CardColor}" Margin="0, 15, 0, 0"/>
                 <Label FontFamily="Cagliostro" Text="Dalje: swipe right" FontSize="14" FontAttributes="400" 
-                   TextColor="#000" HorizontalOptions="Center" VerticalOptions="End" VerticalTextAlignment="End"/>
+                   TextColor="{Binding RandomColor}" HorizontalOptions="Center" VerticalOptions="End" VerticalTextAlignment="End"/>
                 <Label FontFamily="Cagliostro" Text="Restart: swipe up" FontSize="14" FontAttributes="400" 
-                   TextColor="#000" HorizontalOptions="Center" VerticalOptions="End" VerticalTextAlignment="End"/>
+                   TextColor="{Binding RandomColor}" HorizontalOptions="Center" VerticalOptions="End" VerticalTextAlignment="End"/>
                 <Label FontFamily="Cagliostro" Text="Igrači: swipe down" FontSize="14" FontAttributes="400" 
-                   TextColor="#000" HorizontalOptions="Center" VerticalOptions="End" VerticalTextAlignment="End"/>
+                   TextColor="{Binding RandomColor}" HorizontalOptions="Center" VerticalOptions="End" VerticalTextAlignment="End"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

@@ -1,4 +1,5 @@
-﻿using DamaPijeSama.Services;
+﻿using Dama_pije_sama_V2;
+using DamaPijeSama.Services;
 using SQLite;
 using System;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
+[assembly: Dependency(typeof(IgraRepository))]
 namespace Dama_pije_sama_V2
 {
     public class IgraRepository : IIgraRepository

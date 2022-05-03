@@ -4,6 +4,6 @@
 		<color android:color="@color/splash_background"/>
 	</item>
 	<item>
-		<bitmap android:src="@drawable/NaslovIIkonePiva" android:tileMode="disabled" android:gravity="center"/>
+		<bitmap android:src="@drawable/nasloviikonepiva" android:tileMode="disabled" android:gravity="center"/>
 	</item>
 </layer-list>
