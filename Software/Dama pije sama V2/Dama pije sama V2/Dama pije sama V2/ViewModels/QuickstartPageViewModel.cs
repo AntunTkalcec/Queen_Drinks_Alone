@@ -32,27 +32,15 @@ namespace DamaPijeSama.ViewModels
         public int CardsPlayedCounter { get; set; } = 0;
         public bool Initialized { get; set; }
         private readonly IIgraRepository _igraRepository;
-        public QuickstartPageViewModel()
+        public QuickstartPageViewModel(QuickstartPage page)
         {
             _igraRepository = DependencyService.Get<IIgraRepository>();
-            SwipeCard = new AsyncCommand<string>(async (direction) => await HandleSwipeCommand(direction));
-            GetCards = new AsyncCommand(async () => await GetCardList());
+            page.Disappearing += SaveCurrentGame;
+            SwipeCard = new AsyncCommand<string>(async (direction) => await HandleSwipeCommandAsync(direction));
+            GetCards = new AsyncCommand(async () => await GetCardListAsync());
             GetCards.Execute(null);
-            GetColors = new AsyncCommand(async () => await GetColorList());
-            GetColors.Execute(null);
-            GetCurrentPage = new AsyncCommand(async () => await GetQuickstartPage());
-            //GetCurrentPage.Execute(null);
-        }
-
-        private Task GetQuickstartPage()
-        {
-            if (Initialized == false)
-            {
-                QuickstartPage page = new();
-                page.Disappearing += SaveCurrentGame;
-            }
-            Initialized = true;
-            return Task.CompletedTask;
+            GetColors = new AsyncCommand(async () => await GetColorListAsync());
+            GetColors.Execute(null);            
         }
 
         private async void SaveCurrentGame(object sender, EventArgs e)
@@ -69,16 +57,15 @@ namespace DamaPijeSama.ViewModels
                 };
                 await _igraRepository.AddNewIgraAsync(novaIgra);
             }
-            Initialized = false;
         }
 
-        public async Task GetColorList()
+        public async Task GetColorListAsync()
         {
             Boje = await GameHelper.GetColorsAsync();
             RandomColor = Boje[new Random().Next(0, 3)].Kod;
         }
 
-        public async Task GetCardList()
+        public async Task GetCardListAsync()
         {
             Cards = await GameHelper.GetCardsAsync();
             _cardCount = Cards.Count - 1;
@@ -88,7 +75,7 @@ namespace DamaPijeSama.ViewModels
             CardDescription = Cards.SingleOrDefault(x => x.Naziv == "PocetnaKarta").Naredba;
         }
 
-        public async Task HandleSwipeCommand(string direction)
+        public async Task HandleSwipeCommandAsync(string direction)
         {
             if (direction == "Right")
             {

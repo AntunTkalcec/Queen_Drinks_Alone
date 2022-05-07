@@ -2,22 +2,54 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Dama_pije_sama_V2.PovijestPage"
-             NavigationPage.HasNavigationBar="False">
+             BackgroundColor="White"
+             xmlns:model="clr-namespace:Dama_pije_sama_V2" xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:converters="clr-namespace:DamaPijeSama.Converters" NavigationPage.IconColor="{Binding RandomColor}">
+    <NavigationPage.TitleView>
+        <StackLayout>
+            <Label Text="Povijest igranja" TextColor="{Binding RandomColor}" FontSize="24" FontFamily="Spicy Rice"/>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:DateTimeFormatConverter x:Key="DateTimeConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout BackgroundColor="White">
-            <Frame HasShadow="False" BorderColor="White">
-                <StackLayout>
-                    <Label Text="Povijest" TextColor="Purple" FontSize="24" FontFamily="Spicy Rice" CharacterSpacing="0.35"/>
-                    <BoxView Color="#000" HeightRequest="2"/>
-                </StackLayout>
-            </Frame>
-            <ScrollView VerticalOptions="FillAndExpand" BackgroundColor="White" HorizontalOptions="CenterAndExpand" 
-                        WidthRequest="360" x:Name="IgreScrollView" IsClippedToBounds="True" VerticalScrollBarVisibility="Always">
-                <StackLayout Padding="0, 0, 0, 15" x:Name="IgreStackLayout">
+        <StackLayout>
+            <BoxView HeightRequest="2" HorizontalOptions="Center" BackgroundColor="{Binding RandomColor}" WidthRequest="300"/>
+            <CollectionView ItemsSource="{Binding Igre}" x:Name="IgreCollection" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Igra">
+                        <StackLayout Padding="0, 0, 0, 15">
+                            <Label Text="Igre će se pojaviti ovdje kad započneš igrati" TextColor="{Binding BindingContext.RandomColor, Source={x:Reference IgreCollection}}" FontFamily="Spicy Rice" FontSize="18" 
+                                   HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" IsVisible="{Binding BindingContext.NoGamesPlayed, Source={x:Reference IgreCollection}}"/>
 
-                </StackLayout>
-            </ScrollView>
-            
+                            <Frame BackgroundColor="{StaticResource ButtonFrameColor}" HorizontalOptions="Center" WidthRequest="280" HeightRequest="60" CornerRadius="15" 
+                                   Margin="0, 19, 0, 0" HasShadow="True" BorderColor="{StaticResource FrameBorderColor}"
+                                   xct:TouchEffect.Command="{Binding BindingContext.OpenGame, Source={x:Reference IgreCollection}}"
+                                   xct:TouchEffect.CommandParameter="{Binding .}"
+                                   xct:TouchEffect.PressedScale="0.9" xct:TouchEffect.AnimationDuration="250" 
+                                   xct:TouchEffect.AnimationEasing="{x:Static Easing.Linear}"
+                                   xct:TouchEffect.PulseCount="-1" IsEnabled="{Binding BindingContext.Clickable, Source={x:Reference IgreCollection}}">
+                                <StackLayout>
+                                    <Label Text="{Binding Id}" TextColor="{Binding BindingContext.RandomColor, Source={x:Reference IgreCollection}}" FontFamily="Spicy Rice" HorizontalOptions="Center" FontSize="18"/>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding Datum, Converter={StaticResource DateTimeConverter}}" TextColor="{Binding BindingContext.RandomColor, Source={x:Reference IgreCollection}}" FontFamily="Cagliostro"
+                                               HorizontalOptions="CenterAndExpand" 
+                                               VerticalOptions="Center" FontSize="16"/>
+                                        <Label Text="{Binding BrojIgraca}" TextColor="{Binding BindingContext.RandomColor, Source={x:Reference IgreCollection}}" FontFamily="Cagliostro" HorizontalOptions="CenterAndExpand" 
+                                               VerticalOptions="Center" FontSize="16"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

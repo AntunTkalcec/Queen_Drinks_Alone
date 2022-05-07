@@ -5,12 +5,14 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace DamaPijeSama.Services
 {
     public static class GameHelper
     {
         public static Stopwatch stopwatch;
+        private static readonly IIgraRepository _igraRepository = DependencyService.Get<IIgraRepository>();
         public static async Task<ObservableCollection<Karta>> GetCardsAsync()
         {
             ObservableCollection<Karta> karte = new();
@@ -69,6 +71,25 @@ namespace DamaPijeSama.Services
                 stopwatch.Stop();
                 return stopwatch.Elapsed.TotalSeconds.ToString("0");
             });
+        }
+        public static async Task<ObservableCollection<Igra>> GetGamesAsync()
+        {
+            List<Igra> igre=  await _igraRepository.GetIgreAsync();
+            return new ObservableCollection<Igra>(igre);
+        }
+        public static async Task<List<Pijanac>> GetDrunkardsAsync()
+        {
+            List<Pijanac> Pijanci = new List<Pijanac>
+            {
+                new Pijanac("DrunkGirl1"),
+                new Pijanac("DrunkGirl2"),
+                new Pijanac("DrunkGuy1"),
+                new Pijanac("DrunkGuy2"),
+                new Pijanac("DrunkGuy3"),
+                new Pijanac("DrunkGuy4"),
+                new Pijanac("DrunkGuy5")
+            };
+            return Pijanci;
         }
     }
 }

@@ -3,19 +3,43 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Dama_pije_sama_V2.IgraciPage2"
              xmlns:sh="http://sharpnado.com"
-             NavigationPage.HasNavigationBar="False">
+             BackgroundColor="White"
+             xmlns:models="clr-namespace:Dama_pije_sama_V2" NavigationPage.IconColor="{Binding RandomColor}">
+    <NavigationPage.TitleView>
+        <Label Text="Koliko vas danas cuga?" TextColor="{Binding RandomColor}" FontFamily="Spicy Rice" FontSize="24"/>
+    </NavigationPage.TitleView>
     <ContentPage.Content>
-        <StackLayout BackgroundColor="White">
-            <Label Text="Koliko vas danas cuga?" TextColor="Purple" FontFamily="Spicy Rice" FontSize="24" HorizontalOptions="CenterAndExpand"
-                   VerticalOptions="Center" Margin="0, 15, 0, 0"/>
-            <BoxView HorizontalOptions="Center" HeightRequest="1" Color="#000" WidthRequest="300"/>
-            <Label Text="2" FontSize="30" FontFamily="Spicy Rice" TextColor="#e02cd7" HorizontalOptions="CenterAndExpand" x:Name="PlayerCountLabel"/>
+        <StackLayout>
+            <BoxView HorizontalOptions="Center" HeightRequest="2" Color="{Binding RandomColor}" WidthRequest="300"/>
+            <Label Text="{Binding PlayerCounter}" FontSize="30" FontFamily="Spicy Rice" TextColor="#e02cd7" HorizontalOptions="CenterAndExpand" x:Name="PlayerCountLabel"/>
             <Label Text="PLUS" TextColor="Purple" FontFamily="FASolid" FontSize="45" HorizontalOptions="Center" VerticalOptions="Center" x:Name="PlusGumb">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Tapped="PlusLabel_Tapped"/>
                 </Label.GestureRecognizers>
             </Label>
-            <ScrollView VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand" BackgroundColor="White" WidthRequest="330" 
+            <CollectionView ItemsSource="{Binding Players}" x:Name="PlayersCollection" VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand" WidthRequest="330">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="13"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Igrac">
+                        <StackLayout>
+                            <Frame CornerRadius="15" BackgroundColor="White" WidthRequest="265" HeightRequest="60" VerticalOptions="Start" HorizontalOptions="Center" 
+                                   Margin="0, 13, 0, 0" HasShadow="True" BorderColor="{StaticResource FrameBorderColor}">
+                                <StackLayout Orientation="Horizontal">
+                                    <Frame WidthRequest="90" VerticalOptions="Center" HorizontalOptions="Start" CornerRadius="15" IsClippedToBounds="True" Padding="0">
+                                        <Image HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFill" 
+                                               Source="{Binding Slika}" HeightRequest="90"/>
+                                    </Frame>
+                                    <Entry Text="Upiši ime" TextColor="{StaticResource EntryColor}" FontSize="30" FontFamily="Spicy Rice" HorizontalOptions="CenterAndExpand" 
+                                           VerticalOptions="Center" HorizontalTextAlignment="Center"/>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <!--<ScrollView VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand" BackgroundColor="White" WidthRequest="330" 
                         VerticalScrollBarVisibility="Always">
                 <StackLayout Padding="0, 0, 0, 13" x:Name="IgraciStackLayout">
                     <Frame CornerRadius="15" BackgroundColor="White" WidthRequest="265" HeightRequest="60" VerticalOptions="Start" 
@@ -43,7 +67,7 @@
                         </StackLayout>
                     </Frame>
                 </StackLayout>
-            </ScrollView>
+            </ScrollView>-->
             <StackLayout Orientation="Horizontal">
                 <Image Source="GumbILabelZaIgranje" HeightRequest="75" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Margin="0, 0, 0, 5" x:Name="IgrajGumb">
                     <Image.GestureRecognizers>

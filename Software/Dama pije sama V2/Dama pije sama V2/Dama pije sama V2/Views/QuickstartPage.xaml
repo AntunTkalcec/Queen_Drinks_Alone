@@ -5,9 +5,6 @@
              NavigationPage.HasNavigationBar="False"
              xmlns:viewmodels="clr-namespace:DamaPijeSama.ViewModels" BackgroundColor="White"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
-    <ContentPage.BindingContext>
-        <viewmodels:QuickstartPageViewModel/>
-    </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
             <Image Source="IkonePiva" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>

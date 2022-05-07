@@ -17,6 +17,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DamaPijeSamaCore", "DamaPij
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DamaPijeSamaInfrastructure", "DamaPijeSamaInfrastructure", "{60FB120D-313E-41B1-A1C0-D410E15ACD4C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{15F2464C-0474-4506-89CA-6320E250584A}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

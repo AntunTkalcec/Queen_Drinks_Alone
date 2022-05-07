@@ -13,6 +13,7 @@ namespace DamaPijeSama.ViewModels
     public class MainPageViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+        private INavigation Navigation => Application.Current.MainPage.Navigation;
 
         public ICommand HelpIconTapped { get; }
         public ICommand HistoryButtonTapped { get; }
@@ -31,28 +32,28 @@ namespace DamaPijeSama.ViewModels
         private async Task GoToQuickStartPageAsync()
         {
             Clickable = false;
-            await Application.Current.MainPage.Navigation.PushAsync(new QuickstartPage());
+            await Navigation.PushAsync(new QuickstartPage());
             Clickable = true;
         }
 
         private async Task GoToPlayersPageAsync()
         {
             Clickable = false;
-            await Application.Current.MainPage.Navigation.PushAsync(new IgraciPage2());
+            await Navigation.PushAsync(new IgraciPage2());
             Clickable = true;
         }
 
         private async Task GoToHistoryPageAsync()
         {
             Clickable = false;
-            await Application.Current.MainPage.Navigation.PushAsync(new PovijestPage());
+            await Navigation.PushAsync(new PovijestPage());
             Clickable = true;
         }
 
         private async Task GoToAboutPageAsync()
         {
             Clickable = false;
-            await Application.Current.MainPage.Navigation.PushAsync(new AboutPage());
+            await Navigation.PushAsync(new AboutPage());
             Clickable = true;
         }
     }

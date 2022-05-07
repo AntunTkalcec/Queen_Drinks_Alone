@@ -1,6 +1,9 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xamarin.CommunityToolkit.Helpers;
+using DamaPijeSama.Resources;
+using Xamarin.Essentials;
 
 [assembly: ExportFont("SpicyRice-Regular.ttf", Alias = "Spicy Rice")]
 [assembly: ExportFont("Cagliostro-Regular.ttf", Alias = "Cagliostro")]
@@ -16,7 +19,9 @@ namespace Dama_pije_sama_V2
         {
             InitializeComponent();
             Sharpnado.Shades.Initializer.Initialize(loggerEnable: false);
-
+            LocalizationResourceManager.Current.PropertyChanged += (_, _) => AppResources.Culture = LocalizationResourceManager.Current.CurrentCulture;
+            LocalizationResourceManager.Current.Init(AppResources.ResourceManager);
+            LocalizationResourceManager.Current.CurrentCulture = new System.Globalization.CultureInfo($"{Preferences.Get("language", "hr-HR")}");
             MainPage = new NavigationPage(new MainPage());
         }
 

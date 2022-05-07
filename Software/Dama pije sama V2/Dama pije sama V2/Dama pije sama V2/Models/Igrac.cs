@@ -5,11 +5,17 @@ namespace Dama_pije_sama_V2
     public class Igrac
     {
         public string Ime { get; set; }
-        public Frame Frame { get; set; }
-        public Igrac (string ime, Frame frame)
+        public string Slika { get; set; }
+        //public Frame Frame { get; set; }
+        //public Igrac (string ime, Frame frame)
+        //{
+        //    Ime = ime;
+        //    Frame = frame;
+        //}
+        public Igrac(string ime, string slika)
         {
             Ime = ime;
-            Frame = frame;
+            Slika = slika;  
         }
 
         public override string ToString()

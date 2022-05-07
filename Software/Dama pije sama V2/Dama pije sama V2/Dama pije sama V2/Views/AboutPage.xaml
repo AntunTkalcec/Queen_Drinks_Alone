@@ -10,7 +10,7 @@
     </ContentPage.BindingContext>
     <NavigationPage.TitleView>
         <StackLayout>
-            <Label Text="Autor i linkovi" TextColor="Black" FontSize="24" FontFamily="Spicy Rice" CharacterSpacing="0.35"/>
+            <Label Text="Autor i linkovi" TextColor="Black" FontSize="24" FontFamily="Spicy Rice"/>
         </StackLayout>
     </NavigationPage.TitleView>
     <ContentPage.Content>
