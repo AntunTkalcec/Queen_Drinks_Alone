@@ -4,6 +4,7 @@ namespace Dama_pije_sama_V2
 {
     public class Igrac
     {
+        public int Id { get; set; }
         public string Ime { get; set; }
         public string Slika { get; set; }
         //public Frame Frame { get; set; }
@@ -12,8 +13,9 @@ namespace Dama_pije_sama_V2
         //    Ime = ime;
         //    Frame = frame;
         //}
-        public Igrac(string ime, string slika)
+        public Igrac(int id, string ime, string slika)
         {
+            Id = id;
             Ime = ime;
             Slika = slika;  
         }

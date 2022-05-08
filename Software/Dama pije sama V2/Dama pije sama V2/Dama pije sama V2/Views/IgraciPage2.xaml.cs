@@ -1,4 +1,5 @@
-﻿using DamaPijeSama.ViewModels;
+﻿using DamaPijeSama.Services;
+using DamaPijeSama.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,71 +13,13 @@ namespace Dama_pije_sama_V2
     public partial class IgraciPage2 : ContentPage
     {
         private IgraciPage2ViewModel vm;
-        List<Igrac> Igraci = new List<Igrac>();
-        List<Pijanac> Pijanci = new List<Pijanac>();
-        static Random rnd = new Random();
-        List<Boja> Boje = new List<Boja>();
         bool praznoImePostoji = false;
         public IgraciPage2()
         {
             InitializeComponent();
 
             BindingContext = vm = new IgraciPage2ViewModel();
-
-            //Task.Run(async () => await StvoriListuPijanaca());
-
-            //Task.Run(async () => await StvoriListuBoja());
-
-            //PripremiStranicu();
-
-            //PlayerCountLabel.Text = Igraci.Count.ToString();
         }
-
-        //private void PripremiStranicu()
-        //{
-        //    Igraci.Add(new Igrac("Igrač", Igrac1Frame));
-        //    Igrac1Entry.TextChanged += (s, eve) =>
-        //    {
-        //        PromjeniImeIgracu(Igrac1Entry.Text, Igrac1Frame);
-        //    };
-        //    Igrac1Entry.Focused += (s, eve) =>
-        //    {
-        //        Igrac1Entry.Text = "";
-        //    };
-
-        //    TapGestureRecognizer tapGestReco1 = new TapGestureRecognizer();
-        //    tapGestReco1.Tapped += async (s, eve) =>
-        //    {
-        //        await ObrisiIgracaAsync(Igrac1Frame);
-        //    };
-        //    Igrac1Frame.GestureRecognizers.Add(tapGestReco1);
-
-        //    Igraci.Add(new Igrac("Igrač", Igrac2Frame));
-        //    Igrac2Entry.TextChanged += (s, eve) =>
-        //    {
-        //        PromjeniImeIgracu(Igrac2Entry.Text, Igrac2Frame);
-        //    };
-        //    Igrac2Entry.Focused += (s, eve) =>
-        //    {
-        //        Igrac2Entry.Text = "";
-        //    };
-
-        //    TapGestureRecognizer tapGestReco2 = new TapGestureRecognizer();
-        //    tapGestReco2.Tapped += async (s, eve) =>
-        //    {
-        //        await ObrisiIgracaAsync(Igrac2Frame);
-        //    };
-        //    Igrac2Frame.GestureRecognizers.Add(tapGestReco2);
-        //}
-
-        //private Task StvoriListuBoja()
-        //{
-        //    Boje.Add(new Boja("#8f2ce0"));
-        //    Boje.Add(new Boja("#e02cd7"));
-        //    Boje.Add(new Boja("#352ce0"));
-        //    Boje.Add(new Boja("#a01699"));
-        //    return Task.CompletedTask;
-        //}
 
         //private async Task ObrisiIgracaAsync(Frame frame)
         //{
@@ -93,24 +36,6 @@ namespace Dama_pije_sama_V2
         //        PlayerCountLabel.Text = Igraci.Count.ToString();
         //        return; 
         //    }
-        //}
-
-        //private async Task AnimirajBrisanje(Frame frame)
-        //{
-        //    _ = await frame.FadeTo(0, 250, Easing.Linear);
-        //    return;
-        //}
-
-        //private Task StvoriListuPijanaca()
-        //{
-        //    Pijanci.Add(new Pijanac("DrunkGirl1"));
-        //    Pijanci.Add(new Pijanac("DrunkGirl2"));
-        //    Pijanci.Add(new Pijanac("DrunkGuy1"));
-        //    Pijanci.Add(new Pijanac("DrunkGuy2"));
-        //    Pijanci.Add(new Pijanac("DrunkGuy3"));
-        //    Pijanci.Add(new Pijanac("DrunkGuy4"));
-        //    Pijanci.Add(new Pijanac("DrunkGuy5"));
-        //    return Task.CompletedTask;
         //}
 
         //private async void Igraj_Tapped(object sender, EventArgs e)
@@ -132,20 +57,42 @@ namespace Dama_pije_sama_V2
         //    }
         //}
 
-        //protected override bool OnBackButtonPressed()
-        //{
-        //    _ = Navigation.PopToRootAsync();
-        //    return true;
-        //}
-
         private async void PlusLabel_Tapped(object sender, EventArgs e)
         {
-
+            vm.AddPlayer();
+            PlayerCountLabel.CancelAnimations();           
+            await PlayerCountLabel.TranslateTo(-10, 0, 50);
+            await PlayerCountLabel.TranslateTo(10, 0, 50);
+            await PlayerCountLabel.TranslateTo(-5, 0, 50);
+            await PlayerCountLabel.TranslateTo(5, 0, 50);
+            await PlayerCountLabel.TranslateTo(-2.5, 0, 50);
+            await PlayerCountLabel.TranslateTo(-2.5, 0, 50);
+            PlayerCountLabel.TranslationX = 0;
         }
 
         private async void Igraj_Tapped(object sender, EventArgs e)
         {
+            await IgrajGumb.ScaleTo(0.9, 125, Easing.Linear);
+            await IgrajGumb.ScaleTo(1, 125, Easing.Linear);
+            await vm.PlayGame();
+        }
 
+        private async void Entry_Focused(object sender, FocusEventArgs e)
+        {
+            await vm.ClearEntryText(sender as Entry);
+        }
+
+        private void Entry_Unfocused(object sender, FocusEventArgs e)
+        {
+            if ((sender as Entry).Text == "")
+            {
+                (sender as Entry).Text = "Upiši ime";
+            }
+        }
+
+        private async void Entry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            await vm.ChangePlayerName(sender as Entry);
         }
 
         //private async void PlusLabel_Tapped(object sender, EventArgs e)

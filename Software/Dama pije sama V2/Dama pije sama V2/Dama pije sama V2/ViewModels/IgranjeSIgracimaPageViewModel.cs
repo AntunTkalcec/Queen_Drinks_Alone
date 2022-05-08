@@ -8,5 +8,9 @@ namespace DamaPijeSama.ViewModels
     public class IgranjeSIgracimaPageViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+        public IgranjeSIgracimaPageViewModel()
+        {
+
+        }
     }
 }
