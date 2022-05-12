@@ -11,12 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DamaPijeSama", "Dama pije s
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DamaPijeSamaUI", "DamaPijeSamaUI", "{2B6BF637-5736-436F-A86A-BD18000B9093}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DamaPijeSamaAPI", "DamaPijeSamaAPI", "{FCF3D5A8-9FAA-440B-A06E-D1105F357D41}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DamaPijeSamaCore", "DamaPijeSamaCore", "{389B4B11-74AD-4DE1-97FE-3527EE0D9276}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DamaPijeSamaInfrastructure", "DamaPijeSamaInfrastructure", "{60FB120D-313E-41B1-A1C0-D410E15ACD4C}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{15F2464C-0474-4506-89CA-6320E250584A}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig

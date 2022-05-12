@@ -15,7 +15,7 @@
         <Label Text="Dama Pije Sama" TextColor="Black" FontSize="36" HorizontalOptions="Center" FontAttributes="Bold" FontFamily="Spicy Rice"/>
         <forms:AnimationView x:Name="animationView" Animation="Beer.json" 
                                  AnimationSource="AssetOrBundle" VerticalOptions="CenterAndExpand"
-                                 HorizontalOptions="CenterAndExpand" HeightRequest="225" WidthRequest="300" RepeatMode="Infinite" />
+                                 HorizontalOptions="CenterAndExpand" HeightRequest="225" WidthRequest="300" RepeatMode="Infinite"/>
         <sh:Shadows x:Name="QuickstartShadows" CornerRadius="34" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
                     xct:TouchEffect.Command="{Binding QuickstartButtonTapped}"
                     xct:TouchEffect.PressedScale="0.9" xct:TouchEffect.AnimationDuration="250" 
@@ -24,12 +24,12 @@
             <sh:Shadows.Shades>
                 <sh:ImmutableShades>
                     <sh:Shade BlurRadius="10" Opacity="0.5" Offset="10,10" Color="Black"/>
-                    <sh:Shade BlurRadius="0" Opacity="0.75" Offset="3, 3" Color="#FDB73E"/>
-                    <sh:Shade BlurRadius="2" Opacity="0.6" Offset="6,6" Color="#FDB73E"/>
+                    <sh:Shade BlurRadius="0" Opacity="0.75" Offset="3, 3" Color="{StaticResource ButtonFrameColor}"/>
+                    <sh:Shade BlurRadius="2" Opacity="0.6" Offset="6,6" Color="{StaticResource ButtonFrameColor}"/>
                 </sh:ImmutableShades>
             </sh:Shadows.Shades>
-            <Button BackgroundColor="#FDB73E" WidthRequest="175" HeightRequest="110" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" 
-                CornerRadius="34" BorderColor="#FDB73E" Text="Quickstart" TextColor="#000" FontFamily="Spicy Rice" FontSize="24"
+            <Button BackgroundColor="{StaticResource ButtonFrameColor}" WidthRequest="175" HeightRequest="110" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" 
+                CornerRadius="34" BorderColor="{StaticResource ButtonFrameColor}" Text="Quickstart" TextColor="#000" FontFamily="Spicy Rice" FontSize="24"
                 BorderWidth="1"/>
         </sh:Shadows>
         <sh:Shadows x:Name="IgraciShadows" CornerRadius="34" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
@@ -40,12 +40,12 @@
             <sh:Shadows.Shades>
                 <sh:ImmutableShades>
                     <sh:Shade BlurRadius="10" Opacity="0.5" Offset="10, 10" Color="Black"/>
-                    <sh:Shade BlurRadius="0" Opacity="0.75" Offset="3, 3" Color="#FDB73E"/>
-                    <sh:Shade BlurRadius="2" Opacity="0.6" Offset="6,6" Color="#FDB73E"/>
+                    <sh:Shade BlurRadius="0" Opacity="0.75" Offset="3, 3" Color="{StaticResource ButtonFrameColor}"/>
+                    <sh:Shade BlurRadius="2" Opacity="0.6" Offset="6,6" Color="{StaticResource ButtonFrameColor}"/>
                 </sh:ImmutableShades>
             </sh:Shadows.Shades>
-            <Button BackgroundColor="#FDB73E" WidthRequest="175" HeightRequest="110" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" 
-                CornerRadius="34" BorderColor="#FDB73E" Text="Igrači" TextColor="#000" FontFamily="Spicy Rice" FontSize="24"
+            <Button BackgroundColor="{StaticResource ButtonFrameColor}" WidthRequest="175" HeightRequest="110" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" 
+                CornerRadius="34" BorderColor="{StaticResource ButtonFrameColor}" Text="Igrači" TextColor="#000" FontFamily="Spicy Rice" FontSize="24"
                 BorderWidth="1"/>
         </sh:Shadows>
         <sh:Shadows x:Name="PovijestShadows" CornerRadius="34" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
@@ -56,12 +56,12 @@
             <sh:Shadows.Shades>
                 <sh:ImmutableShades>
                     <sh:Shade BlurRadius="10" Opacity="0.5" Offset="10, 10" Color="Black"/>
-                    <sh:Shade BlurRadius="0" Opacity="0.75" Offset="3, 3" Color="#FDB73E"/>
-                    <sh:Shade BlurRadius="2" Opacity="0.6" Offset="6,6" Color="#FDB73E"/>
+                    <sh:Shade BlurRadius="0" Opacity="0.75" Offset="3, 3" Color="{StaticResource ButtonFrameColor}"/>
+                    <sh:Shade BlurRadius="2" Opacity="0.6" Offset="6,6" Color="{StaticResource ButtonFrameColor}"/>
                 </sh:ImmutableShades>
             </sh:Shadows.Shades>
             <Button BackgroundColor="#FDB73E" WidthRequest="175" HeightRequest="110" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" 
-                CornerRadius="34" BorderColor="#FDB73E" Text="Povijest" TextColor="#000" FontFamily="Spicy Rice" FontSize="24"
+                CornerRadius="34" BorderColor="{StaticResource ButtonFrameColor}" Text="Povijest" TextColor="#000" FontFamily="Spicy Rice" FontSize="24"
                 BorderWidth="1"/>
         </sh:Shadows>
         <Image BackgroundColor="White" VerticalOptions="End" HorizontalOptions="Start" Margin="12, 0, 0, 12" x:Name="AboutImage"
@@ -69,7 +69,7 @@
                xct:TouchEffect.AnimationEasing="{x:Static Easing.Linear}" xct:TouchEffect.Command="{Binding HelpIconTapped}"
                xct:TouchEffect.PulseCount="-1" IsEnabled="{Binding Clickable}">
             <Image.Source>
-                <FontImageSource Glyph="&#xf05a;" FontFamily="FASolid" Size="28" Color="#FDB73E"/>
+                <FontImageSource Glyph="&#xf05a;" FontFamily="FASolid" Size="28" Color="{StaticResource ButtonFrameColor}"/>
             </Image.Source>
         </Image>
     </StackLayout>

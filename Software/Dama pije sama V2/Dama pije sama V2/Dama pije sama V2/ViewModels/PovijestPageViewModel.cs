@@ -2,10 +2,8 @@
 using DamaPijeSama.Services;
 using MvvmHelpers.Commands;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -16,27 +14,41 @@ namespace DamaPijeSama.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private INavigation Navigation => Application.Current.MainPage.Navigation;
-        public ObservableCollection<Igra> Igre { get; set; } = new ObservableCollection<Igra>();
-        public ObservableCollection<Boja> Boje { get; set; } = new ObservableCollection<Boja>();
+        public ObservableCollection<Game> Games { get; set; } = new ObservableCollection<Game>();
+        public ObservableCollection<Dama_pije_sama_V2.Color> Colors { get; set; } = new ObservableCollection<Dama_pije_sama_V2.Color>();
         public ICommand GetColors { get; set; }
         public ICommand GetGames { get; set; }
         public ICommand OpenGame { get; }
+        public ICommand DeleteHistory { get; }
         public string RandomColor { get; set; }
+        public string GameCount { get; set; }
         public bool NoGamesPlayed { get; set; } = false;
         public bool Clickable { get; set; } = true;
+        private readonly IIgraRepository _igraRepository;
         public PovijestPageViewModel()
         {
+            _igraRepository = DependencyService.Get<IIgraRepository>();
             GetColors = new AsyncCommand(async () => await GetColorListAsync());
             GetColors.Execute(null);
             GetGames = new AsyncCommand(async () => await GetGamesAsync());
             GetGames.Execute(null);
-            OpenGame = new AsyncCommand<Igra>(async (igra) => await OpenSelectedGame(igra));
+            OpenGame = new AsyncCommand<Game>(async (game) => await OpenSelectedGame(game));
+            DeleteHistory = new AsyncCommand(async () => await DeleteHistoryAsync());
         }
 
-        private async Task OpenSelectedGame(Igra igra)
+        private async Task DeleteHistoryAsync()
         {
             Clickable = false;
-            await Navigation.PushModalAsync(new AboutIgraPage(igra), true);
+            await _igraRepository.DeleteAllGamesAsync();
+            await Navigation.PopAsync();
+            await ToastHelper.DisplayToastAsync("Izbrisana je povijest igranja.");
+            Clickable = true;
+        }
+
+        private async Task OpenSelectedGame(Game game)
+        {
+            Clickable = false;
+            await Navigation.PushModalAsync(new AboutIgraPage(game), true);
             Clickable = true;
         }
 
@@ -44,18 +56,23 @@ namespace DamaPijeSama.ViewModels
         {
             try
             {
-                Igre = await GameHelper.GetGamesAsync();
+                Games = await GameHelper.GetGamesAsync();
+                GameCount = $"{Games.Count} igara";
             }
             catch (Exception)
             {
                 await ToastHelper.DisplayToastAsync("Nešto je pošlo po zlu. Ili ste previše popili...");
             }
+            if (Games.Count == 0)
+            {
+                NoGamesPlayed = true;
+            }
         }
 
         private async Task GetColorListAsync()
         {
-            Boje = await GameHelper.GetColorsAsync();
-            RandomColor = Boje[new Random().Next(0, 3)].Kod;
+            Colors = await GameHelper.GetColorsAsync();
+            RandomColor = Colors[new Random().Next(0, 3)].Code;
         }
     }
 }

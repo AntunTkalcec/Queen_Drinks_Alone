@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -17,9 +16,9 @@ namespace DamaPijeSama.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private INavigation Navigation => Application.Current.MainPage.Navigation;
-        public ObservableCollection<Igrac> Players { get; set; } = new ObservableCollection<Igrac>();
-        public List<Pijanac> Drunkards { get; set; }
-        public ObservableCollection<Boja> Boje { get; set; } = new ObservableCollection<Boja>();
+        public ObservableCollection<Player> Players { get; set; } = new ObservableCollection<Player>();
+        public List<Drunkard> Drunkards { get; set; }
+        public ObservableCollection<Dama_pije_sama_V2.Color> Colors { get; set; } = new ObservableCollection<Dama_pije_sama_V2.Color>();
         public ICommand GetColors { get; set; }
         public ICommand GetPlayers { get; }
         public ICommand GetDrunkards { get; set; }
@@ -37,14 +36,14 @@ namespace DamaPijeSama.ViewModels
             GetColors.Execute(null);
             GetPlayers = new AsyncCommand(async () => await GetPlayersAsync());
             GetPlayers.Execute(null);
-            FrameTapped = new AsyncCommand<Igrac>(async (igrac) => await DeletePlayerAsync(igrac));
+            FrameTapped = new AsyncCommand<Player>(async (player) => await DeletePlayerAsync(player));
         }
 
-        public async Task DeletePlayerAsync(Igrac igrac)
+        public async Task DeletePlayerAsync(Player player)
         {
             if (Players.Count > 2)
             {
-                Players.Remove(igrac);
+                Players.Remove(player);
                 PlayerCounter = Players.Count.ToString();
             }   
             else
@@ -56,7 +55,7 @@ namespace DamaPijeSama.ViewModels
         public void AddPlayer()
         {
             ClickablePlus = false;
-            Players.Add(new Igrac(int.Parse(PlayerCounter) + 1, $"Igrač {int.Parse(PlayerCounter) + 1}", Drunkards[new Random().Next(0, 6)].Naziv));
+            Players.Add(new Player(int.Parse(PlayerCounter) + 1, $"Igrač {int.Parse(PlayerCounter) + 1}", Drunkards[new Random().Next(0, 6)].Path));
             PlayerCounter = Players.Count.ToString();
             ClickablePlus = true;
         }
@@ -68,16 +67,16 @@ namespace DamaPijeSama.ViewModels
 
         private Task GetPlayersAsync()
         {
-            Players.Add(new Igrac(1, "Igrač 1", Drunkards[new Random().Next(0, 6)].Naziv));
-            Players.Add(new Igrac(2, "Igrač 2", Drunkards[new Random().Next(0, 6)].Naziv));
+            Players.Add(new Player(1, "Igrač 1", Drunkards[new Random().Next(0, 6)].Path));
+            Players.Add(new Player(2, "Igrač 2", Drunkards[new Random().Next(0, 6)].Path));
             PlayerCounter = Players.Count.ToString();
             return Task.CompletedTask;
         }
 
         private async Task GetColorListAsync()
         {
-            Boje = await GameHelper.GetColorsAsync();
-            RandomColor = Boje[new Random().Next(0, 3)].Kod;
+            Colors = await GameHelper.GetColorsAsync();
+            RandomColor = Colors[new Random().Next(0, 3)].Code;
         }
         public Task ClearEntryText(Entry entry)
         {
@@ -95,9 +94,9 @@ namespace DamaPijeSama.ViewModels
                 EmptyNameExists = false;
             }
 
-            foreach (Igrac player in Players.Where(x => x.Ime == entry.Text))
+            foreach (Player player in Players.Where(x => x.Name == entry.Text))
             {
-                player.Ime = entry.Text;
+                player.Name = entry.Text;
             }
             return Task.CompletedTask;
         }
@@ -106,10 +105,10 @@ namespace DamaPijeSama.ViewModels
             if (!EmptyNameExists)
             {
                 int counter = 0;
-                foreach (Igrac player in Players.Where(x => x.Ime == "Upiši ime"))
+                foreach (Player player in Players.Where(x => x.Name == "Upiši ime" || x.Name.StartsWith("Bezimeni") || x.Name.StartsWith("Igrač")))
                 {
                     counter++;
-                    player.Ime = $"Bezimeni {counter}";
+                    player.Name = $"Bezimeni {counter}";
                 }
                 await Navigation.PushAsync(new IgranjeSIgracimaPage(Players.ToList()));
             }

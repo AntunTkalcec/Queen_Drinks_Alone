@@ -2,10 +2,8 @@
 using DamaPijeSama.Services;
 using MvvmHelpers.Commands;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -14,8 +12,8 @@ namespace DamaPijeSama.ViewModels
     public class AboutIgraPageViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        private Igra ChosenGame;
-        public ObservableCollection<Boja> Boje { get; set; } = new ObservableCollection<Boja>();
+        private readonly Game ChosenGame;
+        public ObservableCollection<Color> Colors { get; set; } = new ObservableCollection<Color>();
         public ICommand GetColors { get; set; }
         public ICommand GetLabels { get; }
         public string RandomColor { get; set; }
@@ -23,9 +21,9 @@ namespace DamaPijeSama.ViewModels
         public string PlayerInfo { get; set; }
         public string PlayedCardsNumber { get; set; }
         public string GameLength { get; set; }
-        public AboutIgraPageViewModel(Igra igra)
+        public AboutIgraPageViewModel(Game game)
         {
-            ChosenGame = igra;
+            ChosenGame = game;
             GetColors = new AsyncCommand(async () => await GetColorListAsync());
             GetColors.Execute(null);
             GetLabels = new AsyncCommand(async () => await GetLabelsAsync());
@@ -34,31 +32,31 @@ namespace DamaPijeSama.ViewModels
 
         private Task GetLabelsAsync()
         {
-            GameInfo = $"Igra {ChosenGame.Id} {ChosenGame.Datum}";
-            PlayedCardsNumber = ChosenGame.BrOdigranihKarata.ToString();
-            if (int.Parse(ChosenGame.DuljinaIgre) < 60)
+            GameInfo = $"Igra {ChosenGame.Id} \n {ChosenGame.Date}";
+            PlayedCardsNumber = ChosenGame.CardsPlayed.ToString();
+            if (int.Parse(ChosenGame.GameLength) < 60)
             {
-                GameLength = ChosenGame.DuljinaIgre + " sekundi";
+                GameLength = ChosenGame.GameLength + " sec";
             }
             else
             {
-                GameLength = (int.Parse(ChosenGame.DuljinaIgre) / 60).ToString() + " minuta";
+                GameLength = (int.Parse(ChosenGame.GameLength) / 60).ToString() + " min";
             }
-            if (ChosenGame.BrojIgraca == 0)
+            if (ChosenGame.NumberOfPlayers == 0)
             {
                 PlayerInfo = "Ova se igra igrala bez igrača";
             }
             else
             {
-                PlayerInfo = ChosenGame.PopisIgraca;
+                PlayerInfo = ChosenGame.PlayerList;
             }
             return Task.CompletedTask;
         }
 
         private async Task GetColorListAsync()
         {
-            Boje = await GameHelper.GetColorsAsync();
-            RandomColor = Boje[new Random().Next(0, 3)].Kod;
+            Colors = await GameHelper.GetColorsAsync();
+            RandomColor = Colors[new Random().Next(0, 3)].Code;
         }
     }
 }

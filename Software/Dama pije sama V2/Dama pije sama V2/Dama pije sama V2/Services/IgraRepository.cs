@@ -3,7 +3,6 @@ using DamaPijeSama.Services;
 using SQLite;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -21,33 +20,69 @@ namespace Dama_pije_sama_V2
             }
             var dbPath = FileAccessHelper.GetLocalFilePath("damapijesama.db3");
             conn = new SQLiteAsyncConnection(dbPath);
-            await conn.CreateTableAsync<Igra>();
+            await conn.CreateTableAsync<Game>();
         }
 
-        public async Task AddNewIgraAsync(Igra novaIgra)
+        public async Task AddNewGameAsync(Game newGame)
         {
             await Init();
             try
             {
-                await conn.InsertAsync(novaIgra);
+                if (!await CheckGameExists(newGame))
+                {
+                    await conn.InsertAsync(newGame);
+                }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                await Application.Current.MainPage.DisplayAlert("Error", $"Something went wrong there :(Try again or contact support. Here's the full error: {ex}", "OK");
+                await Application.Current.MainPage.DisplayAlert("Error", $"Something went wrong there :( Try again or contact the developer.", "OK");
             }
         }
-        public async Task<List<Igra>> GetIgreAsync()
+        public async Task<List<Game>> GetGamesAsync()
         {
             await Init();
             try
             {
-                return await conn.Table<Igra>().ToListAsync();
+                return await conn.Table<Game>().ToListAsync();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                await Application.Current.MainPage.DisplayAlert("Error", $"Something went wrong there :(Try again or contact support. Here's the full error: {ex}", "OK");
+                await Application.Current.MainPage.DisplayAlert("Error", $"Something went wrong there :( Try again or contact the developer.", "OK");
             }
-            return new List<Igra>();
+            return new List<Game>();
+        }
+        public async Task<bool> CheckGameExists(Game game)
+        {
+            await Init();
+            try
+            {
+                if (await conn.FindAsync<Game>(game.Id) != null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", $"Something went wrong there :( Try again or contact the developer.", "OK");
+            }
+            return false;
+        }
+
+        public async Task DeleteAllGamesAsync()
+        {
+            await Init();
+            try
+            {
+                await conn.DeleteAllAsync<Game>();
+            }
+            catch (Exception)
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", $"Something went wrong there :( Try again or contact the developer.", "OK");
+            }
         }
     }
 }

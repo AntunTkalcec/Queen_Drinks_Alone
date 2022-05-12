@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using System.Globalization;

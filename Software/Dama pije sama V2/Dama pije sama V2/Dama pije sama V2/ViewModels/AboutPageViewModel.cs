@@ -1,15 +1,10 @@
 ﻿using DamaPijeSama.Services;
 using MvvmHelpers.Commands;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Xamarin.CommunityToolkit.Extensions;
-using Xamarin.CommunityToolkit.UI.Views.Options;
 using Xamarin.Essentials;
-using Xamarin.Forms;
 
 namespace DamaPijeSama.ViewModels
 {

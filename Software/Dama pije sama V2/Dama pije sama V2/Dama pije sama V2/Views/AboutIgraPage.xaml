@@ -5,11 +5,13 @@
              BackgroundColor="White">
     <ContentPage.Content>
         <StackLayout>
+            <Label FontFamily="Spicy Rice" Text="{Binding GameInfo}" FontSize="26" TextColor="{Binding RandomColor}" VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
             <Label FontFamily="Spicy Rice" Text="Igrači u igri:" FontSize="20" TextColor="{Binding RandomColor}" VerticalOptions="CenterAndExpand" 
                    HorizontalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" x:Name="Igraci1"/>
             <Label FontFamily="Cagliostro" Text="{Binding PlayerInfo}" TextColor="{Binding RandomColor}" FontSize="16" 
                    HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
-                   VerticalOptions="StartAndExpand"/>
+                   VerticalOptions="StartAndExpand"  Margin="10, 0, 10, 0"/>
             <BoxView HeightRequest="1" HorizontalOptions="Center" WidthRequest="300" Color="{Binding RandomColor}"/>
             <Label FontFamily="Spicy Rice" Text="Odigrano karata:" FontSize="20" TextColor="{Binding RandomColor}" VerticalOptions="CenterAndExpand" 
                    HorizontalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>

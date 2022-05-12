@@ -1,9 +1,7 @@
 ﻿using Dama_pije_sama_V2;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -11,85 +9,85 @@ namespace DamaPijeSama.Services
 {
     public static class GameHelper
     {
-        public static Stopwatch stopwatch;
+        public static Stopwatch Stopwatch = new();
         private static readonly IIgraRepository _igraRepository = DependencyService.Get<IIgraRepository>();
-        public static async Task<ObservableCollection<Karta>> GetCardsAsync()
+        public static async Task<ObservableCollection<Card>> GetCardsAsync()
         {
-            ObservableCollection<Karta> karte = new();
-            karte.Add(new Karta("AsHerc", "KATEGORIJE"));
-            karte.Add(new Karta("AsZelje", "KATEGORIJE"));
-            karte.Add(new Karta("AsBundeva", "KATEGORIJE"));
-            karte.Add(new Karta("AsZir", "KATEGORIJE"));
-            karte.Add(new Karta("KraljHerc", "BIRAŠ TKO PIJE"));
-            karte.Add(new Karta("KraljZelje", "BIRAŠ TKO PIJE"));
-            karte.Add(new Karta("KraljBundeva", "BIRAŠ TKO PIJE"));
-            karte.Add(new Karta("KraljZir", "BIRAŠ TKO PIJE"));
-            karte.Add(new Karta("PocetnaKarta", "Swipe desno za početak"));
-            karte.Add(new Karta("BabaHerc", "DAMA PIJE SAMA"));
-            karte.Add(new Karta("BabaZelje", "DAMA PIJE SAMA"));
-            karte.Add(new Karta("BabaBundeva", "DAMA PIJE SAMA"));
-            karte.Add(new Karta("BabaZir", "DAMA PIJE SAMA"));
-            karte.Add(new Karta("DeckoHerc", "POGODI BOJU"));
-            karte.Add(new Karta("DeckoZelje", "POGODI BOJU"));
-            karte.Add(new Karta("DeckoZir", "POGODI BOJU"));
-            karte.Add(new Karta("DeckoBundeva", "POGODI BOJU"));
-            karte.Add(new Karta("DesetkaHerc", "NIKAD NISAM"));
-            karte.Add(new Karta("DesetkaZelje", "NIKAD NISAM"));
-            karte.Add(new Karta("DesetkaBundeva", "NIKAD NISAM"));
-            karte.Add(new Karta("DesetkaZir", "NIKAD NISAM"));
-            karte.Add(new Karta("DevetkaHerc", "SVI PIJU"));
-            karte.Add(new Karta("DevetkaZelje", "SVI PIJU"));
-            karte.Add(new Karta("DevetkaBundeva", "SVI PIJU"));
-            karte.Add(new Karta("DevetkaZir", "SVI PIJU"));
-            karte.Add(new Karta("OsmicaHerc", "PIJE DESNO OD TEBE"));
-            karte.Add(new Karta("OsmicaZelje", "PIJE DESNO OD TEBE"));
-            karte.Add(new Karta("OsmicaBundeva", "PIJE DESNO OD TEBE"));
-            karte.Add(new Karta("OsmicaZir", "PIJE DESNO OD TEBE"));
-            karte.Add(new Karta("SedmicaHerc", "PIJE LIJEVO OD TEBE"));
-            karte.Add(new Karta("SedmicaZelje", "PIJE LIJEVO OD TEBE"));
-            karte.Add(new Karta("SedmicaBundeva", "PIJE LIJEVO OD TEBE"));
-            karte.Add(new Karta("SedmicaZir", "PIJE LIJEVO OD TEBE"));
-            return karte;
+            ObservableCollection<Card> cards = new();
+            cards.Add(new Card("AsHerc", "KATEGORIJE"));
+            cards.Add(new Card("AsZelje", "KATEGORIJE"));
+            cards.Add(new Card("AsBundeva", "KATEGORIJE"));
+            cards.Add(new Card("AsZir", "KATEGORIJE"));
+            cards.Add(new Card("KraljHerc", "BIRAŠ TKO PIJE"));
+            cards.Add(new Card("KraljZelje", "BIRAŠ TKO PIJE"));
+            cards.Add(new Card("KraljBundeva", "BIRAŠ TKO PIJE"));
+            cards.Add(new Card("KraljZir", "BIRAŠ TKO PIJE"));
+            cards.Add(new Card("PocetnaKarta", "Swipe desno za početak"));
+            cards.Add(new Card("BabaHerc", "DAMA PIJE SAMA"));
+            cards.Add(new Card("BabaZelje", "DAMA PIJE SAMA"));
+            cards.Add(new Card("BabaBundeva", "DAMA PIJE SAMA"));
+            cards.Add(new Card("BabaZir", "DAMA PIJE SAMA"));
+            cards.Add(new Card("DeckoHerc", "POGODI BOJU"));
+            cards.Add(new Card("DeckoZelje", "POGODI BOJU"));
+            cards.Add(new Card("DeckoZir", "POGODI BOJU"));
+            cards.Add(new Card("DeckoBundeva", "POGODI BOJU"));
+            cards.Add(new Card("DesetkaHerc", "NIKAD NISAM"));
+            cards.Add(new Card("DesetkaZelje", "NIKAD NISAM"));
+            cards.Add(new Card("DesetkaBundeva", "NIKAD NISAM"));
+            cards.Add(new Card("DesetkaZir", "NIKAD NISAM"));
+            cards.Add(new Card("DevetkaHerc", "SVI PIJU"));
+            cards.Add(new Card("DevetkaZelje", "SVI PIJU"));
+            cards.Add(new Card("DevetkaBundeva", "SVI PIJU"));
+            cards.Add(new Card("DevetkaZir", "SVI PIJU"));
+            cards.Add(new Card("OsmicaHerc", "PIJE DESNO OD TEBE"));
+            cards.Add(new Card("OsmicaZelje", "PIJE DESNO OD TEBE"));
+            cards.Add(new Card("OsmicaBundeva", "PIJE DESNO OD TEBE"));
+            cards.Add(new Card("OsmicaZir", "PIJE DESNO OD TEBE"));
+            cards.Add(new Card("SedmicaHerc", "PIJE LIJEVO OD TEBE"));
+            cards.Add(new Card("SedmicaZelje", "PIJE LIJEVO OD TEBE"));
+            cards.Add(new Card("SedmicaBundeva", "PIJE LIJEVO OD TEBE"));
+            cards.Add(new Card("SedmicaZir", "PIJE LIJEVO OD TEBE"));
+            return cards;
         }
-        public static async Task<ObservableCollection<Boja>> GetColorsAsync()
+        public static async Task<ObservableCollection<Dama_pije_sama_V2.Color>> GetColorsAsync()
         {
-            ObservableCollection<Boja> boje = new();
-            boje.Add(new Boja("#8f2ce0"));
-            boje.Add(new Boja("#e02cd7"));
-            boje.Add(new Boja("#352ce0"));
-            boje.Add(new Boja("#a01699"));
-            return boje;
+            ObservableCollection<Dama_pije_sama_V2.Color> colors = new();
+            colors.Add(new Dama_pije_sama_V2.Color("#8f2ce0"));
+            colors.Add(new Dama_pije_sama_V2.Color("#e02cd7"));
+            colors.Add(new Dama_pije_sama_V2.Color("#352ce0"));
+            colors.Add(new Dama_pije_sama_V2.Color("#a01699"));
+            return colors;
         }
-        public static async Task StartStopwatch()
+        public static void StartStopwatch()
         {
-            await Task.Run(async () => stopwatch = Stopwatch.StartNew());
-        }
-        public static async Task GetElapsedTime()
-        {
-            await Task.Run(async () =>
+            if (!Stopwatch.IsRunning)
             {
-                stopwatch.Stop();
-                return stopwatch.Elapsed.TotalSeconds.ToString("0");
-            });
+                Stopwatch = Stopwatch.StartNew();
+            }
         }
-        public static async Task<ObservableCollection<Igra>> GetGamesAsync()
+        public static string GetElapsedTime()
         {
-            List<Igra> igre=  await _igraRepository.GetIgreAsync();
-            return new ObservableCollection<Igra>(igre);
+            Stopwatch.Stop();
+            return Stopwatch.Elapsed.TotalSeconds.ToString("0");
         }
-        public static async Task<List<Pijanac>> GetDrunkardsAsync()
+        public static async Task<ObservableCollection<Game>> GetGamesAsync()
         {
-            List<Pijanac> Pijanci = new List<Pijanac>
+            List<Game> games = await _igraRepository.GetGamesAsync();
+            return new ObservableCollection<Game>(games);
+        }
+        public static async Task<List<Drunkard>> GetDrunkardsAsync()
+        {
+            List<Drunkard> Drunkards = new()
             {
-                new Pijanac("DrunkGirl1"),
-                new Pijanac("DrunkGirl2"),
-                new Pijanac("DrunkGuy1"),
-                new Pijanac("DrunkGuy2"),
-                new Pijanac("DrunkGuy3"),
-                new Pijanac("DrunkGuy4"),
-                new Pijanac("DrunkGuy5")
+                new Drunkard("DrunkGirl1"),
+                new Drunkard("DrunkGirl2"),
+                new Drunkard("DrunkGuy1"),
+                new Drunkard("DrunkGuy2"),
+                new Drunkard("DrunkGuy3"),
+                new Drunkard("DrunkGuy4"),
+                new Drunkard("DrunkGuy5")
             };
-            return Pijanci;
+            return Drunkards;
         }
     }
 }

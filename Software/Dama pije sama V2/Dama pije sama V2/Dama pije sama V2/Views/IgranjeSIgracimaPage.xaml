@@ -13,10 +13,10 @@
                     <SwipeGestureRecognizer Direction="Down" Command="{Binding SwipeCard}" CommandParameter="Down"/>
                 </Image.GestureRecognizers>
             </Image>
-            <Label FontFamily="Spicy Rice" x:Name="OpisZadatkaLabel" FontSize="18" HorizontalTextAlignment="Center"
+            <Label FontFamily="Spicy Rice" Text="{Binding CardDescription}" x:Name="OpisZadatkaLabel" FontSize="18" HorizontalTextAlignment="Center"
                    VerticalTextAlignment="Center" TextColor="#000"/>
             <StackLayout VerticalOptions="CenterAndExpand">
-                <Label FontFamily="Spicy Rice" Text="Broj karte" x:Name="BrKarteLabel" FontSize="14" HorizontalTextAlignment="Center"
+                <Label FontFamily="Spicy Rice" Text="{Binding CardCount}" x:Name="BrKarteLabel" FontSize="14" HorizontalTextAlignment="Center"
                    VerticalTextAlignment="Center" TextColor="{Binding RandomColor}" Margin="0, 15, 0, 0"/>
                 <Label FontFamily="Cagliostro" Text="Dalje: swipe right" FontSize="14" FontAttributes="400" 
                    TextColor="{Binding RandomColor}" HorizontalOptions="Center" VerticalOptions="End" VerticalTextAlignment="End"/>

@@ -2,10 +2,8 @@
 using DamaPijeSama.Services;
 using MvvmHelpers.Commands;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Essentials;
@@ -18,24 +16,24 @@ namespace DamaPijeSama.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private INavigation Navigation => Application.Current.MainPage.Navigation;
-        public ObservableCollection<Karta> Cards { get; set; } = new ObservableCollection<Karta>();
-        public ObservableCollection<Boja> Boje { get; set; } = new ObservableCollection<Boja>();
+        public ObservableCollection<Card> Cards { get; set; } = new ObservableCollection<Card>();
+        public ObservableCollection<Dama_pije_sama_V2.Color> Colors { get; set; } = new ObservableCollection<Dama_pije_sama_V2.Color>();
         public ICommand SwipeCard { get; }
         public ICommand GetCards { get; }
         public ICommand GetColors { get; }
-        public ICommand GetCurrentPage { get; }
         public string CurrentCard { get; set; }
         public string CardDescription { get; set; }
         public string CardCount { get; set; }
         private int _cardCount { get; set; }
         public string RandomColor { get; set; }
         public int CardsPlayedCounter { get; set; } = 0;
-        public bool Initialized { get; set; }
         private readonly IIgraRepository _igraRepository;
+        private readonly QuickstartPage _page;
         public QuickstartPageViewModel(QuickstartPage page)
         {
             _igraRepository = DependencyService.Get<IIgraRepository>();
-            page.Disappearing += SaveCurrentGame;
+            _page = page;
+            _page.Disappearing += SaveCurrentGame;
             SwipeCard = new AsyncCommand<string>(async (direction) => await HandleSwipeCommandAsync(direction));
             GetCards = new AsyncCommand(async () => await GetCardListAsync());
             GetCards.Execute(null);
@@ -47,22 +45,22 @@ namespace DamaPijeSama.ViewModels
         {
             if (CardsPlayedCounter > 0)
             {
-                Igra novaIgra = new()
+                Game newGame = new()
                 {
-                    Datum = DateTime.Now,
-                    BrojIgraca = 0,
-                    BrOdigranihKarata = CardsPlayedCounter,
-                    PopisIgraca = "Ova se igra igrala bez upisanih igrača",
-                    DuljinaIgre = GameHelper.GetElapsedTime().ToString(),
+                    Date = DateTime.Now,
+                    NumberOfPlayers = 0,
+                    CardsPlayed = CardsPlayedCounter,
+                    PlayerList = "Ova se igra igrala bez upisanih igrača",
+                    GameLength = GameHelper.GetElapsedTime(),
                 };
-                await _igraRepository.AddNewIgraAsync(novaIgra);
+                await _igraRepository.AddNewGameAsync(newGame);
             }
         }
 
         public async Task GetColorListAsync()
         {
-            Boje = await GameHelper.GetColorsAsync();
-            RandomColor = Boje[new Random().Next(0, 3)].Kod;
+            Colors = await GameHelper.GetColorsAsync();
+            RandomColor = Colors[new Random().Next(0, 3)].Code;
         }
 
         public async Task GetCardListAsync()
@@ -71,8 +69,8 @@ namespace DamaPijeSama.ViewModels
             _cardCount = Cards.Count - 1;
             CardCount = _cardCount.ToString();
 
-            CurrentCard = Cards.SingleOrDefault(x => x.Naziv == "PocetnaKarta").Naziv;
-            CardDescription = Cards.SingleOrDefault(x => x.Naziv == "PocetnaKarta").Naredba;
+            CurrentCard = Cards.SingleOrDefault(x => x.Name == "PocetnaKarta").Name;
+            CardDescription = Cards.SingleOrDefault(x => x.Name == "PocetnaKarta").Description;
         }
 
         public async Task HandleSwipeCommandAsync(string direction)
@@ -94,6 +92,7 @@ namespace DamaPijeSama.ViewModels
         public async Task GoToIgraciPageAsync()
         {
             await Navigation.PushAsync(new IgraciPage2(), true);
+            Navigation.RemovePage(_page);
         }
 
         public async Task ResetDeckAsync()
@@ -103,9 +102,9 @@ namespace DamaPijeSama.ViewModels
                 try
                 {
                     Cards.Clear();
-                    Cards = new ObservableCollection<Karta>(await GameHelper.GetCardsAsync());
+                    Cards = new ObservableCollection<Card>(await GameHelper.GetCardsAsync());
                     CardDescription = "Špil resetiran i promiješan.";
-                    CurrentCard = Cards.SingleOrDefault(x => x.Naziv == "PocetnaKarta").Naziv;
+                    CurrentCard = Cards.SingleOrDefault(x => x.Name == "PocetnaKarta").Name;
                     _cardCount = Cards.Count - 1;
                     CardCount = _cardCount.ToString();
                 }
@@ -122,17 +121,17 @@ namespace DamaPijeSama.ViewModels
             {
                 try
                 {
-
+                    GameHelper.StartStopwatch();
                     if (Cards.Count == 0)
                     {
                         CardDescription = "Špil je prazan!";
                         return;
                     }
                     CardsPlayedCounter++;
-                    Cards.Remove(Cards.SingleOrDefault(x => x.Naziv == "PocetnaKarta"));
+                    Cards.Remove(Cards.SingleOrDefault(x => x.Name == "PocetnaKarta"));
                     int r = new Random().Next(Cards.Count);
-                    CurrentCard = Cards[r].Naziv;
-                    CardDescription = Cards[r].Naredba;
+                    CurrentCard = Cards[r].Name;
+                    CardDescription = Cards[r].Description;
 
                     if (CardDescription == "SVI PIJU")
                     {
@@ -142,7 +141,7 @@ namespace DamaPijeSama.ViewModels
                     Cards.RemoveAt(r);
                     CardCount = Cards.Count.ToString();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     await ToastHelper.DisplayToastAsync("Prebrzo to radiš. Uspori s mijenjanjem karata.");
                 }

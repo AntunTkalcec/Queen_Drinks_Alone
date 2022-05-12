@@ -23,16 +23,16 @@
                     <LinearItemsLayout Orientation="Vertical" ItemSpacing="13"/>
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="models:Igrac">
+                    <DataTemplate x:DataType="models:Player">
                         <StackLayout>
                             <Frame CornerRadius="15" BackgroundColor="White" WidthRequest="265" HeightRequest="60" VerticalOptions="Start" HorizontalOptions="Center" 
                                    Margin="0, 5, 0, 13" HasShadow="True" BorderColor="{StaticResource FrameBorderColor}">
                                 <StackLayout Orientation="Horizontal">
                                     <Frame WidthRequest="90" VerticalOptions="Center" HorizontalOptions="Start" CornerRadius="15" IsClippedToBounds="True" Padding="0">
                                         <Image HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFill" 
-                                               Source="{Binding Slika}" HeightRequest="90"/>
+                                               Source="{Binding Image}" HeightRequest="90"/>
                                     </Frame>
-                                    <Entry Text="{Binding Ime}" TextColor="{StaticResource EntryColor}" FontSize="30" FontFamily="Spicy Rice" HorizontalOptions="CenterAndExpand" 
+                                    <Entry Text="{Binding Name}" TextColor="{StaticResource EntryColor}" FontSize="30" FontFamily="Spicy Rice" HorizontalOptions="CenterAndExpand" 
                                            VerticalOptions="Center" HorizontalTextAlignment="Center" Focused="Entry_Focused" WidthRequest="150"
                                            Unfocused="Entry_Unfocused" TextChanged="Entry_TextChanged"/>
                                 </StackLayout>
@@ -46,9 +46,9 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
             <StackLayout Orientation="Horizontal">
-                <Image Source="GumbILabelZaIgranje" HeightRequest="75" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Margin="0, 0, 0, 5" x:Name="IgrajGumb">
+                <Image Source="GumbILabelZaIgranje" HeightRequest="75" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Margin="0, 0, 0, 5" x:Name="PlayButton">
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="Igraj_Tapped"/>
+                        <TapGestureRecognizer Tapped="PlayButton_Tapped"/>
                     </Image.GestureRecognizers>
                 </Image>
             </StackLayout>
