@@ -12,7 +12,8 @@
         <viewmodels:MainPageViewModel/>
     </ContentPage.BindingContext>
     <StackLayout>
-        <Label Text="Dama Pije Sama" TextColor="Black" FontSize="36" HorizontalOptions="Center" FontAttributes="Bold" FontFamily="Spicy Rice"/>
+        <Label Text="{xct:Translate AppTitle}" TextColor="Black" FontSize="36" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" FontFamily="Spicy Rice"/>
+        
         <forms:AnimationView x:Name="animationView" Animation="Beer.json" 
                                  AnimationSource="AssetOrBundle" VerticalOptions="CenterAndExpand"
                                  HorizontalOptions="CenterAndExpand" HeightRequest="225" WidthRequest="300" RepeatMode="Infinite"/>
@@ -64,7 +65,8 @@
                 CornerRadius="34" BorderColor="{StaticResource ButtonFrameColor}" Text="Povijest" TextColor="#000" FontFamily="Spicy Rice" FontSize="24"
                 BorderWidth="1"/>
         </sh:Shadows>
-        <Image BackgroundColor="White" VerticalOptions="End" HorizontalOptions="Start" Margin="12, 0, 0, 12" x:Name="AboutImage"
+        <StackLayout Orientation="Horizontal">
+            <Image BackgroundColor="White" VerticalOptions="End" HorizontalOptions="Start" Margin="12, 0, 0, 12" x:Name="AboutImage"
                xct:TouchEffect.PressedScale="0.9" xct:TouchEffect.AnimationDuration="125" 
                xct:TouchEffect.AnimationEasing="{x:Static Easing.Linear}" xct:TouchEffect.Command="{Binding HelpIconTapped}"
                xct:TouchEffect.PulseCount="-1" IsEnabled="{Binding Clickable}">
@@ -72,5 +74,9 @@
                 <FontImageSource Glyph="&#xf05a;" FontFamily="FASolid" Size="28" Color="{StaticResource ButtonFrameColor}"/>
             </Image.Source>
         </Image>
+            <Label Text="&#xf013;" TextColor="{StaticResource ButtonFrameColor}" FontFamily="FASolid" VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="EndAndExpand" Margin="0, 0, 12, 12" FontSize="24"/>
+        </StackLayout>
+        
     </StackLayout>
 </ContentPage>

@@ -59,5 +59,41 @@ namespace DamaPijeSama.Resources {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Queen Drinks Alone.
+        /// </summary>
+        internal static string AppTitle {
+            get {
+                return ResourceManager.GetString("AppTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cro.
+        /// </summary>
+        internal static string SetupBtn1 {
+            get {
+                return ResourceManager.GetString("SetupBtn1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Eng.
+        /// </summary>
+        internal static string SetupBtn2 {
+            get {
+                return ResourceManager.GetString("SetupBtn2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Next.
+        /// </summary>
+        internal static string SetupBtn3 {
+            get {
+                return ResourceManager.GetString("SetupBtn3", resourceCulture);
+            }
+        }
     }
 }
