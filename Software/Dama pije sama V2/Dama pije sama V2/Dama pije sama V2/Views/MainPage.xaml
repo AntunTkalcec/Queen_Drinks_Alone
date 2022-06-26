@@ -29,8 +29,9 @@
                     <sh:Shade BlurRadius="2" Opacity="0.6" Offset="6,6" Color="{StaticResource ButtonFrameColor}"/>
                 </sh:ImmutableShades>
             </sh:Shadows.Shades>
-            <Button BackgroundColor="{StaticResource ButtonFrameColor}" WidthRequest="175" HeightRequest="110" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" 
-                CornerRadius="34" BorderColor="{StaticResource ButtonFrameColor}" Text="Quickstart" TextColor="#000" FontFamily="Spicy Rice" FontSize="24"
+            <Button BackgroundColor="{StaticResource ButtonFrameColor}" WidthRequest="175" HeightRequest="110" HorizontalOptions="CenterAndExpand" 
+                    VerticalOptions="CenterAndExpand" 
+                CornerRadius="34" BorderColor="{StaticResource ButtonFrameColor}" Text="{xct:Translate QuickstartBtn}" TextColor="#000" FontFamily="Spicy Rice" FontSize="24"
                 BorderWidth="1"/>
         </sh:Shadows>
         <sh:Shadows x:Name="IgraciShadows" CornerRadius="34" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
@@ -46,7 +47,7 @@
                 </sh:ImmutableShades>
             </sh:Shadows.Shades>
             <Button BackgroundColor="{StaticResource ButtonFrameColor}" WidthRequest="175" HeightRequest="110" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" 
-                CornerRadius="34" BorderColor="{StaticResource ButtonFrameColor}" Text="Igrači" TextColor="#000" FontFamily="Spicy Rice" FontSize="24"
+                CornerRadius="34" BorderColor="{StaticResource ButtonFrameColor}" Text="{xct:Translate PlayersBtn}" TextColor="#000" FontFamily="Spicy Rice" FontSize="24"
                 BorderWidth="1"/>
         </sh:Shadows>
         <sh:Shadows x:Name="PovijestShadows" CornerRadius="34" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
@@ -62,7 +63,7 @@
                 </sh:ImmutableShades>
             </sh:Shadows.Shades>
             <Button BackgroundColor="#FDB73E" WidthRequest="175" HeightRequest="110" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" 
-                CornerRadius="34" BorderColor="{StaticResource ButtonFrameColor}" Text="Povijest" TextColor="#000" FontFamily="Spicy Rice" FontSize="24"
+                CornerRadius="34" BorderColor="{StaticResource ButtonFrameColor}" Text="{xct:Translate HistoryBtn}" TextColor="#000" FontFamily="Spicy Rice" FontSize="24"
                 BorderWidth="1"/>
         </sh:Shadows>
         <StackLayout Orientation="Horizontal">
@@ -75,7 +76,11 @@
             </Image.Source>
         </Image>
             <Label Text="&#xf013;" TextColor="{StaticResource ButtonFrameColor}" FontFamily="FASolid" VerticalOptions="CenterAndExpand"
-                   HorizontalOptions="EndAndExpand" Margin="0, 0, 12, 12" FontSize="24"/>
+                   HorizontalOptions="EndAndExpand" Margin="0, 0, 12, 12" FontSize="24">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding SettingsButton}"/>
+                </Label.GestureRecognizers>
+            </Label>
         </StackLayout>
         
     </StackLayout>

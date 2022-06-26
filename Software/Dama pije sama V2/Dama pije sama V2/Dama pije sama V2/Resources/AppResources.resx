@@ -117,16 +117,139 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AboutGameLbl1" xml:space="preserve">
+    <value>Players in this game:</value>
+  </data>
+  <data name="AboutGameLbl2" xml:space="preserve">
+    <value>Cards played: </value>
+  </data>
+  <data name="AboutGameLbl3" xml:space="preserve">
+    <value>Game length: </value>
+  </data>
+  <data name="AboutMeLabel" xml:space="preserve">
+    <value>.NET Developer</value>
+  </data>
+  <data name="AboutPageTitle" xml:space="preserve">
+    <value>Author and links</value>
+  </data>
   <data name="AppTitle" xml:space="preserve">
     <value>Queen Drinks Alone</value>
   </data>
+  <data name="BugLabel1" xml:space="preserve">
+    <value>Found a bug?</value>
+  </data>
+  <data name="BugLabel2" xml:space="preserve">
+    <value>Report it to the aforementioned e-mail describing it as best you can.</value>
+  </data>
+  <data name="CardChangeError" xml:space="preserve">
+    <value>You're doing that too quickly. Slow down.</value>
+  </data>
+  <data name="ChangeLangBtn" xml:space="preserve">
+    <value>Change language</value>
+  </data>
+  <data name="ContactLabel" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="DeckShuffledMsg" xml:space="preserve">
+    <value>Deck shuffled and reset.</value>
+  </data>
+  <data name="DeleteHistoryBtn" xml:space="preserve">
+    <value>I'm ashamed. Delete history</value>
+  </data>
+  <data name="DeleteHistoryMsg" xml:space="preserve">
+    <value>Game history deleted.</value>
+  </data>
+  <data name="DeletePlayerError" xml:space="preserve">
+    <value>You're not gonna drink alone are you?</value>
+  </data>
+  <data name="EmptyDeckMsg" xml:space="preserve">
+    <value>The deck is empty!</value>
+  </data>
+  <data name="EverybodyDrinksMsg" xml:space="preserve">
+    <value>EVERYBODY DRINKS</value>
+  </data>
+  <data name="GamesLoadingError" xml:space="preserve">
+    <value>Something went wrong. Or you drank too much...</value>
+  </data>
+  <data name="GamesString" xml:space="preserve">
+    <value>games</value>
+  </data>
+  <data name="GameString" xml:space="preserve">
+    <value>Game</value>
+  </data>
+  <data name="GeneralDBError" xml:space="preserve">
+    <value>Something went wrong there :( Try again or contact the developer.</value>
+  </data>
+  <data name="GeneralError" xml:space="preserve">
+    <value>Something went wrong :/</value>
+  </data>
+  <data name="HistoryBtn" xml:space="preserve">
+    <value>History</value>
+  </data>
+  <data name="HistoryPageEmpty" xml:space="preserve">
+    <value>Games will appear here once you start playing</value>
+  </data>
+  <data name="HistoryPageTitle" xml:space="preserve">
+    <value>Play history</value>
+  </data>
+  <data name="HowToPlayBtn" xml:space="preserve">
+    <value>How to play</value>
+  </data>
+  <data name="LangCroMsg" xml:space="preserve">
+    <value>Jezik postavljen na Hrvatski</value>
+  </data>
+  <data name="LangEngMsg" xml:space="preserve">
+    <value>Language set to English</value>
+  </data>
+  <data name="LangSelectError" xml:space="preserve">
+    <value>You haven't chosen a language</value>
+  </data>
+  <data name="NicknameError" xml:space="preserve">
+    <value>At least give all the players a nickname...</value>
+  </data>
+  <data name="NoPlayersGame" xml:space="preserve">
+    <value>This game was played with no players</value>
+  </data>
+  <data name="PlayerNameDefault" xml:space="preserve">
+    <value>Enter name</value>
+  </data>
+  <data name="PlayerNameEmpty" xml:space="preserve">
+    <value>Nameless</value>
+  </data>
+  <data name="PlayersBtn" xml:space="preserve">
+    <value>Players</value>
+  </data>
+  <data name="PlayersLbl" xml:space="preserve">
+    <value>Players: swipe down</value>
+  </data>
+  <data name="PlayersPageTitle" xml:space="preserve">
+    <value>How many drinkers?</value>
+  </data>
+  <data name="PlayerString" xml:space="preserve">
+    <value>Player</value>
+  </data>
+  <data name="QuickstartBtn" xml:space="preserve">
+    <value>Quickstart</value>
+  </data>
+  <data name="RestartLbl" xml:space="preserve">
+    <value>Restart: swipe up</value>
+  </data>
+  <data name="SettingsPageTitle" xml:space="preserve">
+    <value>Settings</value>
+  </data>
   <data name="SetupBtn1" xml:space="preserve">
-    <value>Cro</value>
+    <value>Croatian</value>
   </data>
   <data name="SetupBtn2" xml:space="preserve">
-    <value>Eng</value>
+    <value>English</value>
   </data>
   <data name="SetupBtn3" xml:space="preserve">
-    <value>Next</value>
+    <value>Start</value>
+  </data>
+  <data name="SocialNetworksLabel" xml:space="preserve">
+    <value>Social networks</value>
+  </data>
+  <data name="SwipeRightLbl" xml:space="preserve">
+    <value>Next: swipe right</value>
   </data>
 </root>

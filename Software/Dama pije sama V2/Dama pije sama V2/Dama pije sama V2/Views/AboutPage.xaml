@@ -10,7 +10,7 @@
     </ContentPage.BindingContext>
     <NavigationPage.TitleView>
         <StackLayout>
-            <Label Text="Autor i linkovi" TextColor="Black" FontSize="24" FontFamily="Spicy Rice"/>
+            <Label Text="{xct:Translate AboutPageTitle}" TextColor="Black" FontSize="24" FontFamily="Spicy Rice"/>
         </StackLayout>
     </NavigationPage.TitleView>
     <ContentPage.Content>
@@ -19,13 +19,13 @@
                 <StackLayout>
                     <Label FontFamily="Spicy Rice" Text="Antun Tkalčec" FontAttributes="400" FontSize="20" LineHeight="33" CharacterSpacing="0.35"
                            TextColor="#000" VerticalOptions="End"/>
-                    <Label FontFamily="Cagliostro" Text="Fakultet organizacije i informatike, univ.bacc.inf." FontAttributes="400" FontSize="14"
+                    <Label FontFamily="Cagliostro" Text="{xct:Translate AboutMeLabel}" FontAttributes="400" FontSize="14"
                            CharacterSpacing="0.35" TextColor="#000"/>
                 </StackLayout>
             </Frame>
             <Frame Margin="0" HeightRequest="50" HasShadow="True" BorderColor="#C4C4C4">
                 <StackLayout>
-                    <Label FontFamily="Spicy Rice" Text="Kontakt" FontAttributes="400" FontSize="20" LineHeight="33" CharacterSpacing="0.35" 
+                    <Label FontFamily="Spicy Rice" Text="{xct:Translate ContactLabel}" FontAttributes="400" FontSize="20" LineHeight="33" CharacterSpacing="0.35" 
                            TextColor="#000"/>
                     <Label FontFamily="Cagliostro" Text="antuntkalcec@pm.me" FontAttributes="400" FontSize="14" CharacterSpacing="0.35" 
                            TextColor="#000"/>
@@ -33,7 +33,7 @@
             </Frame>
             <Frame Margin="0" HeightRequest="110" HasShadow="True" BorderColor="#C4C4C4">
                 <StackLayout>
-                    <Label FontFamily="Spicy Rice" Text="Društvene mreže" FontAttributes="400" FontSize="20" CharacterSpacing="0.35"
+                    <Label FontFamily="Spicy Rice" Text="{xct:Translate SocialNetworksLabel}" FontAttributes="400" FontSize="20" CharacterSpacing="0.35"
                            TextColor="#000"/>
                     <Label Text="www.linkedin.com/in/antuntkalcec" FontFamily="Cagliostro" FontAttributes="400" 
                            FontSize="14" TextColor="Blue" TextDecorations="Underline">
@@ -56,12 +56,12 @@
                 </StackLayout>
             </Frame>
             <StackLayout>
-                <Label Text="Našao si bug?" HorizontalOptions="Center" TextColor="#000" FontSize="14" FontAttributes="400"
+                <Label Text="{xct:Translate BugLabel1}" HorizontalOptions="Center" TextColor="#000" FontSize="14" FontAttributes="400"
                        FontFamily="Cagliostro" HorizontalTextAlignment="Center"/>
-                <Label Text="Prijavi ga na gore navedeni e-mail sa što više informacija o njemu." HorizontalOptions="CenterAndExpand" FontSize="14" 
+                <Label Text="{xct:Translate BugLabel2}" HorizontalOptions="CenterAndExpand" FontSize="14" 
                        TextColor="#000" FontAttributes="400" FontFamily="Cagliostro" HorizontalTextAlignment="Center"/>
             </StackLayout>
-            <Label Text="Version 1.2.0" TextColor="#000" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" Margin="0, 0, 0, 15"/>
+            <Label Text="Version 1.3.0" TextColor="#000" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" Margin="0, 0, 0, 15"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

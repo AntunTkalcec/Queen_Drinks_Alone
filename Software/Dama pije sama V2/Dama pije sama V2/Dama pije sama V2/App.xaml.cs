@@ -22,9 +22,7 @@ namespace Dama_pije_sama_V2
             LocalizationResourceManager.Current.Init(AppResources.ResourceManager);
             LocalizationResourceManager.Current.CurrentCulture = new System.Globalization.CultureInfo($"{Preferences.Get("language", "en-US")}");
 
-            string test1 = Preferences.Get("setupComplete", null);
-            string test2 = Preferences.Get("language", null);
-            if (Preferences.Get("setupComplete", null) == null || Preferences.Get("setupComplete", null) == "0") 
+            if (!(Preferences.Get("setupComplete", "0") == "1")) 
             {
                 MainPage = new SetupPage();
             }

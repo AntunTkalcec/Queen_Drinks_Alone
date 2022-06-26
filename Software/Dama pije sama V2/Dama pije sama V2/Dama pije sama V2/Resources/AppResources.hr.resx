@@ -117,16 +117,139 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AboutGameLbl1" xml:space="preserve">
+    <value>Igrači u igri:</value>
+  </data>
+  <data name="AboutGameLbl2" xml:space="preserve">
+    <value>Odigrano karti: </value>
+  </data>
+  <data name="AboutGameLbl3" xml:space="preserve">
+    <value>Duljina igre: </value>
+  </data>
+  <data name="AboutMeLabel" xml:space="preserve">
+    <value>.NET Developer</value>
+  </data>
+  <data name="AboutPageTitle" xml:space="preserve">
+    <value>Autor i linkovi</value>
+  </data>
   <data name="AppTitle" xml:space="preserve">
     <value>Dama Pije Sama</value>
   </data>
+  <data name="BugLabel1" xml:space="preserve">
+    <value>Našao si bug?</value>
+  </data>
+  <data name="BugLabel2" xml:space="preserve">
+    <value>Prijavi ga na gore navedeni e-mail sa što više informacija o njemu.</value>
+  </data>
+  <data name="CardChangeError" xml:space="preserve">
+    <value>Prebrzo to radiš. Uspori s mijenjanjem karata.</value>
+  </data>
+  <data name="ChangeLangBtn" xml:space="preserve">
+    <value>Promijeni jezik</value>
+  </data>
+  <data name="ContactLabel" xml:space="preserve">
+    <value>Kontakt</value>
+  </data>
+  <data name="DeckShuffledMsg" xml:space="preserve">
+    <value>Špil resetiran i promiješan.</value>
+  </data>
+  <data name="DeleteHistoryBtn" xml:space="preserve">
+    <value>Sram me. Obriši povijest</value>
+  </data>
+  <data name="DeleteHistoryMsg" xml:space="preserve">
+    <value>Izbrisana je povijest igranja.</value>
+  </data>
+  <data name="DeletePlayerError" xml:space="preserve">
+    <value>Pa nećeš valjda cugat' solo...</value>
+  </data>
+  <data name="EmptyDeckMsg" xml:space="preserve">
+    <value>Špil je prazan!</value>
+  </data>
+  <data name="EverybodyDrinksMsg" xml:space="preserve">
+    <value>SVI PIJU</value>
+  </data>
+  <data name="GamesLoadingError" xml:space="preserve">
+    <value>Nešto je pošlo po zlu. Ili ste previše popili...</value>
+  </data>
+  <data name="GamesString" xml:space="preserve">
+    <value>igara</value>
+  </data>
+  <data name="GameString" xml:space="preserve">
+    <value>Igra</value>
+  </data>
+  <data name="GeneralDBError" xml:space="preserve">
+    <value>Nešto je pošlo po zlu :( Probaj opet ili kontaktiraj developera.</value>
+  </data>
+  <data name="GeneralError" xml:space="preserve">
+    <value>Nešto nije uspjelo :/</value>
+  </data>
+  <data name="HistoryBtn" xml:space="preserve">
+    <value>Povijest</value>
+  </data>
+  <data name="HistoryPageEmpty" xml:space="preserve">
+    <value>Igre će se pojaviti ovdje kad započneš jednu</value>
+  </data>
+  <data name="HistoryPageTitle" xml:space="preserve">
+    <value>Povijest igranja</value>
+  </data>
+  <data name="HowToPlayBtn" xml:space="preserve">
+    <value>Kako igrati</value>
+  </data>
+  <data name="LangCroMsg" xml:space="preserve">
+    <value>Jezik postavljen na Hrvatski</value>
+  </data>
+  <data name="LangEngMsg" xml:space="preserve">
+    <value>Language set to English</value>
+  </data>
+  <data name="LangSelectError" xml:space="preserve">
+    <value>Nisi izabrao/la jezik</value>
+  </data>
+  <data name="NicknameError" xml:space="preserve">
+    <value>Bar dodaj svim igračima neki nadimak...</value>
+  </data>
+  <data name="NoPlayersGame" xml:space="preserve">
+    <value>Ova se igra igrala bez igrača</value>
+  </data>
+  <data name="PlayerNameDefault" xml:space="preserve">
+    <value>Upiši ime</value>
+  </data>
+  <data name="PlayerNameEmpty" xml:space="preserve">
+    <value>Bezimeni</value>
+  </data>
+  <data name="PlayersBtn" xml:space="preserve">
+    <value>Igrači</value>
+  </data>
+  <data name="PlayersLbl" xml:space="preserve">
+    <value>Igrači: swipe down</value>
+  </data>
+  <data name="PlayersPageTitle" xml:space="preserve">
+    <value>Koliko vas danas cuga?</value>
+  </data>
+  <data name="PlayerString" xml:space="preserve">
+    <value>Igrač</value>
+  </data>
+  <data name="QuickstartBtn" xml:space="preserve">
+    <value>Quickstart</value>
+  </data>
+  <data name="RestartLbl" xml:space="preserve">
+    <value>Restart: swipe up</value>
+  </data>
+  <data name="SettingsPageTitle" xml:space="preserve">
+    <value>Postavke</value>
+  </data>
   <data name="SetupBtn1" xml:space="preserve">
-    <value>Hrv</value>
+    <value>Hrvatski</value>
   </data>
   <data name="SetupBtn2" xml:space="preserve">
-    <value>Eng</value>
+    <value>Engleski</value>
   </data>
   <data name="SetupBtn3" xml:space="preserve">
     <value>Dalje</value>
+  </data>
+  <data name="SocialNetworksLabel" xml:space="preserve">
+    <value>Društvene mreže</value>
+  </data>
+  <data name="SwipeRightLbl" xml:space="preserve">
+    <value>Dalje: swipe right</value>
   </data>
 </root>

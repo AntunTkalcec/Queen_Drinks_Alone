@@ -4,6 +4,7 @@ using System;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.CommunityToolkit.Helpers;
 using Xamarin.Essentials;
 
 namespace DamaPijeSama.ViewModels
@@ -25,7 +26,7 @@ namespace DamaPijeSama.ViewModels
             }
             catch (Exception)
             {
-                await ToastHelper.DisplayToastAsync("Nešto nije uspjelo :/");
+                await ToastHelper.DisplayToastAsync(LocalizationResourceManager.Current["GeneralError"]);
             }
         }
     }

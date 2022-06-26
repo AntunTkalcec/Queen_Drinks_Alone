@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using System.Linq;
+using Xamarin.Essentials;
+using Xamarin.CommunityToolkit.Extensions;
+using Xamarin.CommunityToolkit.Helpers;
 
 namespace DamaPijeSama.ViewModels
 {
@@ -28,6 +31,7 @@ namespace DamaPijeSama.ViewModels
         public string PlayerDrunkardPicture { get; set; }
         public bool ClickablePlus { get; set; } = true;
         public bool EmptyNameExists { get; set; } = false;
+        public string PlayBtnImage { get; set; }
         public IgraciPage2ViewModel()
         {
             GetDrunkards = new AsyncCommand(async () => await GetDrunkardsAsync());
@@ -37,6 +41,15 @@ namespace DamaPijeSama.ViewModels
             GetPlayers = new AsyncCommand(async () => await GetPlayersAsync());
             GetPlayers.Execute(null);
             FrameTapped = new AsyncCommand<Player>(async (player) => await DeletePlayerAsync(player));
+
+            if (Preferences.Get("language", "en-US") == "en-US")
+            {
+                PlayBtnImage = "GumbILabelZaIgranjeENG";
+            }
+            else
+            {
+                PlayBtnImage = "GumbILabelZaIgranje";
+            }
         }
 
         public async Task DeletePlayerAsync(Player player)
@@ -48,14 +61,15 @@ namespace DamaPijeSama.ViewModels
             }   
             else
             {
-                await ToastHelper.DisplayToastAsync("Pa nećeš valjda cugat' solo...");
+                await ToastHelper.DisplayToastAsync(LocalizationResourceManager.Current["DeletePlayerError"]);
             }
         }
 
         public void AddPlayer()
         {
             ClickablePlus = false;
-            Players.Add(new Player(int.Parse(PlayerCounter) + 1, $"Igrač {int.Parse(PlayerCounter) + 1}", Drunkards[new Random().Next(0, 6)].Path));
+            Players.Add(new Player(int.Parse(PlayerCounter) + 1, $"{LocalizationResourceManager.Current["PlayerString"]} {int.Parse(PlayerCounter) + 1}", 
+                Drunkards[new Random().Next(0, 6)].Path));
             PlayerCounter = Players.Count.ToString();
             ClickablePlus = true;
         }
@@ -67,8 +81,8 @@ namespace DamaPijeSama.ViewModels
 
         private Task GetPlayersAsync()
         {
-            Players.Add(new Player(1, "Igrač 1", Drunkards[new Random().Next(0, 6)].Path));
-            Players.Add(new Player(2, "Igrač 2", Drunkards[new Random().Next(0, 6)].Path));
+            Players.Add(new Player(1, $"{LocalizationResourceManager.Current["PlayerString"]} 1", Drunkards[new Random().Next(0, 6)].Path));
+            Players.Add(new Player(2, $"{LocalizationResourceManager.Current["PlayerString"]} 2", Drunkards[new Random().Next(0, 6)].Path));
             PlayerCounter = Players.Count.ToString();
             return Task.CompletedTask;
         }
@@ -105,16 +119,17 @@ namespace DamaPijeSama.ViewModels
             if (!EmptyNameExists)
             {
                 int counter = 0;
-                foreach (Player player in Players.Where(x => x.Name == "Upiši ime" || x.Name.StartsWith("Bezimeni") || x.Name.StartsWith("Igrač")))
+                foreach (Player player in Players.Where(x => x.Name == $"{LocalizationResourceManager.Current["PlayerNameDefault"]}" 
+                || x.Name.StartsWith($"{LocalizationResourceManager.Current["PlayerNameEmpty"]}") || x.Name.StartsWith("Igrač") || x.Name.StartsWith("Player")))
                 {
                     counter++;
-                    player.Name = $"Bezimeni {counter}";
+                    player.Name = $"{LocalizationResourceManager.Current["PlayerNameEmpty"]} {counter}";
                 }
                 await Navigation.PushAsync(new IgranjeSIgracimaPage(Players.ToList()));
             }
             else
             {
-                await ToastHelper.DisplayToastAsync("Bar dodaj svim igračima neki nadimak...");
+                await ToastHelper.DisplayToastAsync($"{LocalizationResourceManager.Current["NicknameError"]}");
             }
         }
     }

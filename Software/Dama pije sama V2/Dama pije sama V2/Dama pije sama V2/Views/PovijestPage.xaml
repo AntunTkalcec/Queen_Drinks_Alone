@@ -3,11 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Dama_pije_sama_V2.PovijestPage"
              BackgroundColor="White"
+             xmlns:viewmodels="clr-namespace:DamaPijeSama.ViewModels"
+             x:DataType="viewmodels:PovijestPageViewModel"
              xmlns:model="clr-namespace:Dama_pije_sama_V2" xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              xmlns:converters="clr-namespace:DamaPijeSama.Converters" NavigationPage.IconColor="{Binding RandomColor}">
     <NavigationPage.TitleView>
         <StackLayout>
-            <Label Text="Povijest igranja" TextColor="{Binding RandomColor}" FontSize="24" FontFamily="Spicy Rice"/>
+            <Label Text="{xct:Translate HistoryPageTitle}" TextColor="{Binding RandomColor}" FontSize="24" FontFamily="Spicy Rice"/>
         </StackLayout>
     </NavigationPage.TitleView>
     <ContentPage.Resources>
@@ -21,7 +23,7 @@
             <BoxView HeightRequest="2" HorizontalOptions="Center" BackgroundColor="{Binding RandomColor}" WidthRequest="300"/>
             <Label Text="{Binding GameCount}" TextColor="{Binding RandomColor}" FontFamily="Spicy Rice" FontSize="16" HorizontalOptions="CenterAndExpand" VerticalOptions="Start"
                    HorizontalTextAlignment="Center"/>
-            <Label Text="Igre će se pojaviti ovdje kad započneš igrati" TextColor="{Binding RandomColor}" 
+            <Label Text="{xct:Translate HistoryPageEmpty}" TextColor="{Binding RandomColor}" 
                    FontFamily="Spicy Rice" FontSize="18" 
                    HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center" IsVisible="{Binding NoGamesPlayed}"/>
             <CollectionView ItemsSource="{Binding Games}" x:Name="GamesCollection" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" 
@@ -57,7 +59,7 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
                 <CollectionView.Footer>
-                    <Button Text="Sram me. Obriši povijest" TextColor="#000" BackgroundColor="{StaticResource ButtonFrameColor}" HeightRequest="60"
+                    <Button Text="{xct:Translate DeleteHistoryBtn}" TextColor="#000" BackgroundColor="{StaticResource ButtonFrameColor}" HeightRequest="60"
                             HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" CornerRadius="34" BorderColor="{StaticResource ButtonFrameColor}" 
                             FontFamily="Spicy Rice" FontSize="20" BorderWidth="1"
                             xct:TouchEffect.Command="{Binding DeleteHistory}"

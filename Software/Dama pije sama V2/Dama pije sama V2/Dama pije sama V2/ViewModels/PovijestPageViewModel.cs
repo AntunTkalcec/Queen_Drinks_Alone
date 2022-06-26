@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.CommunityToolkit.Helpers;
 using Xamarin.Forms;
 
 namespace DamaPijeSama.ViewModels
@@ -41,7 +42,7 @@ namespace DamaPijeSama.ViewModels
             Clickable = false;
             await _igraRepository.DeleteAllGamesAsync();
             await Navigation.PopAsync();
-            await ToastHelper.DisplayToastAsync("Izbrisana je povijest igranja.");
+            await ToastHelper.DisplayToastAsync(LocalizationResourceManager.Current["DeleteHistoryMsg"]);
             Clickable = true;
         }
 
@@ -57,11 +58,11 @@ namespace DamaPijeSama.ViewModels
             try
             {
                 Games = await GameHelper.GetGamesAsync();
-                GameCount = $"{Games.Count} igara";
+                GameCount = $"{Games.Count} {LocalizationResourceManager.Current["GamesString"]}";
             }
             catch (Exception)
             {
-                await ToastHelper.DisplayToastAsync("Nešto je pošlo po zlu. Ili ste previše popili...");
+                await ToastHelper.DisplayToastAsync(LocalizationResourceManager.Current["GamesLoadingError"]);
             }
             if (Games.Count == 0)
             {

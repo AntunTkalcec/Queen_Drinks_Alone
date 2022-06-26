@@ -9,6 +9,7 @@ using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using System.Linq;
+using Xamarin.CommunityToolkit.Helpers;
 
 namespace DamaPijeSama.ViewModels
 {
@@ -50,7 +51,7 @@ namespace DamaPijeSama.ViewModels
                     Date = DateTime.Now,
                     NumberOfPlayers = 0,
                     CardsPlayed = CardsPlayedCounter,
-                    PlayerList = "Ova se igra igrala bez upisanih igrača",
+                    PlayerList = LocalizationResourceManager.Current["NoPlayersGame"],
                     GameLength = GameHelper.GetElapsedTime(),
                 };
                 await _igraRepository.AddNewGameAsync(newGame);
@@ -103,14 +104,14 @@ namespace DamaPijeSama.ViewModels
                 {
                     Cards.Clear();
                     Cards = new ObservableCollection<Card>(await GameHelper.GetCardsAsync());
-                    CardDescription = "Špil resetiran i promiješan.";
+                    CardDescription = LocalizationResourceManager.Current["DeckShuffledMsg"];
                     CurrentCard = Cards.SingleOrDefault(x => x.Name == "PocetnaKarta").Name;
                     _cardCount = Cards.Count - 1;
                     CardCount = _cardCount.ToString();
                 }
                 catch (Exception)
                 {
-                    await ToastHelper.DisplayToastAsync("Prebrzo to radiš. Uspori s mijenjanjem karata.");
+                    await ToastHelper.DisplayToastAsync(LocalizationResourceManager.Current["CardChangeError"]);
                 }
             });
         }
@@ -124,7 +125,7 @@ namespace DamaPijeSama.ViewModels
                     GameHelper.StartStopwatch();
                     if (Cards.Count == 0)
                     {
-                        CardDescription = "Špil je prazan!";
+                        CardDescription = LocalizationResourceManager.Current["EmptyDeckMsg"];
                         return;
                     }
                     CardsPlayedCounter++;
@@ -133,7 +134,7 @@ namespace DamaPijeSama.ViewModels
                     CurrentCard = Cards[r].Name;
                     CardDescription = Cards[r].Description;
 
-                    if (CardDescription == "SVI PIJU")
+                    if (CardDescription == LocalizationResourceManager.Current["EverybodyDrinksMsg"])
                     {
                         Vibration.Vibrate();
                     }
@@ -143,7 +144,7 @@ namespace DamaPijeSama.ViewModels
                 }
                 catch (Exception ex)
                 {
-                    await ToastHelper.DisplayToastAsync("Prebrzo to radiš. Uspori s mijenjanjem karata.");
+                    await ToastHelper.DisplayToastAsync(LocalizationResourceManager.Current["CardChangeError"]);
                 }
             });
         }

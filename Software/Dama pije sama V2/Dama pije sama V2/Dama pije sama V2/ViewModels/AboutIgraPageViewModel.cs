@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.CommunityToolkit.Helpers;
 
 namespace DamaPijeSama.ViewModels
 {
@@ -32,7 +33,7 @@ namespace DamaPijeSama.ViewModels
 
         private Task GetLabelsAsync()
         {
-            GameInfo = $"Igra {ChosenGame.Id} \n {ChosenGame.Date}";
+            GameInfo = $"{LocalizationResourceManager.Current["GameString"]} {ChosenGame.Id} \n {ChosenGame.Date}";
             PlayedCardsNumber = ChosenGame.CardsPlayed.ToString();
             if (int.Parse(ChosenGame.GameLength) < 60)
             {
@@ -44,7 +45,7 @@ namespace DamaPijeSama.ViewModels
             }
             if (ChosenGame.NumberOfPlayers == 0)
             {
-                PlayerInfo = "Ova se igra igrala bez igrača";
+                PlayerInfo = LocalizationResourceManager.Current["NoPlayersGame"];
             }
             else
             {

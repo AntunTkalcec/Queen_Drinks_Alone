@@ -4,6 +4,7 @@ using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Xamarin.CommunityToolkit.Helpers;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(IgraRepository))]
@@ -35,7 +36,7 @@ namespace Dama_pije_sama_V2
             }
             catch (Exception)
             {
-                await Application.Current.MainPage.DisplayAlert("Error", $"Something went wrong there :( Try again or contact the developer.", "OK");
+                await Application.Current.MainPage.DisplayAlert("Error", LocalizationResourceManager.Current["GeneralDBError"], "OK");
             }
         }
         public async Task<List<Game>> GetGamesAsync()
@@ -47,7 +48,7 @@ namespace Dama_pije_sama_V2
             }
             catch (Exception)
             {
-                await Application.Current.MainPage.DisplayAlert("Error", $"Something went wrong there :( Try again or contact the developer.", "OK");
+                await Application.Current.MainPage.DisplayAlert("Error", LocalizationResourceManager.Current["GeneralDBError"], "OK");
             }
             return new List<Game>();
         }
@@ -67,7 +68,7 @@ namespace Dama_pije_sama_V2
             }
             catch (Exception)
             {
-                await Application.Current.MainPage.DisplayAlert("Error", $"Something went wrong there :( Try again or contact the developer.", "OK");
+                await Application.Current.MainPage.DisplayAlert("Error", LocalizationResourceManager.Current["GeneralDBError"], "OK");
             }
             return false;
         }
@@ -81,7 +82,7 @@ namespace Dama_pije_sama_V2
             }
             catch (Exception)
             {
-                await Application.Current.MainPage.DisplayAlert("Error", $"Something went wrong there :( Try again or contact the developer.", "OK");
+                await Application.Current.MainPage.DisplayAlert("Error", LocalizationResourceManager.Current["GeneralDBError"], "OK");
             }
         }
     }

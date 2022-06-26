@@ -20,22 +20,16 @@ namespace DamaPijeSama.Views
             InitializeComponent();
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private void CroBtnClicked(object sender, EventArgs e)
         {
-            LocalizationResourceManager.Current.CurrentCulture = new CultureInfo("hr-HR");
-            Preferences.Set("language", "hr-HR");
+            CroatianBtn.ScaleTo(1.2, 200, Easing.Linear);
+            EnglishBtn.ScaleTo(1, 150, Easing.Linear);
         }
 
-        private void Button_Clicked_1(object sender, EventArgs e)
+        private void EngBtnClicked(object sender, EventArgs e)
         {
-            LocalizationResourceManager.Current.CurrentCulture = new CultureInfo("en-US");
-            Preferences.Set("language", "en-US");
-        }
-
-        private void Button_Clicked_2(object sender, EventArgs e)
-        {
-            Preferences.Set("setupComplete", "1");
-            Application.Current.MainPage = new NavigationPage(new MainPage());
+            CroatianBtn.ScaleTo(1, 150, Easing.Linear);
+            EnglishBtn.ScaleTo(1.2, 200, Easing.Linear);
         }
     }
 }

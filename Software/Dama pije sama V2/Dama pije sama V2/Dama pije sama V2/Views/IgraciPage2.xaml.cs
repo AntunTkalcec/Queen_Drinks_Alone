@@ -1,5 +1,6 @@
 ﻿using DamaPijeSama.ViewModels;
 using System;
+using Xamarin.CommunityToolkit.Helpers;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -45,7 +46,7 @@ namespace Dama_pije_sama_V2
         {
             if ((sender as Entry).Text == "")
             {
-                (sender as Entry).Text = "Upiši ime";
+                (sender as Entry).Text = LocalizationResourceManager.Current["PlayerNameDefault"];
             }
         }
 

@@ -1,5 +1,7 @@
 ﻿using Dama_pije_sama_V2;
+using DamaPijeSama.Views;
 using MvvmHelpers.Commands;
+using System;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -16,6 +18,7 @@ namespace DamaPijeSama.ViewModels
         public ICommand HistoryButtonTapped { get; }
         public ICommand PlayersButtonTapped { get; }
         public ICommand QuickstartButtonTapped { get; }
+        public ICommand SettingsButton { get; }
         public bool Clickable { get; set; } = true;
 
         public MainPageViewModel()
@@ -24,6 +27,12 @@ namespace DamaPijeSama.ViewModels
             HistoryButtonTapped = new AsyncCommand(async () => await GoToHistoryPageAsync());
             PlayersButtonTapped = new AsyncCommand(async () => await GoToPlayersPageAsync());
             QuickstartButtonTapped = new AsyncCommand(async () => await GoToQuickStartPageAsync());
+            SettingsButton = new AsyncCommand(async () => await GoToSettingsPageAsync());
+        }
+
+        private async Task GoToSettingsPageAsync()
+        {
+            await Application.Current.MainPage.Navigation.PushModalAsync(new SettingsPage());
         }
 
         private async Task GoToQuickStartPageAsync()
