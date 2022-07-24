@@ -5,7 +5,7 @@ using AndroidX.AppCompat.App;
 
 namespace Dama_pije_sama_V2.Droid
 {
-    [Activity(Label = "Dama Pije Sama", MainLauncher = true, NoHistory = true, Theme = "@style/SplashTheme")]
+    [Activity(Label = "Queen Drinks Alone", MainLauncher = true, NoHistory = true, Theme = "@style/SplashTheme")]
     public class SplashActivity : AppCompatActivity
     {
         public override void OnCreate(Bundle savedInstanceState, PersistableBundle persistentState)
