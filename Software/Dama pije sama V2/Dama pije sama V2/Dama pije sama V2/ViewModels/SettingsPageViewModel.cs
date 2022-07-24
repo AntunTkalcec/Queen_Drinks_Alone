@@ -1,10 +1,12 @@
-﻿using DamaPijeSama.Views;
+﻿using DamaPijeSama.Services;
+using DamaPijeSama.Views;
 using MvvmHelpers.Commands;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.CommunityToolkit.Helpers;
 using Xamarin.Forms;
 
 namespace DamaPijeSama.ViewModels
@@ -21,7 +23,8 @@ namespace DamaPijeSama.ViewModels
 
         private async Task GoToHowToPlayPage()
         {
-            await Application.Current.MainPage.Navigation.PushModalAsync(new HowToPlayPage());
+            //await Application.Current.MainPage.Navigation.PushModalAsync(new HowToPlayPage());
+            await ToastHelper.DisplayToastAsync(LocalizationResourceManager.Current["ComingSoonMsg"]);
         }
 
         private async Task GoToChangeLangPage()

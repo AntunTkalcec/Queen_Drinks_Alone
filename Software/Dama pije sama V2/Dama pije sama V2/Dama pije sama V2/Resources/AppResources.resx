@@ -147,6 +147,9 @@
   <data name="ChangeLangBtn" xml:space="preserve">
     <value>Change language</value>
   </data>
+  <data name="ComingSoonMsg" xml:space="preserve">
+    <value>Instructions are coming in the next version!</value>
+  </data>
   <data name="ContactLabel" xml:space="preserve">
     <value>Contact</value>
   </data>

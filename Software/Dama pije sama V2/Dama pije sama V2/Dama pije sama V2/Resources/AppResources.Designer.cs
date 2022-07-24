@@ -151,6 +151,15 @@ namespace DamaPijeSama.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Instructions are coming in the next version!.
+        /// </summary>
+        internal static string ComingSoonMsg {
+            get {
+                return ResourceManager.GetString("ComingSoonMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contact.
         /// </summary>
         internal static string ContactLabel {

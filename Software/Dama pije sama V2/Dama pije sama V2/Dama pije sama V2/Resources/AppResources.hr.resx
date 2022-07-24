@@ -147,6 +147,9 @@
   <data name="ChangeLangBtn" xml:space="preserve">
     <value>Promijeni jezik</value>
   </data>
+  <data name="ComingSoonMsg" xml:space="preserve">
+    <value>Detaljnije upute dolaze u sljedećoj verziji!</value>
+  </data>
   <data name="ContactLabel" xml:space="preserve">
     <value>Kontakt</value>
   </data>
