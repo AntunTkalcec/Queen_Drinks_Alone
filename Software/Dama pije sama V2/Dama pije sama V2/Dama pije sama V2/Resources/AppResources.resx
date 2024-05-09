@@ -195,9 +195,6 @@
   <data name="HistoryPageTitle" xml:space="preserve">
     <value>Play history</value>
   </data>
-  <data name="HowToPlayBtn" xml:space="preserve">
-    <value>How to play</value>
-  </data>
   <data name="LangCroMsg" xml:space="preserve">
     <value>Jezik postavljen na Hrvatski</value>
   </data>

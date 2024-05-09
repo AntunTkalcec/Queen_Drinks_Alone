@@ -18,11 +18,11 @@ namespace Dama_pije_sama_V2
         {
             InitializeComponent();
             Sharpnado.Shades.Initializer.Initialize(loggerEnable: false);
-            LocalizationResourceManager.Current.PropertyChanged += (_, _) => AppResources.Culture = LocalizationResourceManager.Current.CurrentCulture;
+            LocalizationResourceManager.Current.PropertyChanged += (a, b) => AppResources.Culture = LocalizationResourceManager.Current.CurrentCulture;
             LocalizationResourceManager.Current.Init(AppResources.ResourceManager);
             LocalizationResourceManager.Current.CurrentCulture = new System.Globalization.CultureInfo($"{Preferences.Get("language", "en-US")}");
 
-            if (!(Preferences.Get("setupComplete", "0") == "1")) 
+            if (!(Preferences.Get("setupComplete", "0") == "1"))
             {
                 MainPage = new SetupPage();
             }

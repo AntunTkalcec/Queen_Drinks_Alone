@@ -1,10 +1,7 @@
 ﻿using Dama_pije_sama_V2;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Globalization;
-using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.CommunityToolkit.Helpers;
 using Xamarin.Essentials;
@@ -14,12 +11,13 @@ namespace DamaPijeSama.Services
 {
     public static class GameHelper
     {
-        public static Stopwatch Stopwatch = new();
+        public static Stopwatch Stopwatch = new Stopwatch();
         private static readonly IIgraRepository _igraRepository = DependencyService.Get<IIgraRepository>();
-        public static ObservableCollection<Card> Cards = new();
+        public static ObservableCollection<Card> Cards = new ObservableCollection<Card>();
         public static async Task<ObservableCollection<Card>> GetCardsAsync()
         {
             Cards.Clear();
+
             if (Preferences.Get("language", "hr-HR") == "hr-HR")
             {
                 await GetCroatianCards();
@@ -28,6 +26,7 @@ namespace DamaPijeSama.Services
             {
                 await GetEnglishCards();
             }
+
             return Cards;
         }
 
@@ -109,13 +108,15 @@ namespace DamaPijeSama.Services
 
         public static async Task<ObservableCollection<Dama_pije_sama_V2.Color>> GetColorsAsync()
         {
-            ObservableCollection<Dama_pije_sama_V2.Color> colors = new();
-            colors.Add(new Dama_pije_sama_V2.Color("#8f2ce0"));
-            colors.Add(new Dama_pije_sama_V2.Color("#e02cd7"));
-            colors.Add(new Dama_pije_sama_V2.Color("#352ce0"));
-            colors.Add(new Dama_pije_sama_V2.Color("#a01699"));
-            return colors;
+            return new ObservableCollection<Dama_pije_sama_V2.Color>
+            {
+                new Dama_pije_sama_V2.Color("#8f2ce0"),
+                new Dama_pije_sama_V2.Color("#e02cd7"),
+                new Dama_pije_sama_V2.Color("#352ce0"),
+                new Dama_pije_sama_V2.Color("#a01699")
+            };
         }
+
         public static void StartStopwatch()
         {
             if (!Stopwatch.IsRunning)
@@ -123,19 +124,22 @@ namespace DamaPijeSama.Services
                 Stopwatch = Stopwatch.StartNew();
             }
         }
+
         public static string GetElapsedTime()
         {
             Stopwatch.Stop();
             return Stopwatch.Elapsed.TotalSeconds.ToString("0");
         }
+
         public static async Task<ObservableCollection<Game>> GetGamesAsync()
         {
             List<Game> games = await _igraRepository.GetGamesAsync();
             return new ObservableCollection<Game>(games);
         }
+
         public static async Task<List<Drunkard>> GetDrunkardsAsync()
         {
-            List<Drunkard> Drunkards = new()
+            return new List<Drunkard>
             {
                 new Drunkard("DrunkGirl1"),
                 new Drunkard("DrunkGirl2"),
@@ -144,8 +148,7 @@ namespace DamaPijeSama.Services
                 new Drunkard("DrunkGuy3"),
                 new Drunkard("DrunkGuy4"),
                 new Drunkard("DrunkGuy5")
-            };
-            return Drunkards;
+            }; ;
         }
     }
 }

@@ -15,7 +15,7 @@ namespace DamaPijeSama.Services
         /// <returns></returns>
         public static async Task DisplayToastAsync(string msg)
         {
-            var options = new ToastOptions()
+            ToastOptions options = new ToastOptions()
             {
                 MessageOptions = new MessageOptions
                 {
@@ -26,6 +26,7 @@ namespace DamaPijeSama.Services
                 Duration = TimeSpan.FromSeconds(3),
                 CornerRadius = 30
             };
+
             await Device.InvokeOnMainThreadAsync(async () => await Application.Current.MainPage.DisplayToastAsync(options));
         }
     }

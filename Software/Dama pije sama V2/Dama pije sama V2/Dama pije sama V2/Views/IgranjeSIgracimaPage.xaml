@@ -1,33 +1,83 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Dama_pije_sama_V2.IgranjeSIgracimaPage"
-             NavigationPage.HasNavigationBar="False" BackgroundColor="White"
-             xmlns:viewmodels="clr-namespace:DamaPijeSama.ViewModels"
-             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-             x:DataType="viewmodels:IgranjeSIgracimaPageViewModel">
+<ContentPage
+    x:Class="Dama_pije_sama_V2.IgranjeSIgracimaPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:DamaPijeSama.ViewModels"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    x:DataType="viewmodels:IgranjeSIgracimaPageViewModel"
+    BackgroundColor="White"
+    NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <StackLayout>
-            <Image Source="IkonePiva" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
-            <Image x:Name="slikaKarte" HorizontalOptions="Center" WidthRequest="290" HeightRequest="400" VerticalOptions="Center" Source="{Binding CurrentCard}">
-                <Image.GestureRecognizers>
-                    <SwipeGestureRecognizer Direction="Right" Swiped="slikaKarte_RightSwiped"/>
-                    <SwipeGestureRecognizer Direction="Up" Swiped="slikaKarte_UpSwiped"/>
-                    <SwipeGestureRecognizer Direction="Down" Command="{Binding SwipeCard}" CommandParameter="Down"/>
-                </Image.GestureRecognizers>
-            </Image>
-            <Label FontFamily="Spicy Rice" Text="{Binding CardDescription}" x:Name="OpisZadatkaLabel" FontSize="18" HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center" TextColor="#000"/>
-            <StackLayout VerticalOptions="CenterAndExpand">
-                <Label FontFamily="Spicy Rice" Text="{Binding CardCount}" x:Name="BrKarteLabel" FontSize="14" HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center" TextColor="{Binding RandomColor}" Margin="0, 15, 0, 0"/>
-                <Label FontFamily="Cagliostro" Text="{xct:Translate SwipeRightLbl}" FontSize="14" FontAttributes="400" 
-                   TextColor="{Binding RandomColor}" HorizontalOptions="Center" VerticalOptions="End" VerticalTextAlignment="End"/>
-                <Label FontFamily="Cagliostro" Text="{xct:Translate RestartLbl}" FontSize="14" FontAttributes="400" 
-                   TextColor="{Binding RandomColor}" HorizontalOptions="Center" VerticalOptions="End" VerticalTextAlignment="End"/>
-                <Label FontFamily="Cagliostro" Text="{xct:Translate PlayersLbl}" FontSize="14" FontAttributes="400" 
-                   TextColor="{Binding RandomColor}" HorizontalOptions="Center" VerticalOptions="End" VerticalTextAlignment="End"/>
+        <ScrollView>
+            <StackLayout>
+                <Image
+                    HorizontalOptions="CenterAndExpand"
+                    Source="IkonePiva"
+                    VerticalOptions="CenterAndExpand" />
+                <Image
+                    x:Name="slikaKarte"
+                    HeightRequest="400"
+                    HorizontalOptions="Center"
+                    Source="{Binding CurrentCard}"
+                    VerticalOptions="Center"
+                    WidthRequest="290">
+                    <Image.GestureRecognizers>
+                        <SwipeGestureRecognizer Direction="Right" Swiped="slikaKarte_RightSwiped" />
+                        <SwipeGestureRecognizer Direction="Up" Swiped="slikaKarte_UpSwiped" />
+                        <SwipeGestureRecognizer
+                            Command="{Binding SwipeCard}"
+                            CommandParameter="Down"
+                            Direction="Down" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label
+                    x:Name="OpisZadatkaLabel"
+                    FontFamily="Spicy Rice"
+                    FontSize="18"
+                    HorizontalTextAlignment="Center"
+                    Text="{Binding CardDescription}"
+                    TextColor="#000"
+                    VerticalTextAlignment="Center" />
+                <StackLayout VerticalOptions="CenterAndExpand">
+                    <Label
+                        x:Name="BrKarteLabel"
+                        Margin="0,15,0,0"
+                        FontFamily="Spicy Rice"
+                        FontSize="14"
+                        HorizontalTextAlignment="Center"
+                        Text="{Binding CardCount}"
+                        TextColor="{Binding RandomColor}"
+                        VerticalTextAlignment="Center" />
+                    <Label
+                        FontAttributes="400"
+                        FontFamily="Cagliostro"
+                        FontSize="14"
+                        HorizontalOptions="Center"
+                        Text="{xct:Translate SwipeRightLbl}"
+                        TextColor="{Binding RandomColor}"
+                        VerticalOptions="End"
+                        VerticalTextAlignment="End" />
+                    <Label
+                        FontAttributes="400"
+                        FontFamily="Cagliostro"
+                        FontSize="14"
+                        HorizontalOptions="Center"
+                        Text="{xct:Translate RestartLbl}"
+                        TextColor="{Binding RandomColor}"
+                        VerticalOptions="End"
+                        VerticalTextAlignment="End" />
+                    <Label
+                        FontAttributes="400"
+                        FontFamily="Cagliostro"
+                        FontSize="14"
+                        HorizontalOptions="Center"
+                        Text="{xct:Translate PlayersLbl}"
+                        TextColor="{Binding RandomColor}"
+                        VerticalOptions="End"
+                        VerticalTextAlignment="End" />
+                </StackLayout>
             </StackLayout>
-        </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

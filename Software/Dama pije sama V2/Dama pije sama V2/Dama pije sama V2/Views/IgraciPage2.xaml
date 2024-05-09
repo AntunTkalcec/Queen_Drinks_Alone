@@ -1,46 +1,100 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Dama_pije_sama_V2.IgraciPage2"
-             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-             xmlns:viewmodels="clr-namespace:DamaPijeSama.ViewModels"
-             x:DataType="viewmodels:IgraciPage2ViewModel"
-             BackgroundColor="White"
-             xmlns:models="clr-namespace:Dama_pije_sama_V2" NavigationPage.IconColor="{Binding RandomColor}">
+<ContentPage
+    x:Class="Dama_pije_sama_V2.IgraciPage2"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:Dama_pije_sama_V2"
+    xmlns:viewmodels="clr-namespace:DamaPijeSama.ViewModels"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    x:DataType="viewmodels:IgraciPage2ViewModel"
+    BackgroundColor="White"
+    NavigationPage.IconColor="{Binding RandomColor}">
     <NavigationPage.TitleView>
-        <Label Text="{xct:Translate PlayersPageTitle}" TextColor="{Binding RandomColor}" FontFamily="Spicy Rice" FontSize="24"/>
+        <Label
+            FontFamily="Spicy Rice"
+            FontSize="24"
+            Text="{xct:Translate PlayersPageTitle}"
+            TextColor="{Binding RandomColor}" />
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <StackLayout>
-            <BoxView HorizontalOptions="Center" HeightRequest="2" Color="{Binding RandomColor}" WidthRequest="300"/>
-            <Label Text="{Binding PlayerCounter}" FontSize="30" FontFamily="Spicy Rice" TextColor="#e02cd7" HorizontalOptions="CenterAndExpand" x:Name="PlayerCountLabel"/>
-            <Label Text="PLUS" TextColor="Purple" FontFamily="FASolid" FontSize="45" HorizontalOptions="Center" VerticalOptions="Center" x:Name="PlusGumb" 
-                   IsEnabled="{Binding ClickablePlus}">
+            <BoxView
+                HeightRequest="2"
+                HorizontalOptions="Center"
+                WidthRequest="300"
+                Color="{Binding RandomColor}" />
+            <Label
+                x:Name="PlayerCountLabel"
+                FontFamily="Spicy Rice"
+                FontSize="30"
+                HorizontalOptions="CenterAndExpand"
+                Text="{Binding PlayerCounter}"
+                TextColor="#e02cd7" />
+            <Label
+                x:Name="PlusGumb"
+                FontFamily="FASolid"
+                FontSize="45"
+                HorizontalOptions="Center"
+                IsEnabled="{Binding ClickablePlus}"
+                Text="PLUS"
+                TextColor="Purple"
+                VerticalOptions="Center">
                 <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="PlusLabel_Tapped"/>
+                    <TapGestureRecognizer Tapped="PlusLabel_Tapped" />
                 </Label.GestureRecognizers>
             </Label>
-            <CollectionView ItemsSource="{Binding Players}" x:Name="PlayersCollection" VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand" WidthRequest="330">
+            <CollectionView
+                x:Name="PlayersCollection"
+                HorizontalOptions="CenterAndExpand"
+                ItemsSource="{Binding Players}"
+                VerticalOptions="FillAndExpand"
+                WidthRequest="330">
                 <CollectionView.ItemsLayout>
-                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="13"/>
+                    <LinearItemsLayout ItemSpacing="13" Orientation="Vertical" />
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:Player">
                         <StackLayout>
-                            <Frame CornerRadius="15" BackgroundColor="White" WidthRequest="265" HeightRequest="60" VerticalOptions="Start" HorizontalOptions="Center" 
-                                   Margin="0, 5, 0, 13" HasShadow="True" BorderColor="{StaticResource FrameBorderColor}">
+                            <Frame
+                                Margin="0,5,0,13"
+                                BackgroundColor="White"
+                                BorderColor="{StaticResource FrameBorderColor}"
+                                CornerRadius="15"
+                                HasShadow="True"
+                                HeightRequest="60"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Start"
+                                WidthRequest="265">
                                 <StackLayout Orientation="Horizontal">
-                                    <Frame WidthRequest="90" VerticalOptions="Center" HorizontalOptions="Start" CornerRadius="15" IsClippedToBounds="True" Padding="0">
-                                        <Image HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFill" 
-                                               Source="{Binding Image}" HeightRequest="90"/>
+                                    <Frame
+                                        Padding="0"
+                                        CornerRadius="15"
+                                        HorizontalOptions="Start"
+                                        IsClippedToBounds="True"
+                                        VerticalOptions="Center"
+                                        WidthRequest="90">
+                                        <Image
+                                            Aspect="AspectFill"
+                                            HeightRequest="90"
+                                            HorizontalOptions="Center"
+                                            Source="{Binding Image}"
+                                            VerticalOptions="Center" />
                                     </Frame>
-                                    <Entry Text="{Binding Name}" TextColor="{StaticResource EntryColor}" FontSize="25" FontFamily="Spicy Rice" HorizontalOptions="CenterAndExpand" 
-                                           VerticalOptions="Center" HorizontalTextAlignment="Center" Focused="Entry_Focused" WidthRequest="150"
-                                           Unfocused="Entry_Unfocused" TextChanged="Entry_TextChanged"/>
+                                    <Entry
+                                        Focused="Entry_Focused"
+                                        FontFamily="Spicy Rice"
+                                        FontSize="25"
+                                        HorizontalOptions="CenterAndExpand"
+                                        HorizontalTextAlignment="Center"
+                                        Text="{Binding Name}"
+                                        TextChanged="Entry_TextChanged"
+                                        TextColor="{StaticResource EntryColor}"
+                                        Unfocused="Entry_Unfocused"
+                                        VerticalOptions="Center"
+                                        WidthRequest="150" />
                                 </StackLayout>
                                 <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding BindingContext.FrameTapped, Source={x:Reference PlayersCollection}}" 
-                                                          CommandParameter="{Binding .}"/>
+                                    <TapGestureRecognizer Command="{Binding BindingContext.FrameTapped, Source={x:Reference PlayersCollection}}" CommandParameter="{Binding .}" />
                                 </Frame.GestureRecognizers>
                             </Frame>
                         </StackLayout>
@@ -48,13 +102,19 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
             <StackLayout Orientation="Horizontal">
-                <Image Source="{Binding PlayBtnImage}" HeightRequest="75" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Margin="0, 0, 0, 5" x:Name="PlayButton">
+                <Image
+                    x:Name="PlayButton"
+                    Margin="0,0,0,5"
+                    HeightRequest="75"
+                    HorizontalOptions="CenterAndExpand"
+                    Source="{Binding PlayBtnImage}"
+                    VerticalOptions="Center">
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="PlayButton_Tapped"/>
+                        <TapGestureRecognizer Tapped="PlayButton_Tapped" />
                     </Image.GestureRecognizers>
                 </Image>
             </StackLayout>
-            
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

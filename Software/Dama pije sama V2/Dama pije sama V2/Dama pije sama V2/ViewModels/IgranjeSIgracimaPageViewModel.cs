@@ -149,7 +149,7 @@ namespace DamaPijeSama.ViewModels
         {
             if (CardsPlayedCounter > 0)
             {
-                Game newGame = new()
+                Game newGame = new Game()
                 {
                     Date = DateTime.Now,
                     NumberOfPlayers = Players.Count,

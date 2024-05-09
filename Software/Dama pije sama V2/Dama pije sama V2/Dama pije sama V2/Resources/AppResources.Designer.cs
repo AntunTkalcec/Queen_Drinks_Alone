@@ -295,15 +295,6 @@ namespace DamaPijeSama.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to How to play.
-        /// </summary>
-        internal static string HowToPlayBtn {
-            get {
-                return ResourceManager.GetString("HowToPlayBtn", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Jezik postavljen na Hrvatski.
         /// </summary>
         internal static string LangCroMsg {

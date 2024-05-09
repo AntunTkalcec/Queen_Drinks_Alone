@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="1.3.0" package="atkalcec.Dama_Pije_Sama" android:installLocation="auto" android:versionCode="12">
-	<uses-sdk android:minSdkVersion="28" android:targetSdkVersion="31" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="1.4.0" package="atkalcec.Dama_Pije_Sama" android:installLocation="auto" android:versionCode="13">
+	<uses-sdk android:minSdkVersion="28" android:targetSdkVersion="34" />
 	<uses-permission android:name="android.permission.VIBRATE" />
 	<application android:label="Queen Drinks Alone - Dama Pije Sama" android:theme="@style/MainTheme" android:icon="@drawable/AppIcon" android:hardwareAccelerated="true"></application>
 </manifest>

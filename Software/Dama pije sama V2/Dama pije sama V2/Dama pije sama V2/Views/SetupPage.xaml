@@ -1,53 +1,121 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="DamaPijeSama.Views.SetupPage"
-             BackgroundColor="White"
-             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-             xmlns:viewmodels="clr-namespace:DamaPijeSama.ViewModels"
-             x:DataType="viewmodels:SetupPageViewModel"
-             xmlns:sh="http://sharpnado.com">
+<ContentPage
+    x:Class="DamaPijeSama.Views.SetupPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:sh="http://sharpnado.com"
+    xmlns:viewmodels="clr-namespace:DamaPijeSama.ViewModels"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    x:DataType="viewmodels:SetupPageViewModel"
+    BackgroundColor="White">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Style TargetType="Button" x:Key="ButtonStyle1">
-                <Setter Property="Margin" Value="20"/>
-                
+            <Style x:Key="ButtonStyle1" TargetType="Button">
+                <Setter Property="Margin" Value="20" />
+
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.BindingContext>
-        <viewmodels:SetupPageViewModel/>
+        <viewmodels:SetupPageViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout>
-            <sh:Shadows x:Name="CroatianBtn" CornerRadius="34" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Margin="0, 0, 0, -70">
-                <sh:Shadows.Shades>
-                    <sh:ImmutableShades>
-                        <sh:Shade BlurRadius="10" Opacity="0.5" Offset="10,10" Color="Black"/>
-                        <sh:Shade BlurRadius="0" Opacity="0.75" Offset="3,3" Color="{StaticResource ButtonFrameColor}"/>
-                        <sh:Shade BlurRadius="2" Opacity="0.6" Offset="6,6" Color="{StaticResource ButtonFrameColor}"/>
-                    </sh:ImmutableShades>
-                </sh:Shadows.Shades>
-                <Button BackgroundColor="{StaticResource ButtonFrameColor}" WidthRequest="175" HeightRequest="110" HorizontalOptions="CenterAndExpand" 
-                        VerticalOptions="CenterAndExpand" CornerRadius="34" BorderColor="{StaticResource ButtonFrameColor}" Text="{xct:Translate SetupBtn1}" TextColor="Black" 
-                        FontFamily="Spicy Rice" FontSize="24" BorderWidth="1" Command="{Binding CroatianLanguage}"
-                        Clicked="CroBtnClicked"/>
-            </sh:Shadows>
-            <sh:Shadows x:Name="EnglishBtn" CornerRadius="34" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Margin="0, -70, 0, 0">
-                <sh:Shadows.Shades>
-                    <sh:ImmutableShades>
-                        <sh:Shade BlurRadius="10" Opacity="0.5" Offset="10,10" Color="Black"/>
-                        <sh:Shade BlurRadius="0" Opacity="0.75" Offset="3,3" Color="{StaticResource ButtonFrameColor}"/>
-                        <sh:Shade BlurRadius="2" Opacity="0.6" Offset="6,6" Color="{StaticResource ButtonFrameColor}"/>
-                    </sh:ImmutableShades>
-                </sh:Shadows.Shades>
-                <Button BackgroundColor="{StaticResource ButtonFrameColor}" WidthRequest="175" HeightRequest="110" HorizontalOptions="CenterAndExpand" 
-                        VerticalOptions="CenterAndExpand" CornerRadius="34" BorderColor="{StaticResource ButtonFrameColor}" Text="{xct:Translate SetupBtn2}" TextColor="Black" 
-                        FontFamily="Spicy Rice" FontSize="24" BorderWidth="1" Command="{Binding EnglishLanguage}"
-                        Clicked="EngBtnClicked"/>
-            </sh:Shadows>
-            <Button Text="{xct:Translate SetupBtn3}" x:Name="StartBtn" IsEnabled="{Binding StartBtnEnabled}" CornerRadius="34" VerticalOptions="EndAndExpand" 
-                    Margin="20, 0, 20, 50" BackgroundColor="{StaticResource ButtonFrameColor}" TextColor="Black" FontFamily="Cagliostro" Command="{Binding Start}"/>
-        </StackLayout>
+        <ScrollView>
+            <StackLayout>
+                <sh:Shadows
+                    x:Name="CroatianBtn"
+                    Margin="0,0,0,-70"
+                    CornerRadius="34"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand">
+                    <sh:Shadows.Shades>
+                        <sh:ImmutableShades>
+                            <sh:Shade
+                                BlurRadius="10"
+                                Opacity="0.5"
+                                Offset="10,10"
+                                Color="Black" />
+                            <sh:Shade
+                                BlurRadius="0"
+                                Opacity="0.75"
+                                Offset="3,3"
+                                Color="{StaticResource ButtonFrameColor}" />
+                            <sh:Shade
+                                BlurRadius="2"
+                                Opacity="0.6"
+                                Offset="6,6"
+                                Color="{StaticResource ButtonFrameColor}" />
+                        </sh:ImmutableShades>
+                    </sh:Shadows.Shades>
+                    <Button
+                        BackgroundColor="{StaticResource ButtonFrameColor}"
+                        BorderColor="{StaticResource ButtonFrameColor}"
+                        BorderWidth="1"
+                        Clicked="CroBtnClicked"
+                        Command="{Binding CroatianLanguage}"
+                        CornerRadius="34"
+                        FontFamily="Spicy Rice"
+                        FontSize="24"
+                        HeightRequest="110"
+                        HorizontalOptions="CenterAndExpand"
+                        Text="{xct:Translate SetupBtn1}"
+                        TextColor="Black"
+                        VerticalOptions="CenterAndExpand"
+                        WidthRequest="175" />
+                </sh:Shadows>
+                <sh:Shadows
+                    x:Name="EnglishBtn"
+                    Margin="0,-70,0,0"
+                    CornerRadius="34"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand">
+                    <sh:Shadows.Shades>
+                        <sh:ImmutableShades>
+                            <sh:Shade
+                                BlurRadius="10"
+                                Opacity="0.5"
+                                Offset="10,10"
+                                Color="Black" />
+                            <sh:Shade
+                                BlurRadius="0"
+                                Opacity="0.75"
+                                Offset="3,3"
+                                Color="{StaticResource ButtonFrameColor}" />
+                            <sh:Shade
+                                BlurRadius="2"
+                                Opacity="0.6"
+                                Offset="6,6"
+                                Color="{StaticResource ButtonFrameColor}" />
+                        </sh:ImmutableShades>
+                    </sh:Shadows.Shades>
+                    <Button
+                        BackgroundColor="{StaticResource ButtonFrameColor}"
+                        BorderColor="{StaticResource ButtonFrameColor}"
+                        BorderWidth="1"
+                        Clicked="EngBtnClicked"
+                        Command="{Binding EnglishLanguage}"
+                        CornerRadius="34"
+                        FontFamily="Spicy Rice"
+                        FontSize="24"
+                        HeightRequest="110"
+                        HorizontalOptions="CenterAndExpand"
+                        Text="{xct:Translate SetupBtn2}"
+                        TextColor="Black"
+                        VerticalOptions="CenterAndExpand"
+                        WidthRequest="175" />
+                </sh:Shadows>
+                <Button
+                    x:Name="StartBtn"
+                    Margin="20,0,20,50"
+                    BackgroundColor="{StaticResource ButtonFrameColor}"
+                    Command="{Binding Start}"
+                    CornerRadius="34"
+                    FontFamily="Cagliostro"
+                    IsEnabled="{Binding StartBtnEnabled}"
+                    Text="{xct:Translate SetupBtn3}"
+                    TextColor="Black"
+                    VerticalOptions="EndAndExpand" />
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

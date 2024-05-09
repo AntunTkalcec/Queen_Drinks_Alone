@@ -18,6 +18,7 @@ namespace Dama_pije_sama_V2.Droid
             base.OnResume();
             StartActivity(new Intent(Application.Context, typeof(MainActivity)));
         }
+
         public override void OnBackPressed()
         {
         }

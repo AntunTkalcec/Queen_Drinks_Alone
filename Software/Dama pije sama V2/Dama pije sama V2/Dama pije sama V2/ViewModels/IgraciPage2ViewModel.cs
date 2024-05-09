@@ -10,7 +10,6 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using System.Linq;
 using Xamarin.Essentials;
-using Xamarin.CommunityToolkit.Extensions;
 using Xamarin.CommunityToolkit.Helpers;
 
 namespace DamaPijeSama.ViewModels
@@ -58,7 +57,7 @@ namespace DamaPijeSama.ViewModels
             {
                 Players.Remove(player);
                 PlayerCounter = Players.Count.ToString();
-            }   
+            }
             else
             {
                 await ToastHelper.DisplayToastAsync(LocalizationResourceManager.Current["DeletePlayerError"]);
@@ -68,7 +67,7 @@ namespace DamaPijeSama.ViewModels
         public void AddPlayer()
         {
             ClickablePlus = false;
-            Players.Add(new Player(int.Parse(PlayerCounter) + 1, $"{LocalizationResourceManager.Current["PlayerString"]} {int.Parse(PlayerCounter) + 1}", 
+            Players.Add(new Player(int.Parse(PlayerCounter) + 1, $"{LocalizationResourceManager.Current["PlayerString"]} {int.Parse(PlayerCounter) + 1}",
                 Drunkards[new Random().Next(0, 6)].Path));
             PlayerCounter = Players.Count.ToString();
             ClickablePlus = true;
@@ -119,7 +118,7 @@ namespace DamaPijeSama.ViewModels
             if (!EmptyNameExists)
             {
                 int counter = 0;
-                foreach (Player player in Players.Where(x => x.Name == $"{LocalizationResourceManager.Current["PlayerNameDefault"]}" 
+                foreach (Player player in Players.Where(x => x.Name == $"{LocalizationResourceManager.Current["PlayerNameDefault"]}"
                 || x.Name.StartsWith($"{LocalizationResourceManager.Current["PlayerNameEmpty"]}") || x.Name.StartsWith("Igrač") || x.Name.StartsWith("Player")))
                 {
                     counter++;

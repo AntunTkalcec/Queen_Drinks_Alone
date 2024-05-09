@@ -39,14 +39,14 @@ namespace DamaPijeSama.ViewModels
             GetCards = new AsyncCommand(async () => await GetCardListAsync());
             GetCards.Execute(null);
             GetColors = new AsyncCommand(async () => await GetColorListAsync());
-            GetColors.Execute(null);            
+            GetColors.Execute(null);
         }
 
         private async void SaveCurrentGame(object sender, EventArgs e)
         {
             if (CardsPlayedCounter > 0)
             {
-                Game newGame = new()
+                Game newGame = new Game()
                 {
                     Date = DateTime.Now,
                     NumberOfPlayers = 0,

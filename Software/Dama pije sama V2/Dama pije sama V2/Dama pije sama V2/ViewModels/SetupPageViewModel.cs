@@ -1,11 +1,8 @@
 ﻿using Dama_pije_sama_V2;
 using DamaPijeSama.Services;
 using MvvmHelpers.Commands;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.CommunityToolkit.Helpers;
@@ -38,7 +35,7 @@ namespace DamaPijeSama.ViewModels
             {
                 Preferences.Set("setupComplete", "1");
                 Application.Current.MainPage = new NavigationPage(new MainPage());
-            }          
+            }
         }
 
         private async Task SetLanguageEng()

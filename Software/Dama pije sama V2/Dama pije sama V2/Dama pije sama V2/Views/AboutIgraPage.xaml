@@ -1,31 +1,89 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Dama_pije_sama_V2.AboutIgraPage"
-             BackgroundColor="White"
-             xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
+<ContentPage
+    x:Class="Dama_pije_sama_V2.AboutIgraPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    BackgroundColor="White">
     <ContentPage.Content>
         <StackLayout>
-            <Label FontFamily="Spicy Rice" Text="{Binding GameInfo}" FontSize="26" TextColor="{Binding RandomColor}" VerticalOptions="CenterAndExpand" 
-                   HorizontalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
-            <Label FontFamily="Spicy Rice" Text="{xct:Translate AboutGameLbl1}" FontSize="20" TextColor="{Binding RandomColor}" VerticalOptions="CenterAndExpand" 
-                   HorizontalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" x:Name="Igraci1"/>
-            <Label FontFamily="Cagliostro" Text="{Binding PlayerInfo}" TextColor="{Binding RandomColor}" FontSize="16" 
-                   HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
-                   VerticalOptions="StartAndExpand"  Margin="10, 0, 10, 0"/>
-            <BoxView HeightRequest="1" HorizontalOptions="Center" WidthRequest="300" Color="{Binding RandomColor}"/>
-            <Label FontFamily="Spicy Rice" Text="{xct:Translate AboutGameLbl2}" FontSize="20" TextColor="{Binding RandomColor}" VerticalOptions="CenterAndExpand" 
-                   HorizontalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
-            <Label FontFamily="Cagliostro" Text="{Binding PlayedCardsNumber}" TextColor="{Binding RandomColor}" FontSize="16" 
-                   HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
-                   VerticalOptions="StartAndExpand"/>
-            <BoxView HeightRequest="1" HorizontalOptions="Center" WidthRequest="300" Color="{Binding RandomColor}"/>
-            <Label FontFamily="Spicy Rice" Text="{xct:Translate AboutGameLbl3}" FontSize="20" TextColor="{Binding RandomColor}" VerticalOptions="CenterAndExpand" 
-                   HorizontalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
-            <Label FontFamily="Cagliostro" Text="{Binding GameLength}" TextColor="{Binding RandomColor}" FontSize="16" 
-                   HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
-                   VerticalOptions="StartAndExpand"/>
-            <BoxView HeightRequest="1" HorizontalOptions="Center" WidthRequest="300" Color="{Binding RandomColor}"/>
+            <Label
+                FontFamily="Spicy Rice"
+                FontSize="26"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                Text="{Binding GameInfo}"
+                TextColor="{Binding RandomColor}"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center" />
+            <Label
+                x:Name="Igraci1"
+                FontFamily="Spicy Rice"
+                FontSize="20"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                Text="{xct:Translate AboutGameLbl1}"
+                TextColor="{Binding RandomColor}"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center" />
+            <Label
+                Margin="10,0,10,0"
+                FontFamily="Cagliostro"
+                FontSize="16"
+                HorizontalTextAlignment="Center"
+                Text="{Binding PlayerInfo}"
+                TextColor="{Binding RandomColor}"
+                VerticalOptions="StartAndExpand"
+                VerticalTextAlignment="Center" />
+            <BoxView
+                HeightRequest="1"
+                HorizontalOptions="Center"
+                WidthRequest="300"
+                Color="{Binding RandomColor}" />
+            <Label
+                FontFamily="Spicy Rice"
+                FontSize="20"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                Text="{xct:Translate AboutGameLbl2}"
+                TextColor="{Binding RandomColor}"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center" />
+            <Label
+                FontFamily="Cagliostro"
+                FontSize="16"
+                HorizontalTextAlignment="Center"
+                Text="{Binding PlayedCardsNumber}"
+                TextColor="{Binding RandomColor}"
+                VerticalOptions="StartAndExpand"
+                VerticalTextAlignment="Center" />
+            <BoxView
+                HeightRequest="1"
+                HorizontalOptions="Center"
+                WidthRequest="300"
+                Color="{Binding RandomColor}" />
+            <Label
+                FontFamily="Spicy Rice"
+                FontSize="20"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                Text="{xct:Translate AboutGameLbl3}"
+                TextColor="{Binding RandomColor}"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center" />
+            <Label
+                FontFamily="Cagliostro"
+                FontSize="16"
+                HorizontalTextAlignment="Center"
+                Text="{Binding GameLength}"
+                TextColor="{Binding RandomColor}"
+                VerticalOptions="StartAndExpand"
+                VerticalTextAlignment="Center" />
+            <BoxView
+                HeightRequest="1"
+                HorizontalOptions="Center"
+                WidthRequest="300"
+                Color="{Binding RandomColor}" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

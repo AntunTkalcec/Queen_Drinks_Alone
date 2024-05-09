@@ -19,7 +19,7 @@ namespace Dama_pije_sama_V2
             {
                 return;
             }
-            var dbPath = FileAccessHelper.GetLocalFilePath("damapijesama.db3");
+            string dbPath = FileAccessHelper.GetLocalFilePath("damapijesama.db3");
             conn = new SQLiteAsyncConnection(dbPath);
             await conn.CreateTableAsync<Game>();
         }
@@ -27,6 +27,7 @@ namespace Dama_pije_sama_V2
         public async Task AddNewGameAsync(Game newGame)
         {
             await Init();
+
             try
             {
                 if (!await CheckGameExists(newGame))
@@ -49,33 +50,33 @@ namespace Dama_pije_sama_V2
             catch (Exception)
             {
                 await Application.Current.MainPage.DisplayAlert("Error", LocalizationResourceManager.Current["GeneralDBError"], "OK");
+                return new List<Game>();
             }
-            return new List<Game>();
         }
         public async Task<bool> CheckGameExists(Game game)
         {
             await Init();
+
             try
             {
                 if (await conn.FindAsync<Game>(game.Id) != null)
                 {
                     return true;
                 }
-                else
-                {
-                    return false;
-                }
+
+                return false;
             }
             catch (Exception)
             {
                 await Application.Current.MainPage.DisplayAlert("Error", LocalizationResourceManager.Current["GeneralDBError"], "OK");
+                return false;
             }
-            return false;
         }
 
         public async Task DeleteAllGamesAsync()
         {
             await Init();
+
             try
             {
                 await conn.DeleteAllAsync<Game>();
